@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .navbar{
   background-color: 721D2D;
 
@@ -5,4 +6,13 @@
 
 .navbar a{
   color: white;
+=======
+.carousel-inner > .item > img,
+  .carousel-inner > .item > a > img {
+    width: 100%;
+    margin: auto;
+  }
+.Rkhive{
+  background-color: red;
+>>>>>>> 42148647a99fb34e2b5064be83f0e1e256a4b399
 }
