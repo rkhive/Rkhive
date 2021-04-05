@@ -51,7 +51,19 @@
 
 <div class="tab-content">
   <div id="home" class="tab-pane fade in active">
-    <h3>HOME</h3>
+    <h3><a href="#" data-toggle="tooltip popover" data-content="Not as useful as the modal but still usable?" title ="Tooltip!"> HOME </a></h3>
+
+<script>
+$(document).ready(function(){
+  $('[data-toggle="tooltip"]').tooltip();
+});
+</script>
+<script>
+$(document).ready(function(){
+  $('[data-toggle="popover"]').popover();
+});
+</script>
+
     <p>This could actually be really cool.</p>
   </div>
   <div id="menu1" class="tab-pane fade">
@@ -223,6 +235,7 @@
   <button type="button" class="btn btn-default">
     <span class="glyphicon glyphicon-print"></span> Print Page
   </button>
+  <br>
   <br>
 </div>
 </div>
