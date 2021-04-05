@@ -43,6 +43,26 @@
   <li><a href="#">4</a></li>
   <li><a href="#">5</a></li>
 </ul>
+<ul class="nav nav-pills">
+  <li class="active"><a data-toggle="pill" href="#home">Home</a></li>
+  <li><a data-toggle="pill" href="#menu1">Menu 1</a></li>
+  <li><a data-toggle="pill" href="#menu2">Menu 2</a></li>
+</ul>
+
+<div class="tab-content">
+  <div id="home" class="tab-pane fade in active">
+    <h3>HOME</h3>
+    <p>This could actually be really cool.</p>
+  </div>
+  <div id="menu1" class="tab-pane fade">
+    <h3>Menu 1</h3>
+    <p>Some content in menu 1.</p>
+  </div>
+  <div id="menu2" class="tab-pane fade">
+    <h3>Menu 2</h3>
+    <p>Some content in menu 2.</p>
+  </div>
+</div>
   <div class="page-header">
     <h1>Test Page 1 <span class="label label-info">New</span></h1>
   </div>
@@ -137,6 +157,33 @@
   <li class="previous"><a href="#">Previous</a></li>
   <li class="next"><a href="#">Next</a></li>
 </ul>
+
+<div class="container">
+  <h2>List Group With Badges</h2>
+  <ul class="list-group">
+    <li class="list-group-item list-group-item-success active">Item 1 <span class="badge">12</span></li>
+    <li class="list-group-item list-group-item-warning disabled">Item 2 <span class="badge">5</span></li>
+    <li class="list-group-item list-group-item-info">Item 3 <span class="badge">3</span></li>
+  </ul>
+</div>
+
+<div class="container">
+  <h2>Panel Heading</h2>
+  <div class="panel panel-default">
+    <div class="panel-heading">Panel Heading</div>
+    <div class="panel-body">Panel Content</div>
+  </div>
+</div>
+
+<div class="container">
+  <h2>Simple Collapsible</h2>
+  <p>Click on the button to toggle between showing and hiding content.</p>
+  <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">Simple collapsible</button>
+  <div id="demo" class="collapse">
+  Potentially could be useful in saving space for content?
+  </div>
+</div>
+
 </div>
 
 <br>
