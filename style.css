@@ -1,17 +1,14 @@
-<<<<<<< HEAD
 .navbar{
   background-color: 721D2D;
-
 }
 
 .navbar a{
   color: white;
-=======
-.carousel-inner > .item > img,
+  .carousel-inner > .item > img,
   .carousel-inner > .item > a > img {
-    width: 100%;
-    margin: auto;
-  }
+  width: 100%;
+  margin: auto;
+}
 
 .h1 {
   text-align: center;
@@ -21,6 +18,7 @@
   text-align: center;
 }
 
+<<<<<<< HEAD
 .zoom {
   padding: 50px;
   background-color: green;
@@ -37,8 +35,8 @@
 
 <<<<<<< HEAD
 =======
+=======
+>>>>>>> da21be91ca2e52b104d1ce86ced484624ef9ece2
 .Rkhive{
   background-color: red;
->>>>>>> 42148647a99fb34e2b5064be83f0e1e256a4b399
 }
->>>>>>> 9ba17148006f94ff4b0ee85c86a4841adf5de6c8

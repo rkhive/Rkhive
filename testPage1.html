@@ -11,27 +11,24 @@
   </head>
   <body>
     <nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#">Rkhive</a>
-    </div>
-    <ul class="nav navbar-nav">
-      <li class="active"><a href="index.html">Home</a></li>
-      <li><a href="#" >Test Page 1</a></li>
-      <li><a href="#">Test Page 2</a></li>
-      <li><a href="#">Test Page 3</a></li>
-      <li class="dropdown">
-       <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-         Tutorials <span class="caret"></span></a>
-         <ul class="dropdown-menu" role="menu">
-           <li><a href="#">HTML</a></li>
-           <li><a href="#">CSS</a></li>
-           <li><a href="#">JavaScript</a></li>
-         </ul>
-       </li>
-    </ul>
-  </div>
-</nav>
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand Rkhive active" href="index.html">Rkhive</a>
+        </div>
+        <ul class="nav navbar-nav">
+          <li><a href="testPage1.html" >Test Page 1</a></li>
+          <li><a href="#">Test Page 2</a></li>
+          <li><a href="#">Test Page 3</a></li>
+          <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">About<span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="#">Mass Academy</a></li>
+              <li><a href="#">Rkhive</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </nav>
 <div class="container-fluid">
   <div class="alert alert-info alert-dismissible fade in">
     <p>Rkhive is still in development and is expected to be completed and released in late May of 2021!</p>
@@ -51,7 +48,19 @@
 
 <div class="tab-content">
   <div id="home" class="tab-pane fade in active">
-    <h3>HOME</h3>
+    <h3><a href="#" data-toggle="tooltip popover" data-content="Not as useful as the modal but still usable?" title ="Tooltip!"> HOME </a></h3>
+
+<script>
+$(document).ready(function(){
+  $('[data-toggle="tooltip"]').tooltip();
+});
+</script>
+<script>
+$(document).ready(function(){
+  $('[data-toggle="popover"]').popover();
+});
+</script>
+
     <p>This could actually be really cool.</p>
   </div>
   <div id="menu1" class="tab-pane fade">
@@ -84,6 +93,29 @@
   </div>
 </div>
 <div class="container-fluid">
+  <!-- Trigger the modal with a button -->
+<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Modal Header</h4>
+      </div>
+      <div class="modal-body">
+        <p>We could use this for each individual profile to detail the information about each student.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
   <h2>Button</h2>
   <p>The .btn class adds basic styling to a button:</p>
   <button type="button" class="btn btn-success btn-block">Success!</button>
@@ -200,6 +232,7 @@
   <button type="button" class="btn btn-default">
     <span class="glyphicon glyphicon-print"></span> Print Page
   </button>
+  <br>
   <br>
 </div>
 </div>
