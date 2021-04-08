@@ -18,7 +18,6 @@
   text-align: center;
 }
 
-<<<<<<< HEAD
 .zoom {
   padding: 50px;
   background-color: green;
@@ -32,11 +31,6 @@
   transform: scale(1.5); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
 }
 
-
-<<<<<<< HEAD
-=======
-=======
->>>>>>> da21be91ca2e52b104d1ce86ced484624ef9ece2
 .Rkhive{
   background-color: red;
 }
