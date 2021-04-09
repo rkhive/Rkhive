@@ -1,38 +1,35 @@
-@charset UTF-8;
-
-h1 {
-  text-align: center;
-}
-
-p {
-
-}
-
-blockquote {
-  text-align: center;
-}
-
 .navbar{
   background-color: 721D2D;
+
 }
 
 .navbar a{
   color: white;
-  .carousel-inner > .item > img,
-  .carousel-inner > .item > a > img,
-  width: 100%;
-  margin: auto;
 }
 
-.zoom {
-  padding: 50px;
-  background-color: green;
-  transition: transform .2s;
-  width: 200px;
-  height: 200px;
-  margin: 0 auto;
+*{
+  padding: 0;
+  margin: 0;
 }
 
-.zoom:hover {
-  transform: scale(1.5);
+main {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-left: 10px;
+}
+
+
+form {
+  width: 500px;
+  border: solid 1px;
+  padding: 5rem;
+  margins: 2rem;
+}
+
+button {
+  margin-top: 2rem;
 }

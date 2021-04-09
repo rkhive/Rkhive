@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+  <meta charset = "UTF-8">
+  <meta name= "viewport" content = "width=device-width, initial-scale =1.0">
+  <meta http-equiv="X-UA-Compatible" content = "ie=edge">
+  <title>Rkhive App</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link rel="stylesheet" href = "style.css">
+  </head>
+  <style>
+  ul {
+    list-style-type: none;
+  }
+  .personDesc{
+    text-align: center;
+    padding: 0px;
+  }
+  th{
+    text-align: center;
+  }
+  .entry{
+    border-width: 2px;
+    border-style: solid;
+  }
+  </style>
+  <body>
+      <main style = "display:inline">
+        <!-- <a href = "yearbook.html">yearbook</a> -->
+        <button onclick="hideShow()" class = "btn waves-effect waves-light">Hide/Show Inputs</button>
+        <br>
+        <br>
+          <div id = "inputForm" style = "display:none">
+          <form>
+            <label for = "userId">User ID</label><br>
+            <input type = "text" name = "userId" id = "userId"><br>
+            <label for = "firstName">First Name</label><br>
+            <input type = "text" name = "firstName" id = "firstName"><br>
+            <label for = "lastName">Last Name</label><br>
+            <input type = "text" name = "lastName" id = "lastName"><br>
+            <label for = "Age">Age</label><br>
+            <input type = "text" name = "age" id = "age"><br>
+            <label for = "Section">Section</label><br>
+            <input type = "text" name = "section" id = "section"><br>
+            <div style = "text-align:center">
+            <button id = "addBtn" class = "btn waves-effect waves-light">Add</button>
+            <button id = "updateBtn" class = "btn waves-effect waves-light">Update</button>
+            <button id = "removeBtn" class = "btn waves-effect red darken-1">Remove</button>
+          </div>
+        </div>
+      </main>
+      <div style = "text-align:center; display:inline">
+        <!-- <p id = "fullName0"></p>
+        <p id = "fullName1"></p>
+        <p id = "fullName2"></p> -->
+        <!-- <br> -->
+        <!-- <p style = "float:left; margin-left: 9%; padding:0px">All students </p> -->
+        <!-- <br> -->
+        <!-- <table style="width:25%; text-align: center">
+            <tr>
+              <th>Firstname</th>
+              <th>Lastname</th>
+              <th>Age</th>
+              <th>Section</th>
+            </tr>
+            <tr>
+              <td id = "first_names"></td>
+              <td id = "last_names"></td>
+              <td id = "ages"></td>
+              <td id = "sections"></td>
+            </tr>
+        </table> -->
+    <br><br>
+      <div class = "container">
+        <h1>MAMS Class of 2022 Rkhive</h1>
+        <!-- <button onclick="generateRkhive()" class = "btn waves-effect waves-light pulse">GENERATE RKHIVE</button> -->
+        <br><br>
+      <!-- do not use user id 0 -->
+            <table style="display: none; margin-right: 2.5%">
+                  <tr>
+                    <th id = "fullName0"></th>
+                  </tr>
+                  <tr>
+                  <td><img style="display:block;" width="100%" height="100%" src="Images/person1.jpeg" /></td>
+                  </tr>
+                  <tr>
+                    <td id = "userAge0" class = "personDesc"></td>
+                  </tr>
+                  <tr>
+                    <td id = "userSection0" class = "personDesc"></td>
+                  </tr>
+              </table>
+        <table style="display: inline; margin-right: 2.5%">
+              <tr>
+                <th id = "fullName1"></th>
+              </tr>
+              <tr>
+              <td><img style="display:block;" width="100%" height="100%" src="Images/person1.jpeg" /></td>
+              </tr>
+              <tr>
+                <td id = "userAge1" class = "personDesc"></td>
+              </tr>
+              <tr>
+                <td id = "userSection1" class = "personDesc"></td>
+              </tr>
+          </table>
+          <table style="display: inline; margin-right: 2.5%">
+                <tr>
+                  <th id = "fullName2"></th>
+                </tr>
+                <tr>
+                <td><img style="display:block;" width="100%" height="100%" src="Images/person1.jpeg"/></td>
+                </tr>
+                <tr>
+                  <td id = "userAge2" class = "personDesc"></td>
+                </tr>
+                <tr>
+                  <td id = "userSection2" class = "personDesc"></td>
+                </tr>
+            </table>
+            <table style="display: inline; margin-right: 2.5%">
+                  <tr>
+                    <th id = "fullName3"></th>
+                  </tr>
+                  <tr>
+                  <td><img style="display:block;" width="100%" height="100%" src="Images/person1.jpeg"/></td>
+                  </tr>
+                  <tr>
+                    <td id = "userAge3" class = "personDesc"></td>
+                  </tr>
+                  <tr>
+                    <td id = "userSection3" class = "personDesc"></td>
+                  </tr>
+              </table>
+              <table style="display: inline; margin-right: 2.5%">
+                    <tr>
+                      <th id = "fullName4"></th>
+                    </tr>
+                    <tr>
+                    <td><img style="display:block;" width="100%" height="100%" src="Images/person1.jpeg"/></td>
+                    </tr>
+                    <tr>
+                      <td id = "userAge4" class = "personDesc"></td>
+                    </tr>
+                    <tr>
+                      <td id = "userSection4" class = "personDesc"></td>
+                    </tr>
+                </table>
+                <table style="display: inline; margin-right: 2.5%">
+                      <tr>
+                        <th id = "fullName5"></th>
+                      </tr>
+                      <tr>
+                      <td><img style="display:block;" width="100%" height="100%" src="Images/person1.jpeg"/></td>
+                      </tr>
+                      <tr>
+                        <td id = "userAge5" class = "personDesc"></td>
+                      </tr>
+                      <tr>
+                        <td id = "userSection5" class = "personDesc"></td>
+                      </tr>
+                  </table>
+                  <table style="display: inline; margin-right: 2.5%">
+                        <tr>
+                          <th id = "fullName6"></th>
+                        </tr>
+                        <tr>
+                        <td><img style="display:block; text-align:center" width="90%" height="100%" src="Images/person1.jpeg"/></td>
+                        </tr>
+                        <tr>
+                          <td id = "userAge6" class = "personDesc"></td>
+                        </tr>
+                        <tr>
+                          <td id = "userSection6" class = "personDesc"></td>
+                        </tr>
+                    </table>
+                    <br>
+                    <table style="display: inline; margin-right: 2.5%">
+                          <tr>
+                            <th id = "fullName7"></th>
+                          </tr>
+                          <tr>
+                          <td><img style="display:block;" width="100%" height="100%" src="Images/person1.jpeg"/></td>
+                          </tr>
+                          <tr>
+                            <td id = "userAge7" class = "personDesc"></td>
+                          </tr>
+                          <tr>
+                            <td id = "userSection7" class = "personDesc"></td>
+                          </tr>
+                      </table>
+                      <table style="display: inline; margin-right: 2.5%">
+                            <tr>
+                              <th id = "fullName8"></th>
+                            </tr>
+                            <tr>
+                            <td><img style="display:block;" width="100%" height="100%" src="Images/person1.jpeg"/></td>
+                            </tr>
+                            <tr>
+                              <td id = "userAge8" class = "personDesc"></td>
+                            </tr>
+                            <tr>
+                              <td id = "userSection8" class = "personDesc"></td>
+                            </tr>
+                        </table>
+                        <table style="display: inline; margin-right: 2.5%">
+                              <tr>
+                                <th id = "fullName9"></th>
+                              </tr>
+                              <tr>
+                              <td><img style="display:block;" width="100%" height="100%" src="Images/person1.jpeg"/></td>
+                              </tr>
+                              <tr>
+                                <td id = "userAge9" class = "personDesc"></td>
+                              </tr>
+                              <tr>
+                                <td id = "userSection9" class = "personDesc"></td>
+                              </tr>
+                          </table>
+                          <table style="display: inline; margin-right: 2.5%">
+                                <tr>
+                                  <th id = "fullName10"></th>
+                                </tr>
+                                <tr>
+                                <td><img style="display:block;" width="100%" height="100%" src="Images/person1.jpeg"/></td>
+                                </tr>
+                                <tr>
+                                  <td id = "userAge10" class = "personDesc"></td>
+                                </tr>
+                                <tr>
+                                  <td id = "userSection10" class = "personDesc"></td>
+                                </tr>
+                            </table>
+                            <table style="display: inline; margin-right: 2.5%">
+                                  <tr>
+                                    <th id = "fullName11"></th>
+                                  </tr>
+                                  <tr>
+                                  <td><img style="display:block;" width="100%" height="100%" src="Images/person1.jpeg"/></td>
+                                  </tr>
+                                  <tr>
+                                    <td id = "userAge11" class = "personDesc"></td>
+                                  </tr>
+                                  <tr>
+                                    <td id = "userSection11" class = "personDesc"></td>
+                                  </tr>
+                              </table>
+                              <table style="display: inline; margin-right: 2.5%">
+                                    <tr>
+                                      <th id = "fullName12"></th>
+                                    </tr>
+                                    <tr>
+                                    <td><img style="display:block;" width="100%" height="100%" src="Images/person1.jpeg"/></td>
+                                    </tr>
+                                    <tr>
+                                      <td id = "userAge12" class = "personDesc"></td>
+                                    </tr>
+                                    <tr>
+                                      <td id = "userSection12" class = "personDesc"></td>
+                                    </tr>
+                                </table>
+            </div>
+            <br><br><br><br>
+    </div>
+            <!-- The core Firebase JS SDK is always required and must be listed first -->
+      <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-app.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-database.js"></script>
+
+      <!-- TODO: Add SDKs for Firebase products that you want to use
+           https://firebase.google.com/docs/web/setup#available-libraries -->
+      <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-analytics.js"></script>
+
+      <script>
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        var firebaseConfig = {
+          apiKey: "AIzaSyA-7xOhqPJjhq-cm6VuzjZZ5X3dti6UeFQ",
+          authDomain: "rkhive-1faec.firebaseapp.com",
+          databaseURL: "https://rkhive-1faec-default-rtdb.firebaseio.com",
+          projectId: "rkhive-1faec",
+          storageBucket: "rkhive-1faec.appspot.com",
+          messagingSenderId: "608713408633",
+          appId: "1:608713408633:web:fe413d775d51be77e2d4a8",
+          measurementId: "G-PCS017396G"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        firebase.analytics();
+    //establishes root of db
+    var rootRef = firebase.database().ref();
+
+    //creates ref for node
+    var ref = rootRef.child('1oYN4YtfxmtndybqYwCeg2uH1j8ifUVjro794v-rW11g/StudentInformation');
+    // var ref = rootRef.child('users');
+    // ^FROM THE FORM INPUT
+    // gets values from database and changes html
+    ref.once('value', function(snap) { //once means user must refresh
+
+    //re-initializes answer in html, so doesn't repeat
+    // document.getElementById("first_names").innerHTML = "";
+    // document.getElementById("last_names").innerHTML = "";
+    // document.getElementById("ages").innerHTML = "";
+      //not really necessary ^
+
+    var index= 0;
+    function incrementIndex(){
+       index++;
+    }
+
+    //gets values for each element in data set
+    snap.forEach(function(child){
+      const obj = JSON.parse(JSON.stringify(child.val()));
+      console.log(obj.first_name);
+      // document.getElementById("first_names").innerHTML +=  obj.first_name +"<br>";
+      // document.getElementById("last_names").innerHTML += obj.last_name +"<br>";
+      // document.getElementById("ages").innerHTML += obj.age +"<br>";
+      // document.getElementById("sections").innerHTML += obj.section +"<br>";
+      // ^for the table of all students
+      document.getElementById("fullName"+String(index)).innerHTML += obj.first_name + " " + obj.last_name;
+      document.getElementById("userAge"+String(index)).innerHTML += "Age "+obj.age;
+      document.getElementById("userSection"+String(index)).innerHTML += "Section "+obj.section;
+      incrementIndex();
+  });
+});
+      </script>
+  </body>
+  <script src = "./functions.js"></script>
+  </html>
