@@ -10,6 +10,43 @@ const removeBtn = document.getElementById('removeBtn');
 const database = firebase.database();
 const rootRefOne = database.ref('users');
 
+//establishes root of db
+var rootRef = firebase.database().ref();
+
+//creates ref for node
+var ref = rootRef.child('1oYN4YtfxmtndybqYwCeg2uH1j8ifUVjro794v-rW11g/StudentInformation');
+// var ref = rootRef.child('users');
+// ^FROM THE FORM INPUT
+// gets values from database and changes html
+ref.once('value', function(snap) { //once means user must refresh
+
+//re-initializes answer in html, so doesn't repeat
+// document.getElementById("first_names").innerHTML = "";
+// document.getElementById("last_names").innerHTML = "";
+// document.getElementById("ages").innerHTML = "";
+  //not really necessary ^
+
+var index= 0;
+function incrementIndex(){
+   index++;
+}
+
+//gets values for each element in data set
+snap.forEach(function(child){
+  const obj = JSON.parse(JSON.stringify(child.val()));
+  console.log(obj.first_name);
+  // document.getElementById("first_names").innerHTML +=  obj.first_name +"<br>";
+  // document.getElementById("last_names").innerHTML += obj.last_name +"<br>";
+  // document.getElementById("ages").innerHTML += obj.age +"<br>";
+  // document.getElementById("sections").innerHTML += obj.section +"<br>";
+  // ^for the table of all students
+  document.getElementById("fullName"+String(index)).innerHTML += obj.first_name + " " + obj.last_name;
+  document.getElementById("userAge"+String(index)).innerHTML += "Age "+obj.age;
+  document.getElementById("userSection"+String(index)).innerHTML += "Section "+obj.section;
+  incrementIndex();
+});
+});
+
 addBtn.addEventListener('click', (e) => {
   e.preventDefault();
   alert("refresh page!");
