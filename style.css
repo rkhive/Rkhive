@@ -1,5 +1,17 @@
 @charset UTF-8;
 
+h1 {
+  text-align: center;
+}
+
+p {
+
+}
+
+blockquote {
+  text-align: center;
+}
+
 .navbar{
   background-color: 721D2D;
 }
@@ -12,32 +24,15 @@
   margin: auto;
 }
 
-p {
-  text-align: center;
-  color: red;
-}
-
-h1 {
-  text-align: center;
-}
-
-blockquote {
-  text-align: center;
-}
-
 .zoom {
   padding: 50px;
   background-color: green;
-  transition: transform .2s; /* Animation */
+  transition: transform .2s;
   width: 200px;
   height: 200px;
   margin: 0 auto;
 }
 
 .zoom:hover {
-  transform: scale(1.5); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
-}
-
-.Rkhive{
-  background-color: red;
+  transform: scale(1.5);
 }
