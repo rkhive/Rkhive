@@ -1,12 +1,14 @@
 <!DOCTYPE html>
-<html lang = "en">
+<html lang="en">
 <head>
-  <meta charset = "UTF-8">
-  <meta name= "viewport" content = "width=device-width, initial-scale =1.0">
-  <meta http-equiv="X-UA-Compatible" content = "ie=edge">
-  <title>Rkhive App</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-  <link rel="stylesheet" href = "style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="style.css">
+  <title>Rkhive Mass Academy</title>
   </head>
   <style>
   ul {
@@ -25,54 +27,78 @@
   }
   </style>
   <body>
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand Rkhive active" href="index.html">Rkhive</a>
+        </div>
+        <ul class="nav navbar-nav">
+          <li><a href="Yearbook.html">Yearbook.html</a></li>
+          <li><a href="ClassPage.html">ClassPage.html</a></li>
+          <li><a href="testPage1.html">testPage1.html</a></li>
+          <li><a href="data.html">data.html</a></li>
+          <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">About<span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="#">Mass Academy</a></li>
+              <li><a href="#">Rkhive</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <div class="container-fluid">
       <main style = "display:inline">
         <!-- <a href = "yearbook.html">yearbook</a> -->
-        <button onclick="hideShow()" class = "btn waves-effect waves-light">Hide/Show Inputs</button>
+        <button onclick="hideShow()" class="btn btn-primary">Edit Data</button>
         <br>
         <br>
           <div id = "inputForm" style = "display:none">
           <form>
-            <label for = "userId">User ID</label><br>
-            <input type = "text" name = "userId" id = "userId"><br>
-            <label for = "firstName">First Name</label><br>
-            <input type = "text" name = "firstName" id = "firstName"><br>
-            <label for = "lastName">Last Name</label><br>
-            <input type = "text" name = "lastName" id = "lastName"><br>
-            <label for = "Age">Age</label><br>
-            <input type = "text" name = "age" id = "age"><br>
-            <label for = "Section">Section</label><br>
-            <input type = "text" name = "section" id = "section"><br>
-            <div style = "text-align:center">
+            <label for="userId">User ID</label><br>
+            <input type="text" name="userId" id="userId"><br>
+            <label for="firstName">First Name</label><br>
+            <input type="text" name="firstName" id="firstName"><br>
+            <label for="lastName">Last Name</label><br>
+            <input type="text" name = "lastName" id = "lastName"><br>
+            <label for="Age">Age</label><br>
+            <input type="text" name = "age" id = "age"><br>
+            <label for="Section">Section</label><br>
+            <input type="text" name="section" id="section"><br>
+            <div style="text-align:center">
             <button id = "addBtn" class = "btn waves-effect waves-light">Add</button>
             <button id = "updateBtn" class = "btn waves-effect waves-light">Update</button>
             <button id = "removeBtn" class = "btn waves-effect red darken-1">Remove</button>
           </div>
         </div>
       </main>
+    </div>
       <div style = "text-align:center; display:inline">
-        <!-- <p id = "fullName0"></p>
-        <p id = "fullName1"></p>
-        <p id = "fullName2"></p> -->
-        <!-- <br> -->
-        <!-- <p style = "float:left; margin-left: 9%; padding:0px">All students </p> -->
-        <!-- <br> -->
-        <!-- <table style="width:25%; text-align: center">
-            <tr>
-              <th>Firstname</th>
-              <th>Lastname</th>
-              <th>Age</th>
-              <th>Section</th>
-            </tr>
-            <tr>
-              <td id = "first_names"></td>
-              <td id = "last_names"></td>
-              <td id = "ages"></td>
-              <td id = "sections"></td>
-            </tr>
-        </table> -->
+        <div class="container-fluid">
+        <div class="row">
+        <div class="col-4">
+        <h2 id="fullName1">
+        <img style="display:block;" src="Images/person1.jpeg"/>
+        </h2>
+        </div>
+        <div class="col-4">
+        <h2 id="fullName1">
+      <img style="display:block;" src="Images/person1.jpeg"/>
+        <p id = "userAge1" class = "personDesc"></p>
+        <p id = "userSection1" class = "personDesc"></p>
+        </h2>
+        </div>
+        <div class="col-4">
+        <h2 id="fullName1">
+      <img style="display:block;" src=Images/person1.jpeg"/>
+        <p id = "userAge1" class = "personDesc"></p>
+        <p id = "userSection1" class = "personDesc"></p>
+        </h2>
+        </div>
+        </div>
     <br><br>
-      <div class = "container">
-        <h1>MAMS Class of 2022 Rkhive</h1>
+      <div class="container-fluid">
+        <h1>MAMS Class of '22</h1>
         <!-- <button onclick="generateRkhive()" class = "btn waves-effect waves-light pulse">GENERATE RKHIVE</button> -->
         <br><br>
       <!-- do not use user id 0 -->
@@ -81,7 +107,7 @@
                     <th id = "fullName0"></th>
                   </tr>
                   <tr>
-                  <td><img style="display:block;" width="100%" height="100%" src="Images/person1.jpeg" /></td>
+                  <td><img style="display:block;" width="100%" height="100%" src="Images/highschool.jpg" /></td>
                   </tr>
                   <tr>
                     <td id = "userAge0" class = "personDesc"></td>
@@ -95,7 +121,7 @@
                 <th id = "fullName1"></th>
               </tr>
               <tr>
-              <td><img style="display:block;" width="100%" height="100%" src="Images/person1.jpeg" /></td>
+              <td><img style="display:block;" width="100%" height="100%" src="Images/highschool.jpg" /></td>
               </tr>
               <tr>
                 <td id = "userAge1" class = "personDesc"></td>
@@ -109,7 +135,7 @@
                   <th id = "fullName2"></th>
                 </tr>
                 <tr>
-                <td><img style="display:block;" width="100%" height="100%" src="Images/person1.jpeg"/></td>
+                <td><img style="display:block;" width="100%" height="100%" src="Images/highschool.jpg"/></td>
                 </tr>
                 <tr>
                   <td id = "userAge2" class = "personDesc"></td>
@@ -123,7 +149,7 @@
                     <th id = "fullName3"></th>
                   </tr>
                   <tr>
-                  <td><img style="display:block;" width="100%" height="100%" src="Images/person1.jpeg"/></td>
+                  <td><img style="display:block;" width="100%" height="100%" src="Images/highschool.jpg"/></td>
                   </tr>
                   <tr>
                     <td id = "userAge3" class = "personDesc"></td>
@@ -137,7 +163,7 @@
                       <th id = "fullName4"></th>
                     </tr>
                     <tr>
-                    <td><img style="display:block;" width="100%" height="100%" src="Images/person1.jpeg"/></td>
+                    <td><img style="display:block;" width="100%" height="100%" src="Images/highschool.jpg"/></td>
                     </tr>
                     <tr>
                       <td id = "userAge4" class = "personDesc"></td>
@@ -151,7 +177,7 @@
                         <th id = "fullName5"></th>
                       </tr>
                       <tr>
-                      <td><img style="display:block;" width="100%" height="100%" src="Images/person1.jpeg"/></td>
+                      <td><img style="display:block;" width="100%" height="100%" src="Images/highschool.jpg"/></td>
                       </tr>
                       <tr>
                         <td id = "userAge5" class = "personDesc"></td>
@@ -165,7 +191,7 @@
                           <th id = "fullName6"></th>
                         </tr>
                         <tr>
-                        <td><img style="display:block; text-align:center" width="90%" height="100%" src="Images/person1.jpeg"/></td>
+                        <td><img style="display:block; text-align:center" width="90%" height="100%" src="Images/highschool.jpg"/></td>
                         </tr>
                         <tr>
                           <td id = "userAge6" class = "personDesc"></td>
@@ -180,7 +206,7 @@
                             <th id = "fullName7"></th>
                           </tr>
                           <tr>
-                          <td><img style="display:block;" width="100%" height="100%" src="Images/person1.jpeg"/></td>
+                          <td><img style="display:block;" width="100%" height="100%" src="Images/highschool.jpg"/></td>
                           </tr>
                           <tr>
                             <td id = "userAge7" class = "personDesc"></td>
@@ -194,7 +220,7 @@
                               <th id = "fullName8"></th>
                             </tr>
                             <tr>
-                            <td><img style="display:block;" width="100%" height="100%" src="Images/person1.jpeg"/></td>
+                            <td><img style="display:block;" width="100%" height="100%" src="Images/highschool.jpg"/></td>
                             </tr>
                             <tr>
                               <td id = "userAge8" class = "personDesc"></td>
@@ -208,7 +234,7 @@
                                 <th id = "fullName9"></th>
                               </tr>
                               <tr>
-                              <td><img style="display:block;" width="100%" height="100%" src="Images/person1.jpeg"/></td>
+                              <td><img style="display:block;" width="100%" height="100%" src="Images/highschool.jpg"/></td>
                               </tr>
                               <tr>
                                 <td id = "userAge9" class = "personDesc"></td>
@@ -222,7 +248,7 @@
                                   <th id = "fullName10"></th>
                                 </tr>
                                 <tr>
-                                <td><img style="display:block;" width="100%" height="100%" src="Images/person1.jpeg"/></td>
+                                <td><img style="display:block;" width="100%" height="100%" src="Images/highschool.jpg"/></td>
                                 </tr>
                                 <tr>
                                   <td id = "userAge10" class = "personDesc"></td>
@@ -236,7 +262,7 @@
                                     <th id = "fullName11"></th>
                                   </tr>
                                   <tr>
-                                  <td><img style="display:block;" width="100%" height="100%" src="Images/person1.jpeg"/></td>
+                                  <td><img style="display:block;" width="100%" height="100%" src="Images/highschool.jpg"/></td>
                                   </tr>
                                   <tr>
                                     <td id = "userAge11" class = "personDesc"></td>
@@ -250,7 +276,7 @@
                                       <th id = "fullName12"></th>
                                     </tr>
                                     <tr>
-                                    <td><img style="display:block;" width="100%" height="100%" src="Images/person1.jpeg"/></td>
+                                    <td><img style="display:block;" width="100%" height="100%" src="Images/highschool.jpg"/></td>
                                     </tr>
                                     <tr>
                                       <td id = "userAge12" class = "personDesc"></td>
