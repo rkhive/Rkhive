@@ -1,3 +1,5 @@
+@charset UTF-8;
+
 .navbar{
   background-color: 721D2D;
 }
@@ -5,17 +7,21 @@
 .navbar a{
   color: white;
   .carousel-inner > .item > img,
-  .carousel-inner > .item > a > img {
+  .carousel-inner > .item > a > img,
   width: 100%;
   margin: auto;
 }
 
-.p {
+p {
   text-align: center;
   color: red;
 }
 
-.blockquote {
+h1 {
+  text-align: center;
+}
+
+blockquote {
   text-align: center;
 }
 
