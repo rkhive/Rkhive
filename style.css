@@ -4,15 +4,6 @@ h1 {
   text-align: center;
 }
 
-.navbar{
-  background-color: 721D2D;
-
-}
-
-.navbar a{
-  color: white;
-}
-
 *{
   padding: 0;
   margin: 0;
@@ -28,7 +19,6 @@ main {
   margin-left: 10px;
 }
 
-
 form {
   width: 500px;
   border: solid 1px;
@@ -38,4 +28,41 @@ form {
 
 button {
   margin-top: 2rem;
+}
+
+.navbar{
+  background-color: 721D2D;
+
+}
+
+.navbar a{
+  color: white;
+}
+
+.panel {
+  width: 25vw;
+  display: inline;
+}
+
+.center {
+  text-align: center;
+}
+
+.studentname {
+  text-align: center;
+  margin-top: 2.5vh;
+}
+
+.border {
+  border-style: solid;
+  border-radius: 15px;
+  border-color: black;
+  border-width: 3px;
+  padding: 15px;
+  margin: 1vw;
+  transition: width 1s;
+}
+
+.border:hover{
+  width:25vw;
 }
