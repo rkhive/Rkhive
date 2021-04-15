@@ -40,12 +40,13 @@ snap.forEach(function(child){
   // document.getElementById("ages").innerHTML += obj.age +"<br>";
   // document.getElementById("sections").innerHTML += obj.section +"<br>";
   // ^for the table of all students
-  document.getElementsByClassName("fullName"+String(index)).innerHTML += obj.first_name + " " + obj.last_name;
-  document.getElementsByClassName("userAge"+String(index)).innerHTML += "Age "+obj.age;
-  document.getElementsByClassName("userSection"+String(index)).innerHTML += "Section "+obj.section;
+  document.getElementById("fullName"+String(index)).innerHTML += obj.first_name + " " + obj.last_name;
+  document.getElementById("userAge"+String(index)).innerHTML += "Age "+obj.age;
+  document.getElementById("userSection"+String(index)).innerHTML += "Section "+obj.section;
   incrementIndex();
 });
 });
+
 
 addBtn.addEventListener('click', (e) => {
   e.preventDefault();
