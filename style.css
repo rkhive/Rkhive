@@ -67,4 +67,8 @@ button {
 .border:hover{
   background-color: lightgray;
 }
+
+row{
+  display: flex;
+}
 }

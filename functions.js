@@ -41,8 +41,12 @@ snap.forEach(function(child){
   // document.getElementById("sections").innerHTML += obj.section +"<br>";
   // ^for the table of all students
   document.getElementById("fullName"+String(index)).innerHTML += obj.first_name + " " + obj.last_name;
+  console.log(obj.first_name);
+  document.getElementById("modalName"+String(index)).innerHTML += obj.first_name + " " + obj.last_name;
   document.getElementById("userAge"+String(index)).innerHTML += "Age "+obj.age;
   document.getElementById("userSection"+String(index)).innerHTML += "Section "+obj.section;
+  document.getElementById("userPicture"+String(index)).src = obj.preferred_picture;
+  document.getElementById("modalPicture"+String(index)).src = obj.preferred_picture;
   incrementIndex();
 });
 });
