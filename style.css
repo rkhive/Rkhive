@@ -34,6 +34,11 @@ row {
   display: flex;
 }
 
+.col-centered{
+    float: none;
+    margin: 0 auto;
+}
+
 .gridImg {
   width: 150px;
   height: 150px;
@@ -51,7 +56,7 @@ row {
   margin: 1vw;
   transition: background-color 1s;
   text-align: center;
-  min-height:30vh;
+  min-height: 30vh;
 }
 
 .border:hover {
