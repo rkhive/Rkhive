@@ -16,6 +16,7 @@ blockquote {
 
 .navbar {
   background-color: 721D2D;
+<<<<<<< HEAD
 }
 
 <<<<<<< HEAD
@@ -32,12 +33,19 @@ form {
 .navbar a {
   color: white;
 >>>>>>> 09ab4b149530c5879e330188e77bbe8b0d2e7df8
+=======
+}
+
+.navbar a {
+  color: white;
+>>>>>>> 09ab4b149530c5879e330188e77bbe8b0d2e7df8
 }
 
 .left {
   text-align: left;
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 .navbar {
   background-color: #6d213cff;
@@ -64,6 +72,25 @@ row {
     margin: 0 auto;
 }
 
+=======
+.center {
+  text-align: center;
+}
+
+.right {
+  text-align: right;
+}
+
+row {
+  display: flex;
+}
+
+.col-centered{
+    float: none;
+    margin: 0 auto;
+}
+
+>>>>>>> 09ab4b149530c5879e330188e77bbe8b0d2e7df8
 .gridImg {
   width: 150px;
   height: 150px;
@@ -85,9 +112,12 @@ row {
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 .border:hover{
   background-color: lightgrey;
 =======
+=======
+>>>>>>> 09ab4b149530c5879e330188e77bbe8b0d2e7df8
 .border:hover {
   background-color: lightgray;
 >>>>>>> 09ab4b149530c5879e330188e77bbe8b0d2e7df8
@@ -108,6 +138,7 @@ row {
 
 .modal-header {
     border-bottom: 0 none;
+<<<<<<< HEAD
 }
 
 .modal-footer {
@@ -120,6 +151,20 @@ row {
   font-size: 3em;
 }
 
+=======
+}
+
+.modal-footer {
+    border-top: 0 none;
+}
+
+.modalname {
+  text-align: center;
+  margin-top: 2.5vh;
+  font-size: 3em;
+}
+
+>>>>>>> 09ab4b149530c5879e330188e77bbe8b0d2e7df8
 .modalimage{
   text-align: left;
   margin-left: 2vw;
