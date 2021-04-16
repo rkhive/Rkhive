@@ -63,7 +63,7 @@ button {
   margin: 1vw;
   transition: background-color 1s;
   text-align: center;
-  height:30vh;
+  min-height:30vh;
 }
 
 .border:hover{
@@ -91,7 +91,7 @@ row{
       padding: 0px;
     }
     .border{
-      height: 28vh;
+      min-height: 28vh;
     }
 }
 /* md */
@@ -103,18 +103,18 @@ row{
       padding: 0px;
     }
     .border{
-      height: 29vh;
+      min-height: 29vh;
     }
 }
 /* lg */
 @media (min-width: 1200px) {
     .gridImg {
         width: 150px;
-        height: 150px;
+        min-height: 150px;
         object-fit: cover;
         padding: 0px;
     }
     .border{
-      height: 30vh;
+      min-height: 30vh;
     }
 }
