@@ -2,7 +2,11 @@
 
 h1 {
   text-align: center;
+  color: white;
+  font-family: 'Marcellus SC';
+  background-color: #6d213cff;
 }
+.col
 
 *{
   padding: 0;
@@ -19,6 +23,10 @@ main {
   /* margin-left: 10px; */
 }
 
+body{
+background-color: #ac634b;
+}
+
 form {
   width: 500px;
   border: solid 1px;
@@ -30,13 +38,12 @@ button {
   margin-top: 2rem;
 }
 
-.navbar{
-  background-color: 721D2D;
-
+.navbar {
+  background-color: #6d213cff;
 }
 
 .navbar a{
-  color: white;
+  color:white;
 }
 
 .panel {
@@ -67,7 +74,7 @@ button {
 }
 
 .border:hover{
-  background-color: lightgray;
+  background-color: lightgrey;
 }
 
 row{
