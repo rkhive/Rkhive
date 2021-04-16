@@ -4,68 +4,42 @@ h1 {
   text-align: center;
 }
 
-*{
-  padding: 0;
-  margin: 0;
-}
-
-main {
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  /* margin-left: 10px; */
-}
-
-form {
-  width: 500px;
-  border: solid 1px;
-  padding: 5rem;
-  margins: 2rem;
-}
-
-button {
-  margin-top: 2rem;
-}
-
 blockquote {
   font-style: italic;
   font-size: 1.5em;
   text-align: center;
 }
 
-.navbar{
+.navbar {
   background-color: 721D2D;
-
 }
 
-.navbar a{
+.navbar a {
   color: white;
-}
-
-.panel {
-  width: 25vw;
-  display: inline;
-}
-
-.center {
-  text-align: center;
 }
 
 .left {
   text-align: left;
 }
 
+.center {
+  text-align: center;
+}
+
 .right {
   text-align: right;
 }
 
-.studentname {
-  text-align: center;
-  margin-top: 2.5vh;
-  font-size: 1.25em;
+row {
+  display: flex;
+}
+
+.gridImg {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  padding: 0px;
+  margin-top: 1.5vh;
 }
 
 .border {
@@ -80,22 +54,14 @@ blockquote {
   min-height:30vh;
 }
 
-.border:hover{
+.border:hover {
   background-color: lightgray;
 }
 
-row{
-  display: flex;
-}
-
-/* xs */
-/* xs */
-.gridImg {
-  width: 150px;
-  height: 150px;
-  object-fit: cover;
-  padding: 0px;
-  margin-top: 1.5vh;
+.studentname {
+  text-align: center;
+  margin-top: 2.5vh;
+  font-size: 1.25em;
 }
 
 .modal-dialog{
@@ -103,6 +69,20 @@ row{
   margin-top: 5vh;
   width: 500px;
   height: 350px;
+}
+
+.modal-header {
+    border-bottom: 0 none;
+}
+
+.modal-footer {
+    border-top: 0 none;
+}
+
+.modalname {
+  text-align: center;
+  margin-top: 2.5vh;
+  font-size: 3em;
 }
 
 .modalimage{
@@ -117,23 +97,9 @@ row{
   font-size: 1.25em;
 }
 
-.modalname {
-  text-align: center;
-  margin-top: 2.5vh;
-  font-size: 3em;
-}
-
 .modaltext{
   margin-left: 2vw;
   font-size: 1.25em;
-}
-
-.modal-header {
-    border-bottom: 0 none;
-}
-
-.modal-footer {
-    border-top: 0 none;
 }
 
 /* sm */
@@ -154,6 +120,7 @@ row{
       height: 560px;
     }
 }
+
 /* md */
 @media (min-width: 992px) {
     .gridImg {
@@ -172,6 +139,7 @@ row{
       height: 700px;
     }
 }
+
 /* lg */
 @media (min-width: 1200px) {
     .gridImg {
