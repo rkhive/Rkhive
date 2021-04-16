@@ -16,7 +16,7 @@ main {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-left: 10px;
+  /* margin-left: 10px; */
 }
 
 form {
@@ -59,9 +59,11 @@ button {
   border-radius: 15px;
   border-color: black;
   border-width: 3px;
-  padding: 20px;
+  padding: 5px;
   margin: 1vw;
   transition: background-color 1s;
+  text-align: center;
+  height:30vh;
 }
 
 .border:hover{
@@ -71,4 +73,48 @@ button {
 row{
   display: flex;
 }
+
+/* xs */
+/* xs */
+.gridImg {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  padding: 0px;
+}
+/* sm */
+@media (min-width: 768px) {
+    .gridImg {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      padding: 0px;
+    }
+    .border{
+      height: 28vh;
+    }
+}
+/* md */
+@media (min-width: 992px) {
+    .gridImg {
+      width: 125px;
+      height: 125px;
+      object-fit: cover;
+      padding: 0px;
+    }
+    .border{
+      height: 29vh;
+    }
+}
+/* lg */
+@media (min-width: 1200px) {
+    .gridImg {
+        width: 150px;
+        height: 150px;
+        object-fit: cover;
+        padding: 0px;
+    }
+    .border{
+      height: 30vh;
+    }
 }
