@@ -3,11 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Marcellus+SC&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
   <title>Rkhive Mass Academy</title>
   </head>
   <style>
@@ -30,19 +32,19 @@
     <nav class="navbar navbar-default">
       <div class="container-fluid">
         <div class="navbar-header">
-          <a class="navbar-brand Rkhive active" href="index.html">Rkhive</a>
+          <span class="white"><a class="navbar-brand active" href="index.html">Rkhive</a></span>
         </div>
         <ul class="nav navbar-nav">
           <li><a href="Yearbook.html">Yearbook Directory</a></li>
           <li><a href="2022.html">MAMS Class of '22</a></li>
           <li><a href="testPage1.html">Bootstrap Testing Page</a></li>
-          <li class="dropdown">
+          <!-- <li class="dropdown">
             <a class="dropdown-toggle" data-toggle="dropdown" href="#">About<span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
               <li><a href="#">Mass Academy</a></li>
               <li><a href="#">Rkhive</a></li>
             </ul>
-          </li>
+          </li> -->
         </ul>
       </div>
     </nav>
@@ -53,9 +55,11 @@
           <img id="modalPicture0"/>
           <p id = "fullName0">
           <p id = "modalName0">
-          <p id = "userAge0">
           <p id = "userSection0">
+          <p id = "userFavclass0">
           <p id="description0">
+          <blockquote id = "userQuoteAuthor0">
+          <blockquote id = "userQuote0">
         </div>
         <div class="container center-block" style="padding-left:2.4vw">
         <div class="col-sm-2 col-sm-offset-5 border" data-toggle="modal" data-target="#myModal1">
@@ -71,12 +75,13 @@
                   <div class="modal-body">
                     <div class="col-sm-4">
                     <img class="modalimage" id="modalPicture1"/>
-                    <p id="userAge1" class="modalattribute"></p>
                     <p id="userSection1" class="modalattribute"></p>
+                    <p id="userFavclass1" class="modalattribute"></p>
                     </div>
                     <div class = "col-sm-8">
                     <p id="description1" class="modaltext left"></p>
-                    <p><blockquote>"Follow your dreams. Aim high. You will get there."</blockquote></p>
+                    <blockquote id = "userQuoteAuthor1">
+                    <blockquote id = "userQuote1">
                   </div>
                   </div>
                   <div class="modal-footer">
@@ -100,12 +105,13 @@
                   <div class="modal-body">
                     <div class="col-sm-4">
                     <img class="modalimage" id="modalPicture2"/>
-                    <p id="userAge2" class="modalattribute"></p>
                     <p id="userSection2" class="modalattribute"></p>
+                    <p id="userFavclass2" class="modalattribute"></p>
                     </div>
                     <div class = "col-sm-8">
                     <p id="description2" class="modaltext left"></p>
-                    <p><blockquote>"Follow your dreams. Aim high. You will get there."</blockquote></p>
+                    <blockquote id = "userQuoteAuthor2">
+                    <blockquote id = "userQuote2">
                   </div>
                   </div>
                   <div class="modal-footer">
@@ -129,12 +135,13 @@
               <div class="modal-body">
                 <div class="col-sm-4">
                 <img class="modalimage" id="modalPicture3"/>
-                <p id="userAge3" class="modalattribute"></p>
                 <p id="userSection3" class="modalattribute"></p>
+                <p id="userFavclass3" class="modalattribute"></p>
                 </div>
                 <div class = "col-sm-8">
                 <p id="description3" class="modaltext left"></p>
-                <p><blockquote>"Follow your dreams. Aim high. You will get there."</blockquote></p>
+                <blockquote id = "userQuoteAuthor3">
+                <blockquote id = "userQuote3">
               </div>
               </div>
               <div class="modal-footer">
@@ -158,12 +165,13 @@
               <div class="modal-body">
                 <div class="col-sm-4">
                 <img class="modalimage" id="modalPicture4"/>
-                <p id="userAge4" class="modalattribute"></p>
                 <p id="userSection4" class="modalattribute"></p>
+                <p id="userFavclass4" class="modalattribute"></p>
                 </div>
                 <div class = "col-sm-8">
                 <p id="description4" class="modaltext left"></p>
-                <p><blockquote>"Follow your dreams. Aim high. You will get there."</blockquote></p>
+                <blockquote id = "userQuoteAuthor4">
+                <blockquote id = "userQuote4">
               </div>
               </div>
               <div class="modal-footer">
@@ -187,12 +195,13 @@
               <div class="modal-body">
                 <div class="col-sm-4">
                 <img class="modalimage" id="modalPicture5"/>
-                <p id="userAge5" class="modalattribute"></p>
                 <p id="userSection5" class="modalattribute"></p>
+                <p id="userFavclass5" class="modalattribute"></p>
                 </div>
                 <div class = "col-sm-8">
                 <p id="description5" class="modaltext left"></p>
-                <p><blockquote>"Follow your dreams. Aim high. You will get there."</blockquote></p>
+                <blockquote id = "userQuoteAuthor5">
+                <blockquote id = "userQuote5">
               </div>
               </div>
               <div class="modal-footer">
@@ -216,12 +225,13 @@
               <div class="modal-body">
                 <div class="col-sm-4">
                 <img class="modalimage" id="modalPicture6"/>
-                <p id="userAge6" class="modalattribute"></p>
                 <p id="userSection6" class="modalattribute"></p>
+                <p id="userFavclass6" class="modalattribute"></p>
                 </div>
                 <div class = "col-sm-8">
                 <p id="description6" class="modaltext left"></p>
-                <p><blockquote>"Follow your dreams. Aim high. You will get there."</blockquote></p>
+                <blockquote id = "userQuoteAuthor6">
+                <blockquote id = "userQuote6">
               </div>
               </div>
               <div class="modal-footer">
@@ -245,12 +255,13 @@
               <div class="modal-body">
                 <div class="col-sm-4">
                 <img class="modalimage" id="modalPicture7"/>
-                <p id="userAge7" class="modalattribute"></p>
                 <p id="userSection7" class="modalattribute"></p>
+                <p id="userFavclass7" class="modalattribute"></p>
                 </div>
                 <div class = "col-sm-8">
                 <p id="description7" class="modaltext left"></p>
-                <p><blockquote>"Follow your dreams. Aim high. You will get there."</blockquote></p>
+                <blockquote id = "userQuoteAuthor7">
+                <blockquote id = "userQuote7">
               </div>
               </div>
               <div class="modal-footer">
@@ -274,12 +285,13 @@
               <div class="modal-body">
                 <div class="col-sm-4">
                 <img class="modalimage" id="modalPicture8"/>
-                <p id="userAge8" class="modalattribute"></p>
                 <p id="userSection8" class="modalattribute"></p>
+                <p id="userFavclass8" class="modalattribute"></p>
                 </div>
                 <div class = "col-sm-8">
                 <p id="description8" class="modaltext left"></p>
-                <p><blockquote>"Follow your dreams. Aim high. You will get there."</blockquote></p>
+                <blockquote id = "userQuoteAuthor8">
+                <blockquote id = "userQuote8">
               </div>
               </div>
               <div class="modal-footer">
@@ -303,12 +315,13 @@
               <div class="modal-body">
                 <div class="col-sm-4">
                 <img class="modalimage" id="modalPicture9"/>
-                <p id="userAge9" class="modalattribute"></p>
                 <p id="userSection9" class="modalattribute"></p>
+                <p id="userFavclass9" class="modalattribute"></p>
                 </div>
                 <div class = "col-sm-8">
                 <p id="description9" class="modaltext left"></p>
-                <p><blockquote>"Follow your dreams. Aim high. You will get there."</blockquote></p>
+                <blockquote id = "userQuoteAuthor9">
+                <blockquote id = "userQuote9">
               </div>
               </div>
               <div class="modal-footer">
@@ -332,12 +345,13 @@
               <div class="modal-body">
                 <div class="col-sm-4">
                 <img class="modalimage" id="modalPicture10"/>
-                <p id="userAge10" class="modalattribute"></p>
                 <p id="userSection10" class="modalattribute"></p>
+                <p id="userFavclass10" class="modalattribute"></p>
                 </div>
                 <div class = "col-sm-8">
                 <p id="description10" class="modaltext left"></p>
-                <p><blockquote>"Follow your dreams. Aim high. You will get there."</blockquote></p>
+                <blockquote id = "userQuoteAuthor10">
+                <blockquote id = "userQuote10">
               </div>
               </div>
               <div class="modal-footer">
@@ -361,12 +375,13 @@
               <div class="modal-body">
                 <div class="col-sm-4">
                 <img class="modalimage" id="modalPicture11"/>
-                <p id="userAge11" class="modalattribute"></p>
                 <p id="userSection11" class="modalattribute"></p>
+                <p id="userFavclass11" class="modalattribute"></p>
                 </div>
                 <div class = "col-sm-8">
                 <p id="description11" class="modaltext left"></p>
-                <p><blockquote>"Follow your dreams. Aim high. You will get there."</blockquote></p>
+                <blockquote id = "userQuoteAuthor11">
+                <blockquote id = "userQuote11">
               </div>
               </div>
               <div class="modal-footer">
@@ -390,12 +405,103 @@
               <div class="modal-body">
                 <div class="col-sm-4">
                 <img class="modalimage" id="modalPicture12"/>
-                <p id="userAge12" class="modalattribute"></p>
                 <p id="userSection12" class="modalattribute"></p>
+                <p id="userFavclass12" class="modalattribute"></p>
                 </div>
                 <div class = "col-sm-8">
                 <p id="description12" class="modaltext left"></p>
-                <p><blockquote>"Follow your dreams. Aim high. You will get there."</blockquote></p>
+                <blockquote id = "userQuoteAuthor12">
+                <blockquote id = "userQuote12">
+              </div>
+              </div>
+              <div class="modal-footer">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-2 col-sm-offset-5 border" data-toggle="modal" data-target="#myModal13">
+      <img id="userPicture13" class = "gridImg"/>
+      <p id="fullName13" class = "studentname">
+        <div class="container-fluid">
+        <div class="modal fade" id="myModal13" role="dialog" data-keyboard="false" data-backdrop="static">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <p class="modalname" id = "modalName13">
+              </div>
+              <div class="modal-body">
+                <div class="col-sm-4">
+                <img class="modalimage" id="modalPicture13"/>
+                <p id="userSection13" class="modalattribute"></p>
+                <p id="userFavclass13" class="modalattribute"></p>
+                </div>
+                <div class = "col-sm-8">
+                <p id="description13" class="modaltext left"></p>
+                <blockquote id = "userQuoteAuthor13">
+                <blockquote id = "userQuote13">
+              </div>
+              </div>
+              <div class="modal-footer">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-2 col-sm-offset-5 border" data-toggle="modal" data-target="#myModal14">
+      <img id="userPicture14" class = "gridImg"/>
+      <p id="fullName14" class = "studentname">
+        <div class="container-fluid">
+        <div class="modal fade" id="myModal14" role="dialog" data-keyboard="false" data-backdrop="static">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <p class="modalname" id = "modalName14">
+              </div>
+              <div class="modal-body">
+                <div class="col-sm-4">
+                <img class="modalimage" id="modalPicture14"/>
+                <p id="userSection14" class="modalattribute"></p>
+                <p id="userFavclass14" class="modalattribute"></p>
+                </div>
+                <div class = "col-sm-8">
+                <p id="description14" class="modaltext left"></p>
+                <blockquote id = "userQuoteAuthor14">
+                <blockquote id = "userQuote14">
+              </div>
+              </div>
+              <div class="modal-footer">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-2 col-sm-offset-5 border" data-toggle="modal" data-target="#myModal15">
+      <img id="userPicture15" class = "gridImg"/>
+      <p id="fullName15" class = "studentname">
+        <div class="container-fluid">
+        <div class="modal fade" id="myModal15" role="dialog" data-keyboard="false" data-backdrop="static">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <p class="modalname" id = "modalName15">
+              </div>
+              <div class="modal-body">
+                <div class="col-sm-4">
+                <img class="modalimage" id="modalPicture15"/>
+                <p id="userSection15" class="modalattribute"></p>
+                <p id="userFavclass15" class="modalattribute"></p>
+                </div>
+                <div class = "col-sm-8">
+                <p id="description15" class="modaltext left"></p>
+                <blockquote id = "userQuoteAuthor15">
+                <blockquote id = "userQuote15">
               </div>
               </div>
               <div class="modal-footer">

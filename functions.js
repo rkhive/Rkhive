@@ -42,8 +42,10 @@ snap.forEach(function(child){
   // ^for the table of all students
   document.getElementById("fullName"+String(index)).innerHTML += obj.first_name + " " + obj.last_name;
   document.getElementById("modalName"+String(index)).innerHTML += obj.first_name + " " + obj.last_name;
-  document.getElementById("userAge"+String(index)).innerHTML += "Age "+obj.age;
+  document.getElementById("userFavclass"+String(index)).innerHTML += "Favorite Class: "+obj.fav_class;
   document.getElementById("userSection"+String(index)).innerHTML += "Section "+obj.section;
+  document.getElementById("userQuote"+String(index)).innerHTML += obj.quote;
+  document.getElementById("userQuoteAuthor"+String(index)).innerHTML += "- "+obj.quote_author;
   document.getElementById("userPicture"+String(index)).src = obj.preferred_picture;
   document.getElementById("modalPicture"+String(index)).src = obj.preferred_picture;
   console.log(obj.student_description);
