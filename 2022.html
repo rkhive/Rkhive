@@ -48,7 +48,12 @@
         </ul>
       </div>
     </nav>
-      <div class="container center">
+    <button id = "yearToAlumSwitcher" onclick="yearAlum()">Switch</button>
+    <button id = "2022button" onclick="populateData()">Click me</button>
+    <div id = 'alumni2022' class = "container center" style = "display:none">
+      i am very cool.
+    </div>
+      <div id = 'yearbook2022' class="container center">
         <h1>MAMS Class of 2022</h1>
         <div style="display:none">
           <img id="userPicture0"/>
@@ -92,7 +97,7 @@
           </div>
         </div>
 
-        <div class="col-sm-2 col-sm-offset-5 border" data-toggle="modal" data-target="#myModal1">
+        <div class="col-sm-2 col-sm-offset-5 border" data-toggle="modal" data-target="#myModal2">
           <img id="userPicture2" class = "gridImg"/>
           <p id="fullName2" class = "studentname">
             <div class="container-fluid">
@@ -513,6 +518,9 @@
     </div>
   </div>
 </div>
+<br>
+<br>
+<br>
       <!-- The core Firebase JS SDK is always required and must be listed first -->
       <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-app.js"></script>
       <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-database.js"></script>
@@ -537,7 +545,6 @@
         // Initialize Firebase
         firebase.initializeApp(firebaseConfig);
         firebase.analytics();
-
       </script>
 
   </body>
