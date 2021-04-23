@@ -10,52 +10,61 @@ const removeBtn = document.getElementById('removeBtn');
 const database = firebase.database();
 const rootRefOne = database.ref('users');
 
-
-function populateData(){
+hideEmpty();
+function populateData(page, year){
+console.log(page);
 //establishes root of db
 var rootRef = firebase.database().ref();
 
 //creates ref for node
-var ref = rootRef.child('1oYN4YtfxmtndybqYwCeg2uH1j8ifUVjro794v-rW11g/StudentInformation');
+var ref = rootRef.child('1oYN4YtfxmtndybqYwCeg2uH1j8ifUVjro794v-rW11g/'+page);
+
+document.getElementById("banner").innerHTML = "MAMS Class of "+String(year);
+
 // var ref = rootRef.child('users');
 // ^FROM THE FORM INPUT
 // gets values from database and changes html
-
-
 ref.once('value', function(snap) { //once means user must refresh
+var index= 0;
+function incrementIndex(){
+   index++;
+}
 
-  console.log("heiieieeieie");
-  var index= 0;
-  function incrementIndex(){
-     index++;
-  }
-
-  //gets values for each element in data set
-  snap.forEach(function(child){
-    const obj = JSON.parse(JSON.stringify(child.val()));
-    console.log(obj.first_name);
-    // document.getElementById("first_names").innerHTML +=  obj.first_name +"<br>";
-    // document.getElementById("last_names").innerHTML += obj.last_name +"<br>";
-    // document.getElementById("ages").innerHTML += obj.age +"<br>";
-    // document.getElementById("sections").innerHTML += obj.section +"<br>";
-    // ^for the table of all students
-    document.getElementById("fullName"+String(index)).innerHTML += obj.first_name + " " + obj.last_name;
-    document.getElementById("modalName"+String(index)).innerHTML += obj.first_name + " " + obj.last_name;
-    document.getElementById("userFavclass"+String(index)).innerHTML += "Favorite Class: "+obj.fav_class;
-    document.getElementById("userSection"+String(index)).innerHTML += "Section "+obj.section;
-    console.log(obj.quote);
-    console.log(obj.quote_author);
-    document.getElementById("userQuote"+String(index)).innerHTML += obj.quote;
-    document.getElementById("userQuoteAuthor"+String(index)).innerHTML += "- "+obj.quote_author;
-    document.getElementById("userPicture"+String(index)).src = obj.preferred_picture;
-    document.getElementById("modalPicture"+String(index)).src = obj.preferred_picture;
-    console.log(obj.student_description);
-    document.getElementById("description"+String(index)).innerHTML += obj.student_description;
-    incrementIndex();
-  });
-  });
-document.getElementById('2022button').removeAttribute("onclick");
+//gets values for each element in data set
+snap.forEach(function(child){
+  hideEmpty();
+  const obj = JSON.parse(JSON.stringify(child.val()));
+  // document.getElementById("first_names").innerHTML +=  obj.first_name +"<br>";
+  // document.getElementById("last_names").innerHTML += obj.last_name +"<br>";
+  // document.getElementById("ages").innerHTML += obj.age +"<br>";
+  // document.getElementById("sections").innerHTML += obj.section +"<br>";
+  // ^for the table of all students
+  document.getElementById("fullName"+String(index)).innerHTML = obj.first_name + " " + obj.last_name;
+  document.getElementById("modalName"+String(index)).innerHTML = obj.first_name + " " + obj.last_name;
+  document.getElementById("userFavclass"+String(index)).innerHTML = "Favorite Class: "+obj.fav_class;
+  document.getElementById("userSection"+String(index)).innerHTML = "Section "+obj.section;
+  document.getElementById("userQuote"+String(index)).innerHTML = obj.quote;
+  document.getElementById("userQuoteAuthor"+String(index)).innerHTML = "- "+obj.quote_author;
+  document.getElementById("userPicture"+String(index)).src = obj.preferred_picture;
+  document.getElementById("modalPicture"+String(index)).src = obj.preferred_picture;
+  document.getElementById("description"+String(index)).innerHTML = obj.student_description;
+  incrementIndex();
+  hideEmpty();
+});
+});
 };
+
+function hideEmpty(){
+  for(i = 1 ; i <= 15; i++){
+    if( $('#description'+String(i)).is(':empty') ) {
+      console.log(String(i)+" is empty");
+      document.getElementById("col"+String(i)).style.display="none";
+    }
+    else{
+      document.getElementById("col"+String(i)).style.display="block";
+    }
+  }
+}
 // addBtn.addEventListener('click', (e) => {
 //   e.preventDefault();
 //   alert("refresh page!");
@@ -66,7 +75,7 @@ document.getElementById('2022button').removeAttribute("onclick");
 //     age: age.value
 //   });
 // });
-
+//
 //
 // updateBtn.addEventListener('click', (e) => {
 //   e.preventDefault();
@@ -96,17 +105,14 @@ document.getElementById('2022button').removeAttribute("onclick");
 //   //database.ref('/super-users').child(userId.value).remove();
 // });
 //
-function yearAlum() {
-  var yearbook = document.getElementById("yearbook2022");
-  var alumni = document.getElementById("alumni2022")
-  if (yearbook.style.display === "none") {
-    yearbook.style.display = "block";
-    alumni.style.display = "none";
-  } else {
-    yearbook.style.display = "none";
-    alumni.style.display = "block";
-  }
-}
+// function hideShow() {
+//   var x = document.getElementById("inputForm");
+//   if (x.style.display === "none") {
+//     x.style.display = "block";
+//   } else {
+//     x.style.display = "none";
+//   }
+// }
 //
 // function generateRkhive(){
 //   alert("Hello!");
@@ -144,7 +150,7 @@ function yearAlum() {
 //     incrementIndex();
 //   });
 // });
-
+// }
 
 
 
