@@ -6,6 +6,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <link rel="stylesheet" href="style.css">
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Marcellus+SC&display=swap" rel="stylesheet">
@@ -48,13 +49,10 @@
         </ul>
       </div>
     </nav>
-    <button id = "yearToAlumSwitcher" onclick="yearAlum()">Switch</button>
-    <button id = "2022button" onclick="populateData()">Click me</button>
-    <div id = 'alumni2022' class = "container center" style = "display:none">
-      i am very cool.
-    </div>
-      <div id = 'yearbook2022' class="container center">
-        <h1>MAMS Class of 2022</h1>
+    <button id = "2022button" onClick = "populateData('Students2022', '2022')">2022</button>
+    <button id = "2021button" onClick = "populateData('Students2021', '2021')">2021</button>
+      <div class="container center">
+        <h1 id = "banner">MAMS Rkhive</h1>
         <div style="display:none">
           <img id="userPicture0"/>
           <img id="modalPicture0"/>
@@ -63,11 +61,12 @@
           <p id = "userSection0">
           <p id = "userFavclass0">
           <p id="description0">
-          <blockquote id = "userQuoteAuthor0">
-          <blockquote id = "userQuote0">
+          <p id = "userQuoteAuthor0">
+          <p id = "userQuote0">
         </div>
+
         <div class="container center-block" style="padding-left:2.4vw">
-        <div class="col-sm-2 col-sm-offset-5 border" data-toggle="modal" data-target="#myModal1">
+        <div id = "col1" class="col-sm-2 col-sm-offset-5 border" data-toggle="modal" data-target="#myModal1">
           <img id="userPicture1" class = "gridImg"/>
           <p id="fullName1" class = "studentname">
             <div class="container-fluid">
@@ -85,8 +84,8 @@
                     </div>
                     <div class = "col-sm-8">
                     <p id="description1" class="modaltext left"></p>
-                    <blockquote id = "userQuoteAuthor1">
-                    <blockquote id = "userQuote1">
+                    <p id = "userQuoteAuthor1">
+                    <p id = "userQuote1">
                   </div>
                   </div>
                   <div class="modal-footer">
@@ -97,7 +96,7 @@
           </div>
         </div>
 
-        <div class="col-sm-2 col-sm-offset-5 border" data-toggle="modal" data-target="#myModal2">
+        <div id = "col2" class="col-sm-2 col-sm-offset-5 border" data-toggle="modal" data-target="#myModal1">
           <img id="userPicture2" class = "gridImg"/>
           <p id="fullName2" class = "studentname">
             <div class="container-fluid">
@@ -115,8 +114,8 @@
                     </div>
                     <div class = "col-sm-8">
                     <p id="description2" class="modaltext left"></p>
-                    <blockquote id = "userQuoteAuthor2">
-                    <blockquote id = "userQuote2">
+                    <p id = "userQuoteAuthor2">
+                    <p id = "userQuote2">
                   </div>
                   </div>
                   <div class="modal-footer">
@@ -127,7 +126,7 @@
           </div>
         </div>
 
-    <div class="col-sm-2 col-sm-offset-5 border" data-toggle="modal" data-target="#myModal3">
+    <div id = "col3" class="col-sm-2 col-sm-offset-5 border" data-toggle="modal" data-target="#myModal3">
       <img id="userPicture3" class = "gridImg"/>
       <p id="fullName3" class = "studentname">
         <div class="container-fluid">
@@ -145,8 +144,8 @@
                 </div>
                 <div class = "col-sm-8">
                 <p id="description3" class="modaltext left"></p>
-                <blockquote id = "userQuoteAuthor3">
-                <blockquote id = "userQuote3">
+                <p id = "userQuoteAuthor3">
+                <p id = "userQuote3">
               </div>
               </div>
               <div class="modal-footer">
@@ -157,7 +156,7 @@
       </div>
     </div>
 
-    <div class="col-sm-2 col-sm-offset-5 border" data-toggle="modal" data-target="#myModal4">
+    <div id = "col4" class="col-sm-2 col-sm-offset-5 border" data-toggle="modal" data-target="#myModal4">
       <img id="userPicture4" class = "gridImg"/>
       <p id="fullName4" class = "studentname">
         <div class="container-fluid">
@@ -175,8 +174,8 @@
                 </div>
                 <div class = "col-sm-8">
                 <p id="description4" class="modaltext left"></p>
-                <blockquote id = "userQuoteAuthor4">
-                <blockquote id = "userQuote4">
+                <p id = "userQuoteAuthor4">
+                <p id = "userQuote4">
               </div>
               </div>
               <div class="modal-footer">
@@ -187,7 +186,7 @@
       </div>
     </div>
 
-    <div class="col-sm-2 col-sm-offset-5 border" data-toggle="modal" data-target="#myModal5">
+    <div id = "col5" class="col-sm-2 col-sm-offset-5 border" data-toggle="modal" data-target="#myModal5">
       <img id="userPicture5" class = "gridImg"/>
       <p id="fullName5" class = "studentname">
         <div class="container-fluid">
@@ -205,8 +204,8 @@
                 </div>
                 <div class = "col-sm-8">
                 <p id="description5" class="modaltext left"></p>
-                <blockquote id = "userQuoteAuthor5">
-                <blockquote id = "userQuote5">
+                <p id = "userQuoteAuthor5">
+                <p id = "userQuote5">
               </div>
               </div>
               <div class="modal-footer">
@@ -217,7 +216,7 @@
       </div>
     </div>
 
-    <div class="col-sm-2 col-sm-offset-5 border" data-toggle="modal" data-target="#myModal6">
+    <div id = "col6" class="col-sm-2 col-sm-offset-5 border" data-toggle="modal" data-target="#myModal6">
       <img id="userPicture6" class = "gridImg"/>
       <p id="fullName6" class = "studentname">
         <div class="container-fluid">
@@ -235,8 +234,8 @@
                 </div>
                 <div class = "col-sm-8">
                 <p id="description6" class="modaltext left"></p>
-                <blockquote id = "userQuoteAuthor6">
-                <blockquote id = "userQuote6">
+                <p id = "userQuoteAuthor6">
+                <p id = "userQuote6">
               </div>
               </div>
               <div class="modal-footer">
@@ -247,7 +246,7 @@
       </div>
     </div>
 
-    <div class="col-sm-2 col-sm-offset-5 border" data-toggle="modal" data-target="#myModal7">
+    <div id = "col7" class="col-sm-2 col-sm-offset-5 border" data-toggle="modal" data-target="#myModal7">
       <img id="userPicture7" class = "gridImg"/>
       <p id="fullName7" class = "studentname">
         <div class="container-fluid">
@@ -265,8 +264,8 @@
                 </div>
                 <div class = "col-sm-8">
                 <p id="description7" class="modaltext left"></p>
-                <blockquote id = "userQuoteAuthor7">
-                <blockquote id = "userQuote7">
+                <p id = "userQuoteAuthor7">
+                <p id = "userQuote7">
               </div>
               </div>
               <div class="modal-footer">
@@ -277,7 +276,7 @@
       </div>
     </div>
 
-    <div class="col-sm-2 col-sm-offset-5 border" data-toggle="modal" data-target="#myModal8">
+    <div id = "col8" class="col-sm-2 col-sm-offset-5 border" data-toggle="modal" data-target="#myModal8">
       <img id="userPicture8" class = "gridImg"/>
       <p id="fullName8" class = "studentname">
         <div class="container-fluid">
@@ -295,8 +294,8 @@
                 </div>
                 <div class = "col-sm-8">
                 <p id="description8" class="modaltext left"></p>
-                <blockquote id = "userQuoteAuthor8">
-                <blockquote id = "userQuote8">
+                <p id = "userQuoteAuthor8">
+                <p id = "userQuote8">
               </div>
               </div>
               <div class="modal-footer">
@@ -307,7 +306,7 @@
       </div>
     </div>
 
-    <div class="col-sm-2 col-sm-offset-5 border" data-toggle="modal" data-target="#myModal9">
+    <div id = "col9" class="col-sm-2 col-sm-offset-5 border" data-toggle="modal" data-target="#myModal9">
       <img id="userPicture9" class = "gridImg"/>
       <p id="fullName9" class = "studentname">
         <div class="container-fluid">
@@ -325,8 +324,8 @@
                 </div>
                 <div class = "col-sm-8">
                 <p id="description9" class="modaltext left"></p>
-                <blockquote id = "userQuoteAuthor9">
-                <blockquote id = "userQuote9">
+                <p id = "userQuoteAuthor9">
+                <p id = "userQuote9">
               </div>
               </div>
               <div class="modal-footer">
@@ -337,7 +336,7 @@
       </div>
     </div>
 
-    <div class="col-sm-2 col-sm-offset-5 border" data-toggle="modal" data-target="#myModal10">
+    <div id = "col10" class="col-sm-2 col-sm-offset-5 border" data-toggle="modal" data-target="#myModal10">
       <img id="userPicture10" class = "gridImg"/>
       <p id="fullName10" class = "studentname">
         <div class="container-fluid">
@@ -355,8 +354,8 @@
                 </div>
                 <div class = "col-sm-8">
                 <p id="description10" class="modaltext left"></p>
-                <blockquote id = "userQuoteAuthor10">
-                <blockquote id = "userQuote10">
+                <p id = "userQuoteAuthor10">
+                <p id = "userQuote10">
               </div>
               </div>
               <div class="modal-footer">
@@ -367,7 +366,7 @@
       </div>
     </div>
 
-    <div class="col-sm-2 col-sm-offset-5 border" data-toggle="modal" data-target="#myModal11">
+    <div id = "col11" class="col-sm-2 col-sm-offset-5 border" data-toggle="modal" data-target="#myModal11">
       <img id="userPicture11" class = "gridImg"/>
       <p id="fullName11" class = "studentname">
         <div class="container-fluid">
@@ -385,8 +384,8 @@
                 </div>
                 <div class = "col-sm-8">
                 <p id="description11" class="modaltext left"></p>
-                <blockquote id = "userQuoteAuthor11">
-                <blockquote id = "userQuote11">
+                <p id = "userQuoteAuthor11">
+                <p id = "userQuote11">
               </div>
               </div>
               <div class="modal-footer">
@@ -397,7 +396,7 @@
       </div>
     </div>
 
-    <div class="col-sm-2 col-sm-offset-5 border" data-toggle="modal" data-target="#myModal12">
+    <div id = "col12" class="col-sm-2 col-sm-offset-5 border" data-toggle="modal" data-target="#myModal12">
       <img id="userPicture12" class = "gridImg"/>
       <p id="fullName12" class = "studentname">
         <div class="container-fluid">
@@ -415,8 +414,8 @@
                 </div>
                 <div class = "col-sm-8">
                 <p id="description12" class="modaltext left"></p>
-                <blockquote id = "userQuoteAuthor12">
-                <blockquote id = "userQuote12">
+                <p id = "userQuoteAuthor12">
+                <p id = "userQuote12">
               </div>
               </div>
               <div class="modal-footer">
@@ -427,7 +426,7 @@
       </div>
     </div>
 
-    <div class="col-sm-2 col-sm-offset-5 border" data-toggle="modal" data-target="#myModal13">
+    <div id = "col13" class="col-sm-2 col-sm-offset-5 border" data-toggle="modal" data-target="#myModal13">
       <img id="userPicture13" class = "gridImg"/>
       <p id="fullName13" class = "studentname">
         <div class="container-fluid">
@@ -445,8 +444,8 @@
                 </div>
                 <div class = "col-sm-8">
                 <p id="description13" class="modaltext left"></p>
-                <blockquote id = "userQuoteAuthor13">
-                <blockquote id = "userQuote13">
+                <p id = "userQuoteAuthor13">
+                <p id = "userQuote13">
               </div>
               </div>
               <div class="modal-footer">
@@ -457,7 +456,7 @@
       </div>
     </div>
 
-    <div class="col-sm-2 col-sm-offset-5 border" data-toggle="modal" data-target="#myModal14">
+    <div id = "col14" class="col-sm-2 col-sm-offset-5 border" data-toggle="modal" data-target="#myModal14">
       <img id="userPicture14" class = "gridImg"/>
       <p id="fullName14" class = "studentname">
         <div class="container-fluid">
@@ -475,8 +474,8 @@
                 </div>
                 <div class = "col-sm-8">
                 <p id="description14" class="modaltext left"></p>
-                <blockquote id = "userQuoteAuthor14">
-                <blockquote id = "userQuote14">
+                <p id = "userQuoteAuthor14">
+                <p id = "userQuote14">
               </div>
               </div>
               <div class="modal-footer">
@@ -487,7 +486,7 @@
       </div>
     </div>
 
-    <div class="col-sm-2 col-sm-offset-5 border" data-toggle="modal" data-target="#myModal15">
+    <div id = "col15" class="col-sm-2 col-sm-offset-5 border" data-toggle="modal" data-target="#myModal15">
       <img id="userPicture15" class = "gridImg"/>
       <p id="fullName15" class = "studentname">
         <div class="container-fluid">
@@ -505,8 +504,8 @@
                 </div>
                 <div class = "col-sm-8">
                 <p id="description15" class="modaltext left"></p>
-                <blockquote id = "userQuoteAuthor15">
-                <blockquote id = "userQuote15">
+                <p id = "userQuoteAuthor15">
+                <p id = "userQuote15">
               </div>
               </div>
               <div class="modal-footer">
@@ -518,9 +517,6 @@
     </div>
   </div>
 </div>
-<br>
-<br>
-<br>
       <!-- The core Firebase JS SDK is always required and must be listed first -->
       <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-app.js"></script>
       <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-database.js"></script>
@@ -545,6 +541,7 @@
         // Initialize Firebase
         firebase.initializeApp(firebaseConfig);
         firebase.analytics();
+
       </script>
 
   </body>
