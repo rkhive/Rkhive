@@ -48,9 +48,14 @@ p {
   font-family: 'Open Sans';
 }
 
+.arrow {
+
+}
+
 .indexinfo {
   font-size: 1.25em;
-  padding: 30px 60px;
+  padding: 30px 30px;
+  padding-bottom: 0px;
 }
 
 .noborders {
