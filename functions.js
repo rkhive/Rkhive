@@ -85,7 +85,12 @@ snap.forEach(function(child){
 };
 
 function appearAndPopulate(page, year, mode){
-  loadHTML(year);
+  if(mode == "student"){
+    loadStudentHTML(year);
+  }
+  else if(mode == "alumnus"){
+    loadAlumniHTML(year);
+  }
   console.log(page);
   currentMode = String(mode);
   console.log("Changed currentMode to "+String(currentMode));
@@ -97,13 +102,13 @@ function appearAndPopulate(page, year, mode){
 var ref = rootRef.child('1oYN4YtfxmtndybqYwCeg2uH1j8ifUVjro794v-rW11g/'+page);
 
 
-document.getElementById("banner").innerHTML = "MAMS Class of "+String(year);
-
 if(String(mode) == "student"){
   document.getElementById('banner').style.backgroundColor='#6d213cff';
+  document.getElementById("banner").innerHTML = "MAMS Class of "+String(year);
 }
 else if(String(mode) == 'alumnus'){
   document.getElementById('banner').style.backgroundColor='#adb9e3ff';
+  document.getElementById("banner").innerHTML = "MAMS Alumni of "+String(year);
 }
 
 // var ref = rootRef.child('users');
@@ -115,25 +120,47 @@ function incrementIndex(){
    index++;
 }
 // gets values for each element in data set
-snap.forEach(function(child){
-  const obj = JSON.parse(JSON.stringify(child.val()));
-  // document.getElementById("first_names").innerHTML +=  obj.first_name +"<br>";
-  // document.getElementById("last_names").innerHTML += obj.last_name +"<br>";
-  // document.getElementById("ages").innerHTML += obj.age +"<br>";
-  // document.getElementById("sections").innerHTML += obj.section +"<br>";
-  // ^for the table of all students
+if(mode == "student"){
+  snap.forEach(function(child){
+    const obj = JSON.parse(JSON.stringify(child.val()));
+    // document.getElementById("first_names").innerHTML +=  obj.first_name +"<br>";
+    // document.getElementById("last_names").innerHTML += obj.last_name +"<br>";
+    // document.getElementById("ages").innerHTML += obj.age +"<br>";
+    // document.getElementById("sections").innerHTML += obj.section +"<br>";
+    // ^for the table of all students
+    document.getElementById("yb-fullName"+String(index)).innerHTML = obj.first_name + " " + obj.last_name;
+    document.getElementById("yb-modalName"+String(index)).innerHTML = obj.first_name + " " + obj.last_name;
+    document.getElementById("yb-favClass"+String(index)).innerHTML = "Favorite Class: "+obj.fav_class;
+    document.getElementById("yb-section"+String(index)).innerHTML = "Section "+obj.section;
+    document.getElementById("yb-quote"+String(index)).innerHTML = obj.quote;
+    document.getElementById("yb-quoteAuthor"+String(index)).innerHTML = "- "+obj.quote_author;
+    document.getElementById("yb-studentPicture"+String(index)).src = obj.preferred_picture;
+    document.getElementById("yb-modalImage"+String(index)).src = obj.preferred_picture;
+    document.getElementById("yb-description"+String(index)).innerHTML = obj.student_description;
+    incrementIndex();
+  });
+}
 
-  document.getElementById("yb-fullName"+String(index)).innerHTML = obj.first_name + " " + obj.last_name;
-  document.getElementById("yb-modalName"+String(index)).innerHTML = obj.first_name + " " + obj.last_name;
-  document.getElementById("yb-favClass"+String(index)).innerHTML = "Favorite Class: "+obj.fav_class;
-  document.getElementById("yb-section"+String(index)).innerHTML = "Section "+obj.section;
-  document.getElementById("yb-quote"+String(index)).innerHTML = obj.quote;
-  document.getElementById("yb-quoteAuthor"+String(index)).innerHTML = "- "+obj.quote_author;
-  document.getElementById("yb-studentPicture"+String(index)).src = obj.preferred_picture;
-  document.getElementById("yb-modalImage"+String(index)).src = obj.preferred_picture;
-  document.getElementById("yb-description"+String(index)).innerHTML = obj.student_description;
-  incrementIndex();
-});
+else if(mode == "alumnus"){
+  snap.forEach(function(child){
+    const obj = JSON.parse(JSON.stringify(child.val()));
+    // document.getElementById("first_names").innerHTML +=  obj.first_name +"<br>";
+    // document.getElementById("last_names").innerHTML += obj.last_sname +"<br>";
+    // document.getElementById("ages").innerHTML += obj.age +"<br>";
+    // document.getElementById("sections").innerHTML += obj.section +"<br>";
+    // ^for the table of all students
+    document.getElementById("al-fullName"+String(index)).innerHTML = obj.first_name + " " + obj.last_name;
+    document.getElementById("al-modalName"+String(index)).innerHTML = obj.first_name + " " + obj.last_name;
+    document.getElementById("al-YOG"+String(index)).innerHTML = "Graduated: "+obj.graduated_year;
+    document.getElementById("al-location"+String(index)).innerHTML = "Located in "+obj.location;
+    document.getElementById("al-picture"+String(index)).src = obj.preferred_picture;
+    document.getElementById("al-modalImage"+String(index)).src = obj.preferred_picture;
+    document.getElementById("al-description"+String(index)).innerHTML = obj.professional_description;
+    document.getElementById("al-contact"+String(index)).innerHTML = obj.contact;
+    incrementIndex();
+  });
+}
+
 });
 };
 
@@ -149,14 +176,15 @@ function hideEmpty(){
   }
 }
 
-function loadHTML(year){
-  document.getElementById("dataHouser").innerHTML = "";
+function loadStudentHTML(year){
+  document.getElementById("alDataHouser").innerHTML = "";
+  document.getElementById("ybDataHouser").innerHTML = "";
   var yearRef = firebase.database().ref("1oYN4YtfxmtndybqYwCeg2uH1j8ifUVjro794v-rW11g/Statistics/"+year);
   var numStudentsRef = yearRef.child('num_students');
   numStudentsRef.once("value", function(snapshot){
     var numStudents = snapshot.val();
     for(i = 1 ; i <= numStudents; i++){ // INDEXING FOR NUM STUDENTS
-      document.getElementById("dataHouser").innerHTML +=
+      document.getElementById("ybDataHouser").innerHTML +=
 
       "<div id = " + "yb-box"+i+ " class = " +"'col-sm-2 col-sm-offset-5 border'" + " data-toggle = " +"'modal'" +" data-target = " + "#yb-modal"+i+">"
         +"<img id=" + "yb-studentPicture" + i + " class = 'gridImg'> </img>"
@@ -191,9 +219,48 @@ function loadHTML(year){
   });
 };
 
-function testInput(){
-document.getElementById("yb-fullName1").innerHTML="woop";
-}
+function loadAlumniHTML(year){
+  document.getElementById("alDataHouser").innerHTML = "";
+  document.getElementById("ybDataHouser").innerHTML = "";
+  var yearRef = firebase.database().ref("1oYN4YtfxmtndybqYwCeg2uH1j8ifUVjro794v-rW11g/Statistics/"+year);
+  var numStudentsRef = yearRef.child('num_alumni');
+  numStudentsRef.once("value", function(snapshot){
+    var numStudents = snapshot.val();
+    for(i = 1 ; i <= numStudents; i++){ // INDEXING FOR NUM STUDENTS
+      document.getElementById("alDataHouser").innerHTML +=
+
+      "<div id = " + "al-box"+i+ " class = " +"'col-sm-2 col-sm-offset-5 border'" + " data-toggle = " +"'modal'" +" data-target = " + "#al-modal"+i+">"
+        +"<img id=" + "al-picture" + i + " class = 'gridImg'> </img>"
+        +"<p id = "+ "al-fullName" + i + " class = studentname>"
+        +"<div class='container-fluid'>"
+        +"<div class='modal fade' id = al-modal" + i + " role='dialog' data-keyboard='false' data-backdrop='static'>"
+        +"<div class='modal-dialog'>"
+        +"<div class='modal-content'>"
+        +"<div class='modal-header'>"
+        +"<p class='modalname' id = al-modalName" + i + ">"
+        +"</div>"
+        +"<div class='modal-body'>"
+        +"<div class='col-sm-4'>"
+        +"<img class='modalimage' id = al-modalImage" + i + "> </img>"
+        +"<p id= al-YOG" + i + " class='modalattribute'></p>"
+        +"<p id= al-location" + i + " class='modalattribute'></p>"
+        +"</div>"
+        +"<div class = 'col-sm-8'>"
+        +"<p id = al-description" + i + " class='modaltext left'></p>"
+        +"<p id = al-contact" + i + ">"
+        +"</div>"
+        +"</div>"
+        +"<div class='modal-footer'>"
+        +"</div>"
+        +"</div>"
+        +"</div>"
+        +"</div>"
+        +"</div>"
+        +"</div>";
+    }
+  });
+};
+
 
 
 // addBtn.addEventListener('click', (e) => {
