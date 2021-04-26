@@ -10,16 +10,46 @@ const removeBtn = document.getElementById('removeBtn');
 const database = firebase.database();
 const rootRefOne = database.ref('users');
 
-hideEmpty();
-function populateData(page, year){
-console.log(page);
-//establishes root of db
+var currentMode = "student";
+var currentYear = "";
+// hideEmpty();
+
+function changeMode(){
+  if(String(currentMode) == "student"){
+    console.log("aoidhawi wduawid");
+    // window.location.href = "Alumni.html";
+    console.log("aoidhawi wduawid");
+    populateData('Alumni'+String(currentYear), currentYear, 'alumni');
+    hideEmpty();
+  }
+  else{
+    window.location.href = "Alumni.html";
+    populateData('Students'+String(currentYear), currentYear, currentMode);
+  }
+}
+
 var rootRef = firebase.database().ref();
+
+function populateData(page, year, mode){
+  console.log(page);
+  currentMode = String(mode);
+  console.log("Changed currentMode to "+String(currentMode));
+  currentYear = String(year);
+  console.log("Changed currentYear to "+String(currentYear));
+//establishes root of db
 
 //creates ref for node
 var ref = rootRef.child('1oYN4YtfxmtndybqYwCeg2uH1j8ifUVjro794v-rW11g/'+page);
 
+
 document.getElementById("banner").innerHTML = "MAMS Class of "+String(year);
+
+if(String(mode) == "student"){
+  document.getElementById('banner').style.backgroundColor='#6d213cff';
+}
+else if(String(mode) == 'alumnus'){
+  document.getElementById('banner').style.backgroundColor='#adb9e3ff';
+}
 
 // var ref = rootRef.child('users');
 // ^FROM THE FORM INPUT
@@ -54,10 +84,63 @@ snap.forEach(function(child){
 });
 };
 
+function appearAndPopulate(page, year, mode){
+  loadHTML(year);
+  console.log(page);
+  currentMode = String(mode);
+  console.log("Changed currentMode to "+String(currentMode));
+  currentYear = String(year);
+  console.log("Changed currentYear to "+String(currentYear));
+//establishes root of db
+
+//creates ref for node
+var ref = rootRef.child('1oYN4YtfxmtndybqYwCeg2uH1j8ifUVjro794v-rW11g/'+page);
+
+
+document.getElementById("banner").innerHTML = "MAMS Class of "+String(year);
+
+if(String(mode) == "student"){
+  document.getElementById('banner').style.backgroundColor='#6d213cff';
+}
+else if(String(mode) == 'alumnus'){
+  document.getElementById('banner').style.backgroundColor='#adb9e3ff';
+}
+
+// var ref = rootRef.child('users');
+// ^FROM THE FORM INPUT
+// gets values from database and changes html
+ref.once('value', function(snap) { //once means user must refresh
+var index= 0;
+function incrementIndex(){
+   index++;
+}
+// gets values for each element in data set
+snap.forEach(function(child){
+  const obj = JSON.parse(JSON.stringify(child.val()));
+  // document.getElementById("first_names").innerHTML +=  obj.first_name +"<br>";
+  // document.getElementById("last_names").innerHTML += obj.last_name +"<br>";
+  // document.getElementById("ages").innerHTML += obj.age +"<br>";
+  // document.getElementById("sections").innerHTML += obj.section +"<br>";
+  // ^for the table of all students
+
+  document.getElementById("yb-fullName"+String(index)).innerHTML = obj.first_name + " " + obj.last_name;
+  document.getElementById("yb-modalName"+String(index)).innerHTML = obj.first_name + " " + obj.last_name;
+  document.getElementById("yb-favClass"+String(index)).innerHTML = "Favorite Class: "+obj.fav_class;
+  document.getElementById("yb-section"+String(index)).innerHTML = "Section "+obj.section;
+  document.getElementById("yb-quote"+String(index)).innerHTML = obj.quote;
+  document.getElementById("yb-quoteAuthor"+String(index)).innerHTML = "- "+obj.quote_author;
+  document.getElementById("yb-studentPicture"+String(index)).src = obj.preferred_picture;
+  document.getElementById("yb-modalImage"+String(index)).src = obj.preferred_picture;
+  document.getElementById("yb-description"+String(index)).innerHTML = obj.student_description;
+  incrementIndex();
+});
+});
+};
+
 function hideEmpty(){
   for(i = 1 ; i <= 15; i++){
     if( $('#description'+String(i)).is(':empty') ) {
-      console.log(String(i)+" is empty");
+      // console.log(String(i)+" is empty");
       document.getElementById("col"+String(i)).style.display="none";
     }
     else{
@@ -65,6 +148,54 @@ function hideEmpty(){
     }
   }
 }
+
+function loadHTML(year){
+  document.getElementById("dataHouser").innerHTML = "";
+  var yearRef = firebase.database().ref("1oYN4YtfxmtndybqYwCeg2uH1j8ifUVjro794v-rW11g/Statistics/"+year);
+  var numStudentsRef = yearRef.child('num_students');
+  numStudentsRef.once("value", function(snapshot){
+    var numStudents = snapshot.val();
+    for(i = 1 ; i <= numStudents; i++){ // INDEXING FOR NUM STUDENTS
+      document.getElementById("dataHouser").innerHTML +=
+
+      "<div id = " + "yb-box"+i+ " class = " +"'col-sm-2 col-sm-offset-5 border'" + " data-toggle = " +"'modal'" +" data-target = " + "#yb-modal"+i+">"
+        +"<img id=" + "yb-studentPicture" + i + " class = 'gridImg'> </img>"
+        +"<p id = "+ "yb-fullName" + i + " class = studentname>"
+        +"<div class='container-fluid'>"
+        +"<div class='modal fade' id = yb-modal" + i + " role='dialog' data-keyboard='false' data-backdrop='static'>"
+        +"<div class='modal-dialog'>"
+        +"<div class='modal-content'>"
+        +"<div class='modal-header'>"
+        +"<p class='modalname' id = yb-modalName" + i + ">"
+        +"</div>"
+        +"<div class='modal-body'>"
+        +"<div class='col-sm-4'>"
+        +"<img class='modalimage' id = yb-modalImage" + i + "> </img>"
+        +"<p id= yb-section" + i + " class='modalattribute'></p>"
+        +"<p id= yb-favClass" + i + " class='modalattribute'></p>"
+        +"</div>"
+        +"<div class = 'col-sm-8'>"
+        +"<p id = yb-description" + i + " class='modaltext left'></p>"
+        +"<p id = yb-quote" + i + ">"
+        +"<p id = yb-quoteAuthor" + i + ">"
+        +"</div>"
+        +"</div>"
+        +"<div class='modal-footer'>"
+        +"</div>"
+        +"</div>"
+        +"</div>"
+        +"</div>"
+        +"</div>"
+        +"</div>";
+    }
+  });
+};
+
+function testInput(){
+document.getElementById("yb-fullName1").innerHTML="woop";
+}
+
+
 // addBtn.addEventListener('click', (e) => {
 //   e.preventDefault();
 //   alert("refresh page!");
