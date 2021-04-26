@@ -6,6 +6,7 @@ Green: #869d7aff
 Blue: #adb9e3ff
 Blue: #
 Maroon: #6d213cff */
+
 html {
   scroll-behavior: smooth;
 }
@@ -17,6 +18,14 @@ h1 {
   background-color: #6d213cff;
   padding: 15px 15px;
   font-weight: bolder;
+}
+
+h2 {
+  text-align: auto;
+  color: white;
+  font-family: 'Open Sans';
+  background-color: #6d213cff;
+  padding: 15px 15px;
 }
 
 blockquote {
@@ -48,14 +57,54 @@ p {
   font-family: 'Open Sans';
 }
 
-.arrow {
+.btn {
+  font-family: 'Open Sans';
+  width: auto;
+}
 
+.footer {
+background-color: #6d213cff;
+padding: 20px 20px;
+font-size: 1.1em;
+}
+
+.bold {
+transition: font-weight 0.25s;
+}
+
+.bold:hover {
+font-weight: 900;
+}
+
+.logo {
+transition: width 1s;
+}
+
+.logo:hover {
+  width: 47vw;
+}
+
+.bgblue {
+background-color: #adb9e3ff;
+}
+
+.bggreen {
+background-color: #869d7aff;
+}
+
+.arrow {
+  width: 10vw;
+  padding-bottom: 1vh;
+  transition: width 2.5s;
+}
+
+.arrow:hover {
+  width: 12vw;
 }
 
 .indexinfo {
-  font-size: 1.25em;
-  padding: 30px 30px;
-  padding-bottom: 0px;
+  font-size: 1.5em;
+  padding-top: 30px;
 }
 
 .noborders {

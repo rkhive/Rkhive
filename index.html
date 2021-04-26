@@ -16,60 +16,6 @@ body, html {
   height: 100%;
   margin: 0;
 }
-
-.bgimg-1, .bgimg-2, .bgimg-3 {
-  position: relative;
-  opacity: 0.65;
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-
-}
-.bgimg-1 {
-  background-image: url("Images/schoolBlur.jpeg");
-  min-height: 100%;
-}
-
-.bgimg-2 {
-  background-image: url("Images/rkhive_logo.PNG");
-  min-height: 400px;
-}
-
-.bgimg-3 {
-  background-image: url("Images/mams_logo.jpeg");
-  min-height: 400px;
-}
-
-.caption {
-  position: absolute;
-  left: 0;
-  top: 50%;
-  width: 100%;
-  text-align: center;
-  color: #000;
-}
-
-.caption span.border {
-  background-color: #911010;
-  color: #fff;
-  padding: 18px;
-  font-size: 25px;
-  letter-spacing: 5px;
-}
-
-h3 {
-  letter-spacing: 5px;
-  text-transform: uppercase;
-  color: #111;
-}
-
-/* Turn off parallax scrolling for tablets and phones */
-@media only screen and (max-device-width: 1024px) {
-  .bgimg-1, .bgimg-2, .bgimg-3 {
-    background-attachment: scroll;
-  }
-}
 </style>
 </head>
 <body>
@@ -92,7 +38,7 @@ h3 {
       </ul>
     </div>
   </nav>
-  <div class="container center">
+  <div class="container-fluid center">
     <h1>Welcome to the Mass Academy Rkhive</h1>
   <p class="indexinfo">In response to the challenges created by the COVID-19 pandemic,
     the Mass Academy Rkhive aims to set in place a repository of Mass Academy history,
@@ -101,29 +47,40 @@ h3 {
     to connect with and learn more about the school.
   </p>
   <a href="#Home"><img class="arrow" src="Images/Arrow.png"></a>
-<div class="bgimg-2">
-  <!-- <div class="caption">
-  <span class="border" style="background-color:transparent;font-size:25px;color: #000000;">LESS HEIGHT</span>
-  </div> -->
+  <p>
+  <a href="2022.html"> <img src="Images/logo.png" width="500vw" class="logo"> </a>
+  <br>
+  <br>
+  <br>
+  </p>
+  <div class="container">
+  <div id=Home class="col-sm-4">
+  <a href="2022.html"> <h2 class="bold">Look Into the Past</h2> </a>
+  <p class="indexinfo"> Rkhive contains a high school student
+    profile of MAMS graduates beginning with the Class of '21.
+  </p>
 </div>
-
-<div style="position:relative;">
-  <div style="color:#ddd;background-color:#282E34;text-align:center;padding:50px 80px;text-align: justify;">
-  <p>Scroll up and down to really get the feeling of how Parallax Scrolling works.</p>
-  </div>
+<div class="col-sm-4">
+<a href="2022.html"> <h2 class="bgblue bold">Connect with Alumni</h2> </a>
+<p class="indexinfo"> Rkhive offers a community uniting past and current MAMS students with opportunities
+  and support.
+</p>
 </div>
-
-<div class="bgimg-3 scrolling-box" id=Home>
-  <!-- <div class="caption">
-  <span class="border" style="background-color:transparent;font-size:25px;color: #f7f7f7;">SCROLL UP</span>
-  </div> -->
+<div class="col-sm-4">
+<h2 class="bggreen bold">The Story of Rkhive</h2>
+<p class="indexinfo"> An Apps for Good project born from the challenges of the COVID-19 pandemic in 2021.
+</p>
 </div>
-
-<div style="position:relative;">
-  <div style="color:#ddd;background-color:#282E34;text-align:center;padding:50px 80px;text-align: justify;">
-  <p>Scroll up and down to really get the feeling of how Parallax Scrolling works.</p>
-  </div>
 </div>
-
+<br>
+<div class="footer white">
+<p>Have a question, suggestion, or bug report?</p>
+<button type="button" class="btn btn-large btn-default">
+  Email Us
+    <span class="glyphicon glyphicon-envelope"></span>
+</button>
+</p>
+</div>
+<br>
 </body>
 </html>
