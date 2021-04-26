@@ -95,7 +95,7 @@ background-color: #869d7aff;
 .arrow {
   width: 10vw;
   padding-bottom: 1vh;
-  transition: width 2.5s;
+  transition: width 5s;
   transition: opacity 2.5s;
 }
 
