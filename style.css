@@ -57,6 +57,45 @@ p {
   font-family: 'Open Sans';
 }
 
+.nav-pills {
+margin: auto;
+width: 100vw;
+color: white !important;
+font-size: 1.25em;
+}
+
+.nav.nav-pills li a {
+  color: #6d213cff;
+  background-color: white;
+  transition: background-color 1s;
+  transition: color 1s;
+  font-size: 1.25em;
+}
+
+.nav.nav-pills li a:hover {
+  background-color: #6d213cff;
+  color: white;
+}
+
+.nav.nav-pills li a:active {
+  background-color: #6d213cff;
+  color: white;
+  font-weight: bolder;
+}
+
+.mainpage {
+height: 80vh;
+
+}
+
+.bgimage {
+  /* background-image: url('Images/mams_logo.jpeg'); */
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 80vh;
+}
+
 .btn {
   font-family: 'Open Sans';
   width: auto;
@@ -95,12 +134,10 @@ background-color: #869d7aff;
 .arrow {
   width: 10vw;
   padding-bottom: 1vh;
-  transition: width 5s;
   transition: opacity 2.5s;
 }
 
 .arrow:hover {
-  width: 12vw;
   opacity: 0.65;
 }
 
@@ -134,6 +171,15 @@ background-color: #869d7aff;
 }
 
 .nav.navbar-nav li a:hover {
+  background-color: white;
+  color: #6d213cff;
+}
+
+.nav.navbar-header{
+  transition: background-color 1s;
+}
+
+.nav.navbar-header:hover {
   background-color: white;
   color: #6d213cff;
 }
