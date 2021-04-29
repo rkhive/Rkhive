@@ -85,15 +85,16 @@ font-size: 1.25em;
 
 .mainpage {
 height: 80vh;
-
 }
 
 .bgimage {
-  /* background-image: url('Images/mams_logo.jpeg'); */
+  background-image: url('Images/HexBackground v1.png');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
   height: 80vh;
+  margin-top: 5vh;
+  margin-bottom: 5vh;
 }
 
 .btn {
@@ -177,6 +178,7 @@ background-color: #869d7aff;
 
 .nav.navbar-header{
   transition: background-color 1s;
+  float: left;
 }
 
 .nav.navbar-header:hover {
