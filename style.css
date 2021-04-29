@@ -17,7 +17,9 @@ h1 {
   font-family: 'Open Sans';
   background-color: #6d213cff;
   padding: 15px 15px;
-  font-weight: bolder;
+  font-weight: 900;
+  margin-top: 5vh;
+  margin-bottom: 5vh;
 }
 
 h2 {
@@ -48,6 +50,32 @@ p {
   font-family: 'Open Sans';
 }
 
+ul {
+  list-style-type: none;
+}
+
+#img {
+  transition: transform .7s ease-in-out;
+}
+
+#img:hover {
+  transform: rotate(-20deg);
+}
+
+.personDesc{
+  text-align: center;
+  padding: 0px;
+}
+
+.entry{
+  border-width: 2px;
+  border-style: solid;
+}
+
+.bgred {
+  background-color: #6d213cff;
+}
+
 .quote {
   font-style: italic;
   font-weight: bolder;
@@ -75,6 +103,7 @@ font-size: 1.25em;
 .nav.nav-pills li a:hover {
   background-color: white;
   color: #6d213cff;
+  border-radius: 0px;
 }
 
 .nav.nav-pills li a:active {
