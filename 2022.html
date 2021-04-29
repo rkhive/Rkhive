@@ -12,14 +12,28 @@
   <link href="https://fonts.googleapis.com/css2?family=Marcellus+SC&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
   <title>Rkhive Mass Academy</title>
-</head>
+  </head>
+  <style>
+  ul {
+    list-style-type: none;
+  }
+  .personDesc{
+    text-align: center;
+    padding: 0px;
+  }
+  th{
+    text-align: center;
+  }
+  .entry{
+    border-width: 2px;
+    border-style: solid;
+  }
+  </style>
   <body>
     <nav class="navbar navbar-default">
       <div class="container-fluid">
         <div class="navbar-header">
-          <div id="img">
-          <span class="white"><a class="navbar-brand active" href="index.html"><img style="display:block" src="Images/CornerLogoV2.png" height="55px"></a></span>
-          </div>
+          <!-- <span class="white"><a class="navbar-brand active" href="index.html"><img style="display:block" src="Images/CornerLogoV2.png" height="55px"></a></span> -->
         </div>
         <ul class="nav navbar-nav">
           <li><a href="Yearbook.html">Yearbook Directory</a></li>
@@ -29,19 +43,36 @@
         </ul>
       </div>
     </nav>
-    <div class="center">
-      <h1 id = "banner" data-toggle="collapse" data-target="#demo">MAMS Rkhive</h1>
-        <div id="demo" class="collapse">
-          <div class="bgred">
-            <ul class="nav nav-pills">
-              <li><a id = "2022button" onClick = "appearAndPopulate('Students2022', '2022', 'student')">2022</a></li>
-              <li><a id = "2021button" onClick = "appearAndPopulate('Students2021', '2021', 'student')">2021</a></li>
-              <li><a id = "2020button" onClick = "appearAndPopulate('Students2020', '2020', 'student')">2020</a></li>
-              <li><a id = "2016button" onClick = "appearAndPopulate('Students2016', '2016', 'student')">2016 Student</a></li>
-              <li><a id = "2016button2" onClick = "appearAndPopulate('Alumni2016', '2016', 'alumnus')">2016 Alumnus</a></li>
-            </ul>
-          </div>
-        </div>
+    <br>
+      <div class="container center">
+        <ul class="nav nav-pills">
+        <li><a id = "2022button" onClick = "appearAndPopulate('Students2022', '2022', 'student')">2022</a></li>
+        <li><a id = "2021button" onClick = "appearAndPopulate('Students2021', '2021', 'student')">2021</a></li>
+        <li><a id = "2020button" onClick = "appearAndPopulate('Students2020', '2020', 'student')">2020</a></li>
+        <li><a id = "2016button" onClick = "appearAndPopulate('Students2016', '2016', 'student')">2016 Student</a></li>
+        <li><a id = "2016button2" onClick = "appearAndPopulate('Alumni2016', '2016', 'alumnus')">2016 Alumnus</a></li>
+      </ul>
+        <h1 id = "banner">MAMS Rkhive</h1>
+
+        <form>
+          <div style = "width: 50%" class="form-group">
+           <label for="exampleFormControlSelect">Year</label>
+           <select multiple class="form-control" id="exampleFormControlSelect">
+             <option onClick="setCurrentYear('2022')">2022</option>
+             <option onClick="setCurrentYear('2021')">2021</option>
+             <option onClick="setCurrentYear('2020')">2020</option>
+             <option onClick="setCurrentYear('2016')">2016</option>
+           </select>
+         </div>
+
+         <div class="container">
+           <ul class="nav nav-pills">
+           <li><a id = "studentButton" onClick = "setCurrentMode('student')">student</a></li>
+           <li><a id = "alumnusButton" onClick = "setCurrentMode('alumnus')">alumnus</a></li>
+         </ul>
+
+         <!-- <button type='button' onClick = 'populateWithCurrent()'>yoo</button> -->
+
         <div style="display:none">
           <img id="yb-studentPicture0"/>
           <img id="yb-modalImage0"/>
@@ -61,17 +92,20 @@
           <p id = "yb-quote0">
           <p id = "al-contact0">
         </div>
+
         <div id = "ybDataHouser" class="container center-block" style="padding-left:2.4vw">
         </div>
         <div id = "alDataHouser" class="container center-block" style="padding-left:2.4vw">
         </div>
-      </div>
+
       <!-- The core Firebase JS SDK is always required and must be listed first -->
       <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-app.js"></script>
       <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-database.js"></script>
+
       <!-- TODO: Add SDKs for Firebase products that you want to use
            https://firebase.google.com/docs/web/setup#available-libraries -->
       <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-analytics.js"></script>
+
       <script>
         // Your web app's Firebase configuration
         // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -88,7 +122,11 @@
         // Initialize Firebase
         firebase.initializeApp(firebaseConfig);
         firebase.analytics();
+
       </script>
-    </body>
+
+  </body>
+
   <script src = "./functions.js"></script>
-</html>
+
+  </html>
