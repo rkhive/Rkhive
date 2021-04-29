@@ -10,9 +10,42 @@ const removeBtn = document.getElementById('removeBtn');
 const database = firebase.database();
 const rootRefOne = database.ref('users');
 
-var currentMode = "student";
-var currentYear = "";
+var currentMode = '';
+var currentYear = '';
 // hideEmpty();
+
+function populateWithCurrent(){
+  page = "";
+  if(currentMode == 'student'){
+    page="Students"+String(currentYear);
+  }
+  else if(currentMode == 'alumnus'){
+    page="Alumni"+String(currentYear);
+  }
+
+  console.log(page);
+  appearAndPopulate(page, currentYear, currentMode);
+}
+
+function setCurrentYear(year){
+  currentYear = String(year);
+  console.log(currentYear);
+  if(currentMode != ''){
+    populateWithCurrent();
+  }
+}
+
+function setCurrentMode(mode){
+  currentMode = mode;
+  console.log(currentMode);
+  if(currentYear != ''){
+    populateWithCurrent();
+  }
+}
+
+function log(){
+  window.alert("AOIWUDjoawd");
+}
 
 function changeMode(){
   if(String(currentMode) == "student"){
@@ -204,9 +237,8 @@ function loadStudentHTML(year){
         +"</div>"
         +"<div class = 'col-sm-8'>"
         +"<p id = yb-description" + i + " class='modaltext left'></p>"
-        +"<br><br>"
-        +"<p class='quote' id = yb-quote" + i + " >"
-        +"<p class='quote' id = yb-quoteAuthor" + i + ">"
+        +"<p id = yb-quote" + i + ">"
+        +"<p id = yb-quoteAuthor" + i + ">"
         +"</div>"
         +"</div>"
         +"<div class='modal-footer'>"
