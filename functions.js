@@ -138,10 +138,14 @@ var ref = rootRef.child('1oYN4YtfxmtndybqYwCeg2uH1j8ifUVjro794v-rW11g/'+page);
 if(String(mode) == "student"){
   document.getElementById('banner').style.backgroundColor='#6d213cff';
   document.getElementById("banner").innerHTML = "MAMS Class of "+String(year);
+  document.getElementById('menu1').style.backgroundColor='#6d213cff';
+  document.getElementById('menu2').style.backgroundColor='#6d213cff';
 }
 else if(String(mode) == 'alumnus'){
   document.getElementById('banner').style.backgroundColor='#adb9e3ff';
   document.getElementById("banner").innerHTML = "MAMS Alumni of "+String(year);
+  document.getElementById('menu1').style.backgroundColor='#adb9e3ff';
+  document.getElementById('menu2').style.backgroundColor='#adb9e3ff';
 }
 
 // var ref = rootRef.child('users');

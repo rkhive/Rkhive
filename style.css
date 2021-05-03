@@ -9,6 +9,7 @@ Maroon: #6d213cff */
 
 html {
   scroll-behavior: smooth;
+  overflow-y:scroll;
 }
 
 h1 {
@@ -18,8 +19,6 @@ h1 {
   background-color: #6d213cff;
   padding: 15px 15px;
   font-weight: 900;
-  margin-top: 5vh;
-  margin-bottom: 5vh;
 }
 
 h2 {
@@ -52,6 +51,41 @@ p {
 
 ul {
   list-style-type: none;
+}
+
+label {
+  text-align: center;
+  width: 100%;
+  color: white;
+  font-family: 'Open Sans';
+  background-color: #6d213cff;
+  padding: 5px 5px;
+  font-weight: 900;
+  font-size: 1.5em;
+  margin-bottom: 3vh;
+  transition: font-size 2.5s;
+}
+
+label:hover{
+  color: white;
+  font-size: 2em;
+}
+
+option {
+  font-weight: bolder;
+  font-size: 1.5em;
+  text-align: center;
+  border-left: 0px;
+  font-family: 'Open Sans';
+}
+
+.form-control {
+height: 50px;
+}
+
+.realign {
+  margin-left: 4vw;
+
 }
 
 #img {
@@ -129,6 +163,20 @@ height: 80vh;
 .btn {
   font-family: 'Open Sans';
   width: auto;
+  text-align: center;
+  color: white;
+  background-color: #6d213cff;
+  padding: 15px 15px;
+  font-weight: 900;
+  margin-bottom: 3vh;
+  font-size: 2em;
+  transition: font-size 2s;
+  border-radius: 0px;
+}
+
+.btn:hover{
+  color: white;
+  font-size: 2.25em;
 }
 
 .footer {
