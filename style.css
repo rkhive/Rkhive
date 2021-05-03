@@ -59,16 +59,10 @@ label {
   color: white;
   font-family: 'Open Sans';
   background-color: #6d213cff;
-  padding: 5px 5px;
+  padding: 10px 7px;
   font-weight: 900;
   font-size: 1.5em;
   margin-bottom: 3vh;
-  transition: font-size 2.5s;
-}
-
-label:hover{
-  color: white;
-  font-size: 2em;
 }
 
 option {
@@ -79,13 +73,22 @@ option {
   font-family: 'Open Sans';
 }
 
+.nofloat {
+display: block;
+float:none;
+}
+
+.pagearrow {
+  width: 3vw;
+  padding-top: 1vh;
+}
+
 .form-control {
 height: 50px;
 }
 
 .realign {
   margin-left: 4vw;
-
 }
 
 #img {
@@ -170,13 +173,11 @@ height: 80vh;
   font-weight: 900;
   margin-bottom: 3vh;
   font-size: 2em;
-  transition: font-size 2s;
   border-radius: 0px;
 }
 
 .btn:hover{
   color: white;
-  font-size: 2.25em;
 }
 
 .footer {

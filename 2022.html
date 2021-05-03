@@ -47,13 +47,19 @@
     </nav>
     <br>
       <div class="center">
-        <div onclick = "populateWithCurrent()" data-toggle="collapse" data-target="#demo">
-        <btn id="banner" class="btn btn-block btn-large"> <img src="Images/CornerLogoV2.png" height="55px" style="margin-right: 1vw">MAMS Rkhive </btn>
+        <div id="bannerhouser">
+        <div onclick = 'populateWithCurrent(); switchArrow();' data-toggle="collapse" data-target="#demo">
+        <btn id="banner" class="btn btn-block btn-large"> <img src="Images/CornerLogoV2.png" height="55px" style="margin-right: 1vw">MAMS Rkhive
+          <p><img id = "arrow" class="pagearrow" src="Images/ArrowUp.png"></p>
+        </btn>
         </div>
-          <div id="demo" style="width: 80%; margin-left: auto; margin-right: auto">
+      </div>
+          <div id="demo" style="width: 80%; margin-left: auto; margin-right: auto; display:block">
             <div style = "width: 49%; float: left" class="form-group center">
           <form>
-             <label id="menu1" data-toggle="collapse" data-target="#demo2">Select Year</label>
+             <label id="menu1" onclick = 'switchArrow2();' data-toggle="collapse" data-target="#demo2">Select Year
+             <p><img id = "arrow2" class="pagearrow" src="Images/Arrow.png"></p>
+           </label>
              <div id="demo2" class="collapse">
              <select multiple class="form-control" id="exampleFormControlSelect">
                <option onClick="setCurrentYear('2022')">Class of 2022</option>
@@ -67,7 +73,9 @@
            </div>
              <div style = "width: 49%; float: right" class="form-group center">
            <form>
-             <label id="menu2" data-toggle="collapse" data-target="#demo3">Select Mode</label>
+             <label id="menu2" onclick = 'switchArrow3();' data-toggle="collapse" data-target="#demo3">Select Mode
+             <p><img id = "arrow3" class="pagearrow" src="Images/Arrow.png"></p>
+           </label>
              <div id="demo3" class="collapse">
              <select multiple class="form-control" id="exampleFormControlSelect2">
              <option id = "studentButton" onClick = "setCurrentMode('student')">Yearbook</a></li>
@@ -77,8 +85,6 @@
           </form>
          </div>
     </div>
-
-         <!-- <button type='button' onClick = 'populateWithCurrent()'>yoo</button> -->
 
         <div style="display:none">
           <img id="yb-studentPicture0"/>
@@ -99,10 +105,9 @@
           <p id = "yb-quote0">
           <p id = "al-contact0">
         </div>
-
-        <div id = "ybDataHouser" class="center-block realign" style="padding-left:2.4vw">
+        <div id = "ybDataHouser" class="center-block realign nofloat" style="padding-left:2.4vw">
         </div>
-        <div id = "alDataHouser" class="center-block realign" style="padding-left:2.4vw">
+        <div id = "alDataHouser" class="center-block realign nofloat" style="padding-left:2.4vw">
         </div>
 
       <!-- The core Firebase JS SDK is always required and must be listed first -->

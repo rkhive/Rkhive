@@ -14,6 +14,42 @@ var currentMode = '';
 var currentYear = '';
 // hideEmpty();
 
+function switchArrow() {
+  if (document.getElementById("arrow").getAttribute('src') == 'Images/ArrowUp.png'){
+    document.getElementById("arrow").src= "Images/Arrow.png";
+  }
+  else{
+    document.getElementById("arrow").src="Images/ArrowUp.png";
+  }
+}
+
+function switchArrow2() {
+  if (document.getElementById("arrow2").getAttribute('src') == 'Images/Arrow.png'){
+    document.getElementById("arrow2").src= "Images/ArrowUp.png";
+  }
+  else{
+    document.getElementById("arrow2").src="Images/Arrow.png";
+  }
+}
+
+function switchArrow3() {
+  if (document.getElementById("arrow3").getAttribute('src') == 'Images/Arrow.png'){
+    document.getElementById("arrow3").src= "Images/ArrowUp.png";
+  }
+  else{
+    document.getElementById("arrow3").src="Images/Arrow.png";
+  }
+}
+
+function switchArrow4() {
+  if (document.getElementById("arrow4").getAttribute('src') == 'Images/ArrowUp.png'){
+    document.getElementById("arrow4").src= "Images/Arrow.png";
+  }
+  else{
+    document.getElementById("arrow4").src="Images/ArrowUp.png";
+  }
+}
+
 function populateWithCurrent(){
   page = "";
   if(currentMode == 'student'){
@@ -74,8 +110,17 @@ function populateData(page, year, mode){
 //creates ref for node
 var ref = rootRef.child('1oYN4YtfxmtndybqYwCeg2uH1j8ifUVjro794v-rW11g/'+page);
 
+document.getElementById("bannerhouser").innerHTML ="";
 
-document.getElementById("banner").innerHTML = "MAMS Class of "+String(year);
+document.getElementById("bannerhouser").innerHTML =
+"<div onclick = 'populateWithCurrent(); switchArrow4()' data-toggle='collapse' data-target='#demo'>"+
+"<btn id='banner' class='btn btn-block btn-large'>"+
+"<img src='Images/CornerLogoV2.png' height='55px' style='margin-right: 1vw'>"+
+"MAMS Class of "+String(year)+
+"<p><img id = 'arrow4' class='pagearrow' src='Images/ArrowUp.png'></p>"+
+"</btn></div>";
+// document.getElementById("banner").innerHTML = "MAMS Class of "+String(year) +
+
 
 if(String(mode) == "student"){
   document.getElementById('banner').style.backgroundColor='#6d213cff';
