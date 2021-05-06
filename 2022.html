@@ -47,14 +47,13 @@
     </nav>
     <br>
       <div class="center">
-        <div id="bannerhouser">
-        <div onclick = 'populateWithCurrent(); switchArrow();' data-toggle="collapse" data-target="#demo">
-        <btn id="banner" class="btn btn-block btn-large"> <img src="Images/CornerLogoV2.png" height="55px" style="margin-right: 1vw">MAMS Rkhive
-          <p><img id = "arrow" class="pagearrow" src="Images/ArrowUp.png"></p>
-        </btn>
-        </div>
+        <div style="display: block">
+        <div onclick = 'populateWithCurrent()' data-toggle="collapse" data-target="#menus">
+        <btn id="banner" class="btn btn-block"><h1>MAMS Rkhive</h1>
+        <h3>hide/show menus</h3>
+      </btn>
       </div>
-          <div id="demo" style="width: 80%; margin-left: auto; margin-right: auto; display:block">
+          <div id="menus" style="width: 50vw; margin-left: auto; margin-right: auto">
             <div style = "width: 49%; float: left" class="form-group center">
           <form>
              <label id="menu1" onclick = 'switchArrow2();' data-toggle="collapse" data-target="#demo2">Select Year
@@ -85,6 +84,7 @@
           </form>
          </div>
     </div>
+</div>
 
         <div style="display:none">
           <img id="yb-studentPicture0"/>
@@ -105,9 +105,10 @@
           <p id = "yb-quote0">
           <p id = "al-contact0">
         </div>
-        <div id = "ybDataHouser" class="center-block realign nofloat" style="padding-left:2.4vw">
+
+        <div id = "ybDataHouser" class="realign" style="padding-left:2.4vw">
         </div>
-        <div id = "alDataHouser" class="center-block realign nofloat" style="padding-left:2.4vw">
+        <div id = "alDataHouser" class="realign" style="padding-left:2.4vw">
         </div>
 
       <!-- The core Firebase JS SDK is always required and must be listed first -->

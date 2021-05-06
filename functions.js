@@ -12,16 +12,6 @@ const rootRefOne = database.ref('users');
 
 var currentMode = '';
 var currentYear = '';
-// hideEmpty();
-
-function switchArrow() {
-  if (document.getElementById("arrow").getAttribute('src') == 'Images/ArrowUp.png'){
-    document.getElementById("arrow").src= "Images/Arrow.png";
-  }
-  else{
-    document.getElementById("arrow").src="Images/ArrowUp.png";
-  }
-}
 
 function switchArrow2() {
   if (document.getElementById("arrow2").getAttribute('src') == 'Images/Arrow.png'){
@@ -110,17 +100,6 @@ function populateData(page, year, mode){
 //creates ref for node
 var ref = rootRef.child('1oYN4YtfxmtndybqYwCeg2uH1j8ifUVjro794v-rW11g/'+page);
 
-document.getElementById("bannerhouser").innerHTML ="";
-
-document.getElementById("bannerhouser").innerHTML =
-"<div onclick = 'populateWithCurrent(); switchArrow4()' data-toggle='collapse' data-target='#demo'>"+
-"<btn id='banner' class='btn btn-block btn-large'>"+
-"<img src='Images/CornerLogoV2.png' height='55px' style='margin-right: 1vw'>"+
-"MAMS Class of "+String(year)+
-"<p><img id = 'arrow4' class='pagearrow' src='Images/ArrowUp.png'></p>"+
-"</btn></div>";
-// document.getElementById("banner").innerHTML = "MAMS Class of "+String(year) +
-
 
 if(String(mode) == "student"){
   document.getElementById('banner').style.backgroundColor='#6d213cff';
@@ -142,11 +121,6 @@ function incrementIndex(){
 snap.forEach(function(child){
   hideEmpty();
   const obj = JSON.parse(JSON.stringify(child.val()));
-  // document.getElementById("first_names").innerHTML +=  obj.first_name +"<br>";
-  // document.getElementById("last_names").innerHTML += obj.last_name +"<br>";
-  // document.getElementById("ages").innerHTML += obj.age +"<br>";
-  // document.getElementById("sections").innerHTML += obj.section +"<br>";
-  // ^for the table of all students
   document.getElementById("fullName"+String(index)).innerHTML = obj.first_name + " " + obj.last_name;
   document.getElementById("modalName"+String(index)).innerHTML = obj.first_name + " " + obj.last_name;
   document.getElementById("userFavclass"+String(index)).innerHTML = "Favorite Class: "+obj.fav_class;
@@ -182,13 +156,23 @@ var ref = rootRef.child('1oYN4YtfxmtndybqYwCeg2uH1j8ifUVjro794v-rW11g/'+page);
 
 if(String(mode) == "student"){
   document.getElementById('banner').style.backgroundColor='#6d213cff';
-  document.getElementById("banner").innerHTML = "MAMS Class of "+String(year);
+  document.getElementById("banner").innerHTML =
+  "<div onclick = 'populateWithCurrent()' data-toggle='collapse' data-target='#menus'>"+
+  "<btn id='banner' class='btn btn-block'><h1>MAMS Class of "+String(year)+"</h1>"+
+  "<h3>hide/show menus</h3>"+
+  "</btn>"+
+  "</div>"
   document.getElementById('menu1').style.backgroundColor='#6d213cff';
   document.getElementById('menu2').style.backgroundColor='#6d213cff';
 }
 else if(String(mode) == 'alumnus'){
   document.getElementById('banner').style.backgroundColor='#adb9e3ff';
-  document.getElementById("banner").innerHTML = "MAMS Alumni of "+String(year);
+  document.getElementById("banner").innerHTML =
+  "<div class='alumni' onclick = 'populateWithCurrent()' data-toggle='collapse' data-target='#menus'>"+
+  "<btn id='banner' class='btn btn-block alumni'><h1 class='alumni'>MAMS Alumni of "+String(year)+"</h1>"+
+  "<h3 class='alumni'>hide/show menus</h3>"+
+  "</btn>"+
+  "</div>"
   document.getElementById('menu1').style.backgroundColor='#adb9e3ff';
   document.getElementById('menu2').style.backgroundColor='#adb9e3ff';
 }

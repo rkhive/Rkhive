@@ -1,11 +1,12 @@
 @charset UTF-8;
 
-/* Yellow: #feb95fff
+/*
+Yellow: #feb95fff
 Brown: #8b5d33ff
 Green: #869d7aff
 Blue: #adb9e3ff
-Blue: #
-Maroon: #6d213cff */
+Maroon: #6d213cff
+*/
 
 html {
   scroll-behavior: smooth;
@@ -17,7 +18,7 @@ h1 {
   color: white;
   font-family: 'Open Sans';
   background-color: #6d213cff;
-  padding: 15px 15px;
+  padding: 7px 7px;
   font-weight: 900;
 }
 
@@ -27,6 +28,16 @@ h2 {
   font-family: 'Open Sans';
   background-color: #6d213cff;
   padding: 15px 15px;
+}
+
+h3 {
+  text-align: center;
+  color: white;
+  font-family: 'Open Sans';
+  background-color: #6d213cff;
+  font-weight: 500;
+  font-size: 0.5em;
+  font-style: italic;
 }
 
 body {
@@ -73,13 +84,12 @@ option {
   font-family: 'Open Sans';
 }
 
-.nofloat {
-display: block;
-float:none;
+.alumni {
+  background-color: #adb9e3ff !important;
 }
 
 .pagearrow {
-  width: 3vw;
+  width: 2vw;
   padding-top: 1vh;
 }
 
@@ -169,11 +179,15 @@ height: 80vh;
   text-align: center;
   color: white;
   background-color: #6d213cff;
-  padding: 15px 15px;
+  padding: 5px 5px;
   font-weight: 900;
   margin-bottom: 3vh;
   font-size: 2em;
   border-radius: 0px;
+}
+
+.btn-sm {
+  font-size: 0.8em;
 }
 
 .btn:hover{
