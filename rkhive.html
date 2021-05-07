@@ -38,28 +38,28 @@
           </div>
         </div>
         <ul class="nav navbar-nav">
-          <li><a href="Yearbook.html">Yearbook Directory</a></li>
-          <li><a href="2022.html">MAMS Class of '22</a></li>
+          <li><a href="yearbook.html">Yearbook Directory</a></li>
+          <li><a href="rkhive.html">MAMS Rkhive</a></li>
           <li><a href="testPage1.html">Bootstrap Testing Page</a></li>
           <li><a href="index.html">About Rkhive</a></li>
         </ul>
       </div>
     </nav>
-    <br>
-      <div class="center">
-        <div style="display: block">
-        <div onclick = 'populateWithCurrent()' data-toggle="collapse" data-target="#menus">
-        <btn id="banner" class="btn btn-block"><h1>MAMS Rkhive</h1>
-        <h3>hide/show menus</h3>
-      </btn>
+      <div class="center heading-gap">
+        <div class = "heading-gap" style="display: block">
+        <div id="banner" onclick = 'populateWithCurrent()' class="center" data-toggle="collapse" data-target="#menus">
+        <div class="bgred">
+        <h1 class="title">MAMS Rkhive</h1>
+        <h3 class="subtitle center">hide/show menus</h3>
       </div>
-          <div id="menus" style="width: 50vw; margin-left: auto; margin-right: auto">
+        </div>
+          <div id="menus" class="collapse in" style="width: 50vw; margin-left: auto; margin-right: auto">
             <div style = "width: 49%; float: left" class="form-group center">
           <form>
-             <label id="menu1" onclick = 'switchArrow2();' data-toggle="collapse" data-target="#demo2">Select Year
+             <label id="menu1" onclick = 'switchArrow2();' data-target="#demo2">Select Year
              <p><img id = "arrow2" class="pagearrow" src="Images/Arrow.png"></p>
            </label>
-             <div id="demo2" class="collapse">
+             <div id="demo2" class="collapse in">
              <select multiple class="form-control" id="exampleFormControlSelect">
                <option onClick="setCurrentYear('2022')">Class of 2022</option>
                <option onClick="setCurrentYear('2021')">Class of 2021</option>
@@ -72,10 +72,10 @@
            </div>
              <div style = "width: 49%; float: right" class="form-group center">
            <form>
-             <label id="menu2" onclick = 'switchArrow3();' data-toggle="collapse" data-target="#demo3">Select Mode
+             <label id="menu2" onclick = 'switchArrow3();' data-target="#demo3">Select Mode
              <p><img id = "arrow3" class="pagearrow" src="Images/Arrow.png"></p>
            </label>
-             <div id="demo3" class="collapse">
+             <div id="demo3" class="collapse in">
              <select multiple class="form-control" id="exampleFormControlSelect2">
              <option id = "studentButton" onClick = "setCurrentMode('student')">Yearbook</a></li>
              <option id = "alumnusButton" onClick = "setCurrentMode('alumnus')">Alumni</a></li>

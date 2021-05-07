@@ -157,10 +157,9 @@ var ref = rootRef.child('1oYN4YtfxmtndybqYwCeg2uH1j8ifUVjro794v-rW11g/'+page);
 if(String(mode) == "student"){
   document.getElementById('banner').style.backgroundColor='#6d213cff';
   document.getElementById("banner").innerHTML =
-  "<div onclick = 'populateWithCurrent()' data-toggle='collapse' data-target='#menus'>"+
-  "<btn id='banner' class='btn btn-block'><h1>MAMS Class of "+String(year)+"</h1>"+
-  "<h3>hide/show menus</h3>"+
-  "</btn>"+
+  "<div id='banner' class='center' data-toggle='collapse' data-target='#menus'>"+
+  "<h1 class='title'>MAMS Class of "+String(year)+"</h1>"+
+  "<h3 class='subtitle center'>hide/show menus</h3>"+
   "</div>"
   document.getElementById('menu1').style.backgroundColor='#6d213cff';
   document.getElementById('menu2').style.backgroundColor='#6d213cff';
@@ -168,10 +167,9 @@ if(String(mode) == "student"){
 else if(String(mode) == 'alumnus'){
   document.getElementById('banner').style.backgroundColor='#adb9e3ff';
   document.getElementById("banner").innerHTML =
-  "<div class='alumni' onclick = 'populateWithCurrent()' data-toggle='collapse' data-target='#menus'>"+
-  "<btn id='banner' class='btn btn-block alumni'><h1 class='alumni'>MAMS Alumni of "+String(year)+"</h1>"+
-  "<h3 class='alumni'>hide/show menus</h3>"+
-  "</btn>"+
+  "<div id='banner' class='alumni center' data-toggle='collapse' data-target='#menus'>"+
+  "<h1 class='alumni title'>MAMS Alumni of "+String(year)+"</h1>"+
+  "<h3 class='alumni subtitle center'>hide/show menus</h3>"+
   "</div>"
   document.getElementById('menu1').style.backgroundColor='#adb9e3ff';
   document.getElementById('menu2').style.backgroundColor='#adb9e3ff';
@@ -270,8 +268,8 @@ function loadStudentHTML(year){
         +"</div>"
         +"<div class = 'col-sm-8'>"
         +"<p id = yb-description" + i + " class='modaltext left'></p>"
-        +"<p id = yb-quote" + i + ">"
-        +"<p id = yb-quoteAuthor" + i + ">"
+        +"<p class= 'quote' id = yb-quote" + i + ">"
+        +"<p class='quote' id = yb-quoteAuthor" + i + ">"
         +"</div>"
         +"</div>"
         +"<div class='modal-footer'>"

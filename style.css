@@ -18,7 +18,7 @@ h1 {
   color: white;
   font-family: 'Open Sans';
   background-color: #6d213cff;
-  padding: 7px 7px;
+  padding: 15px 7px;
   font-weight: 900;
 }
 
@@ -36,7 +36,7 @@ h3 {
   font-family: 'Open Sans';
   background-color: #6d213cff;
   font-weight: 500;
-  font-size: 0.5em;
+  font-size: 0.5cm !important;
   font-style: italic;
 }
 
@@ -84,6 +84,28 @@ option {
   font-family: 'Open Sans';
 }
 
+.heading-gap {
+  margin-top: 5vh;
+}
+
+#banner {
+  padding: 0 none !important;
+}
+
+.subtitle {
+  padding-bottom: 20px;
+
+}
+
+.title {
+  font-size: 1.1cm !important;
+  padding: 0 none !important;
+}
+
+.btn-default {
+  padding: 5px 5px;
+}
+
 .alumni {
   background-color: #adb9e3ff !important;
 }
@@ -128,6 +150,17 @@ height: 50px;
   font-weight: bolder;
   font-size: 1.5em;
   text-align: center;
+  margin-top: 10px;
+  border-left: 0px;
+  font-family: 'Open Sans';
+}
+
+.quoteauthor {
+  font-style: italic;
+  font-weight: bolder;
+  font-size: 1.5em;
+  text-align: center;
+  margin-top: 10px;
   border-left: 0px;
   font-family: 'Open Sans';
 }
@@ -179,7 +212,6 @@ height: 80vh;
   text-align: center;
   color: white;
   background-color: #6d213cff;
-  padding: 5px 5px;
   font-weight: 900;
   margin-bottom: 3vh;
   font-size: 2em;
@@ -188,10 +220,12 @@ height: 80vh;
 
 .btn-sm {
   font-size: 0.8em;
+  transition: background-color 1.25s;
 }
 
-.btn:hover{
-  color: white;
+.btn-sm:hover{
+  color: #6d213cff;
+  background-color: white;
 }
 
 .footer {
