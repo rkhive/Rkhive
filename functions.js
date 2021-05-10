@@ -169,7 +169,7 @@ else if(String(mode) == 'alumnus'){
   document.getElementById("banner").innerHTML =
   "<div id='banner' class='alumni center' data-toggle='collapse' data-target='#menus'>"+
   "<h1 class='alumni title'>MAMS Alumni of "+String(year)+"</h1>"+
-  "<h3 class='alumni subtitle center'>hide/show menus</h3>"+
+  "<h3 class='alumni alumni-subtitle center'>hide/show menus</h3>"+
   "</div>"
   document.getElementById('menu1').style.backgroundColor='#adb9e3ff';
   document.getElementById('menu2').style.backgroundColor='#adb9e3ff';
