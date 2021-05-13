@@ -1,11 +1,12 @@
 @charset UTF-8;
 
 /*
+List of Colors
+Maroon: #6d213cff
+Blue: #adb9e3ff
+Green: #869d7aff
 Yellow: #feb95fff
 Brown: #8b5d33ff
-Green: #869d7aff
-Blue: #adb9e3ff
-Maroon: #6d213cff
 */
 
 html {
@@ -93,10 +94,17 @@ option {
 }
 
 .subtitle {
-  padding-top: 20px;
-  padding-bottom: 20px;
+  padding-bottom: 15px;
   background-color: white;
   color: #6d213cff;
+  transition: opacity 1.5s;
+  transition: text-decoration 1.5s;
+  text-decoration: overline;
+}
+
+.subtitle:hover {
+  opacity: 0.75;
+  text-decoration: none;
 }
 
 .title {
@@ -113,10 +121,17 @@ option {
 }
 
 .alumni-subtitle {
-  padding-top: 20px;
-  padding-bottom: 20px;
+  padding-bottom: 15px;
   background-color: white !important;
   color: #adb9e3ff;
+  transition: opacity 1.5s;
+  transition: text-decoration 1.5s;
+  text-decoration: overline;
+}
+
+.alumni-subtitle:hover {
+  opacity: 0.75;
+  text-decoration: none;
 }
 
 .pagearrow {
@@ -152,6 +167,10 @@ height: 50px;
 
 .bgred {
   background-color: #6d213cff;
+}
+
+.bggreen {
+  background-color: #869d7aff;
 }
 
 .quote {

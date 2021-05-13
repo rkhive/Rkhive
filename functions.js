@@ -159,20 +159,24 @@ if(String(mode) == "student"){
   document.getElementById("banner").innerHTML =
   "<div id='banner' class='center' data-toggle='collapse' data-target='#menus'>"+
   "<h1 class='title'>MAMS Class of "+String(year)+"</h1>"+
-  "<h3 class='subtitle center'>hide/show menus</h3>"+
   "</div>"
   document.getElementById('menu1').style.backgroundColor='#6d213cff';
   document.getElementById('menu2').style.backgroundColor='#6d213cff';
+  document.getElementById("hideshow").innerHTML = '';
+  document.getElementById("hideshow").innerHTML =
+  "<h3 class='subtitle center' data-toggle='collapse' data-target='#menus'>hide/show menus</h3>";
 }
 else if(String(mode) == 'alumnus'){
   document.getElementById('banner').style.backgroundColor='#adb9e3ff';
   document.getElementById("banner").innerHTML =
   "<div id='banner' class='alumni center' data-toggle='collapse' data-target='#menus'>"+
   "<h1 class='alumni title'>MAMS Alumni of "+String(year)+"</h1>"+
-  "<h3 class='alumni alumni-subtitle center'>hide/show menus</h3>"+
   "</div>"
   document.getElementById('menu1').style.backgroundColor='#adb9e3ff';
   document.getElementById('menu2').style.backgroundColor='#adb9e3ff';
+  document.getElementById("hideshow").innerHTML = '';
+  document.getElementById("hideshow").innerHTML =
+  "<h3 class='alumni alumni-subtitle center' data-toggle='collapse' data-target='#menus'>hide/show menus</h3>";
 }
 
 // var ref = rootRef.child('users');
@@ -300,8 +304,8 @@ function loadAlumniHTML(year){
         +"<div class='modal fade' id = al-modal" + i + " role='dialog' data-keyboard='false' data-backdrop='static'>"
         +"<div class='modal-dialog'>"
         +"<div class='modal-content'>"
-        +"<div class='modal-header'>"
-        +"<p class='modalname' id = al-modalName" + i + ">"
+        +"<div class='modal-header' style='background-color: #adb9e3ff'>"
+        +"<p class='modalname' style='background-color: #adb9e3ff' id = al-modalName" + i + ">"
         +"</div>"
         +"<div class='modal-body'>"
         +"<div class='col-sm-4'>"
