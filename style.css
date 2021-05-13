@@ -85,6 +85,10 @@ option {
   font-family: 'Open Sans';
 }
 
+.info {
+  font-size: 1.5em;
+}
+
 .heading-gap {
   margin-top: 5vh;
 }
@@ -104,7 +108,6 @@ option {
 
 .subtitle:hover {
   opacity: 0.75;
-  text-decoration: none;
 }
 
 .title {
@@ -131,7 +134,6 @@ option {
 
 .alumni-subtitle:hover {
   opacity: 0.75;
-  text-decoration: none;
 }
 
 .pagearrow {
