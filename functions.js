@@ -212,6 +212,8 @@ function loadStudentHTML(year){
         +"</div>"
         +"<div class = 'col-sm-8'>"
         +"<p id = yb-description" + i + " class='modaltext left'></p>"
+        +"<br>"
+        +"<br>"
         +"<p class= 'quote' id = yb-quote" + i + ">"
         +"<p class='quote' id = yb-quoteAuthor" + i + ">"
         +"</div>"

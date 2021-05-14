@@ -9,9 +9,12 @@ Yellow: #feb95fff
 Brown: #8b5d33ff
 */
 
-html {
+body, html {
   scroll-behavior: smooth;
-  overflow-y:scroll;
+  overflow-y: scroll;
+  height: 100%;
+  margin: 0px;
+  background-color: white;
 }
 
 h1 {
@@ -39,10 +42,6 @@ h3 {
   font-weight: 500;
   font-size: 0.5cm !important;
   font-style: italic;
-}
-
-body {
-background-color: white;
 }
 
 a {
@@ -83,6 +82,68 @@ option {
   text-align: center;
   border-left: 0px;
   font-family: 'Open Sans';
+}
+
+button {
+  text-align: center;
+  color: white;
+  font-family: 'Open Sans';
+  background-color: white;
+  border-width: 0px;
+  padding: 0px;
+  font-weight: 500;
+  font-size: 0.5cm !important;
+  font-style: italic;
+}
+
+.navbar {
+  background-color: #6d213cff;
+  border-width: 0px;
+  border-radius: 0px;
+}
+
+.navbar a {
+  color: #000000;
+}
+
+.navbar-brand {
+  color: white !important;
+  font-size: 1.25em;
+}
+
+.navbar-brand a {
+  color: white;
+}
+
+.nav.navbar-nav li a {
+  color: white;
+  transition: background-color 1s;
+  transition: color 1s;
+  font-size: 1.25em;
+}
+
+.nav.navbar-nav li a:hover {
+  background-color: white;
+  color: #6d213cff;
+}
+
+.nav.navbar-header{
+  transition: background-color 1s;
+  float: left;
+}
+
+.nav.navbar-header:hover {
+  background-color: white;
+  color: #6d213cff;
+}
+
+.navbar-default {
+  border-width: 0px;
+  border-radius: 0px;
+}
+
+.navbar-header {
+  padding: 0px 0px;
 }
 
 .info {
@@ -180,7 +241,7 @@ height: 50px;
   font-weight: bolder;
   font-size: 1.5em;
   text-align: center;
-  margin-top: 10px;
+  margin-top: 25px;
   border-left: 0px;
   font-family: 'Open Sans';
 }
@@ -311,56 +372,6 @@ background-color: #869d7aff;
 
 .white {
   color: white;
-}
-
-.navbar-brand {
-  color: white !important;
-  font-size: 1.25em;
-}
-
-.navbar-brand a {
-  color: white;
-}
-
-.nav.navbar-nav li a {
-  color: white;
-  transition: background-color 1s;
-  transition: color 1s;
-  font-size: 1.25em;
-}
-
-.nav.navbar-nav li a:hover {
-  background-color: white;
-  color: #6d213cff;
-}
-
-.nav.navbar-header{
-  transition: background-color 1s;
-  float: left;
-}
-
-.nav.navbar-header:hover {
-  background-color: white;
-  color: #6d213cff;
-}
-
-.navbar {
-  background-color: #6d213cff;
-  border-width: 0px;
-  border-radius: 0px;
-}
-
-.navbar-default {
-  border-width: 0px;
-  border-radius: 0px;
-}
-
-.navbar-header {
-  padding: 0px 0px;
-}
-
-.navbar a {
-  color: #000000;
 }
 
 .dropdown-menu a {
@@ -531,5 +542,3 @@ background-color: #869d7aff;
       height: 840px;
     }
 }
-
-/*Test*/

@@ -9,24 +9,16 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <link rel="stylesheet" href="style.css">
   <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Marcellus+SC&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
   <title>Rkhive Mass Academy</title>
+  <link rel="apple-touch-icon" sizes="180x180" href="Images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="Images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="Images/favicon-16x16.png">
+  <link rel="manifest" href="Images/site.webmanifest">
   </head>
   <style>
-  ul {
-    list-style-type: none;
-  }
-  .personDesc{
-    text-align: center;
-    padding: 0px;
-  }
-  th{
-    text-align: center;
-  }
-  .entry{
-    border-width: 2px;
-    border-style: solid;
+  body {
+    height: 125%;
   }
   </style>
   <body>
@@ -39,7 +31,6 @@
         </div>
         <ul class="nav navbar-nav">
           <li><a href="rkhive.html">MAMS Rkhive</a></li>
-          <li><a href="testPage1.html">Bootstrap Testing Page</a></li>
           <li><a href="about.html">About Rkhive</a></li>
         </ul>
       </div>
@@ -52,7 +43,7 @@
       </div>
         </div>
         <div id="hideshow" data-toggle="collapse" data-target="#menus">
-        <h3 class="subtitle center">hide/show menus</h3>
+        <button><h3 class="subtitle center">hide/show menus</h3></button>
         </div>
           <div id="menus" class="collapse in" style="width: 50vw; margin-left: auto; margin-right: auto">
             <div style = "width: 49%; float: left" class="form-group center">
@@ -64,9 +55,6 @@
              <select multiple class="form-control" id="exampleFormControlSelect">
                <option onClick="setCurrentYear('2022')">Class of 2022</option>
                <option onClick="setCurrentYear('2021')">Class of 2021</option>
-               <option onClick="setCurrentYear('2020')">Class of 2020</option>
-               <option onClick="setCurrentYear('2016')">Class of 2016</option>
-               <option onClick="setCurrentYear('2015')">Class of 2015</option>
              </select>
            </div>
           </form>
