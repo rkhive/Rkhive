@@ -96,6 +96,12 @@ button {
   font-style: italic;
 }
 
+.datahouser {
+  display: block;
+  margin-bottom: 15px;
+  height: 80vh;
+}
+
 .navbar {
   background-color: #6d213cff;
   border-width: 0px;
