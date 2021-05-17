@@ -129,7 +129,7 @@ if(String(mode) == "student"){
   document.getElementById('menu2').style.backgroundColor='#6d213cff';
   document.getElementById("hideshow").innerHTML = '';
   document.getElementById("hideshow").innerHTML =
-  "<h3 class='subtitle center' data-toggle='collapse' data-target='#menus'>hide/show menus</h3>";
+  "<button><h3 class='subtitle center'>hide/show menus</h3></button>";
 }
 else if(String(mode) == 'alumnus'){
   document.getElementById('banner').style.backgroundColor='#adb9e3ff';
@@ -141,7 +141,7 @@ else if(String(mode) == 'alumnus'){
   document.getElementById('menu2').style.backgroundColor='#adb9e3ff';
   document.getElementById("hideshow").innerHTML = '';
   document.getElementById("hideshow").innerHTML =
-  "<h3 class='alumni alumni-subtitle center' data-toggle='collapse' data-target='#menus'>hide/show menus</h3>";
+  "<button><h3 class='alumni alumni-subtitle center'>hide/show menus</h3></button>";
 }
 
 ref.once('value', function(snap) { //once means user must refresh
