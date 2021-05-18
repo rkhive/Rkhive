@@ -1,9 +1,14 @@
+//Define the Rkhive Firebase Databsae
 const database = firebase.database();
+//'users' is the root reference mainly used
 const rootRefOne = database.ref('users');
 
+//begin with no selected year or Mode
+//global variables
 var currentMode = '';
 var currentYear = '';
 
+//a function to flip an image of an arrow up and down
 function switchArrow2() {
   if (document.getElementById("arrow2").getAttribute('src') == 'Images/Arrow.png'){
     document.getElementById("arrow2").src= "Images/ArrowUp.png";
@@ -31,8 +36,11 @@ function switchArrow4() {
   }
 }
 
+// populates the website with data pointing to the current year and mode
 function populateWithCurrent(){
+  // define page as the Google spreadsheet that will be referenced for data
   page = "";
+  //change page based on the current mode
   if(currentMode == 'student'){
     page="Students"+String(currentYear);
   }
@@ -40,69 +48,34 @@ function populateWithCurrent(){
     page="Alumni"+String(currentYear);
   }
 
-  console.log(page);
+  //method call
   appearAndPopulate(page, currentYear, currentMode);
 }
 
+//Assigns input from website buttons to global variables
 function setCurrentYear(year){
   currentYear = String(year);
   console.log(currentYear);
+  //If both the year and mode have been selected, the data will appear
   if(currentMode != ''){
     populateWithCurrent();
   }
 }
 
+//Assigns input from website buttons to global variables
 function setCurrentMode(mode){
   currentMode = mode;
   console.log(currentMode);
+  //If both the year and mode have been selected, the data will appear
   if(currentYear != ''){
     populateWithCurrent();
   }
 }
 
+//define a root reference
 var rootRef = firebase.database().ref();
 
-function populateData(page, year, mode){
-  console.log(page);
-  currentMode = String(mode);
-  console.log("Changed currentMode to "+String(currentMode));
-  currentYear = String(year);
-  console.log("Changed currentYear to "+String(currentYear));
-
-//creates ref for node
-var ref = rootRef.child('1oYN4YtfxmtndybqYwCeg2uH1j8ifUVjro794v-rW11g/'+page);
-
-
-if(String(mode) == "student"){
-  document.getElementById('banner').style.backgroundColor='#6d213cff';
-}
-else if(String(mode) == 'alumnus'){
-  document.getElementById('banner').style.backgroundColor='#adb9e3ff';
-}
-
-ref.once('value', function(snap) { //once means user must refresh
-var index= 0;
-function incrementIndex(){
-   index++;
-}
-
-//gets values for each element in data set
-snap.forEach(function(child){
-  const obj = JSON.parse(JSON.stringify(child.val()));
-  document.getElementById("fullName"+String(index)).innerHTML = obj.first_name + " " + obj.last_name;
-  document.getElementById("modalName"+String(index)).innerHTML = obj.first_name + " " + obj.last_name;
-  document.getElementById("userFavclass"+String(index)).innerHTML = "Favorite Class: "+obj.fav_class;
-  document.getElementById("userSection"+String(index)).innerHTML = "Section "+obj.section;
-  document.getElementById("userQuote"+String(index)).innerHTML = obj.quote;
-  document.getElementById("userQuoteAuthor"+String(index)).innerHTML = "- "+obj.quote_author;
-  document.getElementById("userPicture"+String(index)).src = obj.preferred_picture;
-  document.getElementById("modalPicture"+String(index)).src = obj.preferred_picture;
-  document.getElementById("description"+String(index)).innerHTML = obj.student_description;
-  incrementIndex();
-});
-});
-};
-
+//populates data and generates HTML to house the data on the website
 function appearAndPopulate(page, year, mode){
   if(mode == "student"){
     loadStudentHTML(year);
@@ -110,7 +83,7 @@ function appearAndPopulate(page, year, mode){
   else if(mode == "alumnus"){
     loadAlumniHTML(year);
   }
-  console.log(page);
+  //update global variables
   currentMode = String(mode);
   console.log("Changed currentMode to "+String(currentMode));
   currentYear = String(year);
@@ -119,6 +92,7 @@ function appearAndPopulate(page, year, mode){
 //creates ref for node
 var ref = rootRef.child('1oYN4YtfxmtndybqYwCeg2uH1j8ifUVjro794v-rW11g/'+page);
 
+//changes the banner's content and color to match the current data
 if(String(mode) == "student"){
   document.getElementById('banner').style.backgroundColor='#6d213cff';
   document.getElementById("banner").innerHTML =
@@ -129,8 +103,9 @@ if(String(mode) == "student"){
   document.getElementById('menu2').style.backgroundColor='#6d213cff';
   document.getElementById("hideshow").innerHTML = '';
   document.getElementById("hideshow").innerHTML =
-  "<button><h3 class='subtitle center'>hide/show menus</h3></button>";
+  "<h3 class='subtitle center' data-toggle='collapse' data-target='#menus'>hide/show menus</h3>";
 }
+//changes the banner's content and color to match the current data
 else if(String(mode) == 'alumnus'){
   document.getElementById('banner').style.backgroundColor='#adb9e3ff';
   document.getElementById("banner").innerHTML =
@@ -141,10 +116,12 @@ else if(String(mode) == 'alumnus'){
   document.getElementById('menu2').style.backgroundColor='#adb9e3ff';
   document.getElementById("hideshow").innerHTML = '';
   document.getElementById("hideshow").innerHTML =
-  "<button><h3 class='alumni alumni-subtitle center'>hide/show menus</h3></button>";
+  "<h3 class='alumni alumni-subtitle center' data-toggle='collapse' data-target='#menus'>hide/show menus</h3>";
 }
 
+//capture a snapshot upon refresh
 ref.once('value', function(snap) { //once means user must refresh
+//create an index for students
 var index= 0;
 function incrementIndex(){
    index++;
@@ -160,12 +137,25 @@ if(mode == "student"){
     document.getElementById("yb-quote"+String(index)).innerHTML = obj.quote;
     document.getElementById("yb-quoteAuthor"+String(index)).innerHTML = "- "+obj.quote_author;
     document.getElementById("yb-studentPicture"+String(index)).src = obj.preferred_picture;
+    document.getElementById("yb-studentPicture"+String(index)).src = obj.preferred_picture;
     document.getElementById("yb-modalImage"+String(index)).src = obj.preferred_picture;
     document.getElementById("yb-description"+String(index)).innerHTML = obj.student_description;
     incrementIndex();
   });
-}
+  //skeleton of future code for Firebase storage images
+  // firebase.storage().ref('yb_photos/arrow4.gif').getDownloadURL()
+  //     .then((url) => {
+  //
+  //       // Or inserted into an <img> element
+  //       var img = document.getElementById('yb-studentPicture1');
+  //       img.setAttribute('src', url);
+  //     })
+  //     .catch((error) => {
+  //       // Handle any errors
+  //   });
 
+}
+// gets values for each element in data set
 else if(mode == "alumnus"){
   snap.forEach(function(child){
     const obj = JSON.parse(JSON.stringify(child.val()));
@@ -184,6 +174,7 @@ else if(mode == "alumnus"){
 });
 };
 
+//generates HTML elements based on how many students are in a specific class
 function loadStudentHTML(year){
   document.getElementById("alDataHouser").innerHTML = "";
   document.getElementById("ybDataHouser").innerHTML = "";
@@ -193,9 +184,8 @@ function loadStudentHTML(year){
     var numStudents = snapshot.val();
     for(i = 1 ; i <= numStudents; i++){ // INDEXING FOR NUM STUDENTS
       document.getElementById("ybDataHouser").innerHTML +=
-
       "<div id = " + "yb-box"+i+ " class = " +"'col-sm-2 col-sm-offset-5 border'" + " data-toggle = " +"'modal'" +" data-target = " + "#yb-modal"+i+">"
-        +"<img id=" + "yb-studentPicture" + i + " class = 'gridImg'> </img>"
+        +"<img id=" + "yb-studentPicture" + i + " class = 'gridImg' src ='Images/default-profile.png'> </img>"
         +"<p id = "+ "yb-fullName" + i + " class = studentname>"
         +"<div class='container-fluid'>"
         +"<div class='modal fade' id = yb-modal" + i + " role='dialog' data-keyboard='false' data-backdrop='static'>"
@@ -212,8 +202,6 @@ function loadStudentHTML(year){
         +"</div>"
         +"<div class = 'col-sm-8'>"
         +"<p id = yb-description" + i + " class='modaltext left'></p>"
-        +"<br>"
-        +"<br>"
         +"<p class= 'quote' id = yb-quote" + i + ">"
         +"<p class='quote' id = yb-quoteAuthor" + i + ">"
         +"</div>"
@@ -229,6 +217,7 @@ function loadStudentHTML(year){
   });
 };
 
+//generates HTML elements based on how many alumni are in a specific class
 function loadAlumniHTML(year){
   document.getElementById("alDataHouser").innerHTML = "";
   document.getElementById("ybDataHouser").innerHTML = "";
