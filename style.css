@@ -436,6 +436,10 @@ background-color: #869d7aff;
     margin: 0 auto;
 }
 
+.floatleft {
+  float: left;
+}
+
 .gridImg {
   width: 150px;
   height: 150px;
