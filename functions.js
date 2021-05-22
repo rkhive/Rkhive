@@ -2,11 +2,13 @@
 const database = firebase.database();
 //'users' is the root reference mainly used
 const rootRefOne = database.ref('users');
-
 //begin with no selected year or Mode
 //global variables
 var currentMode = '';
 var currentYear = '';
+var currentPage = '';
+var names = [];
+var sectionCount = 0;
 
 //a function to flip an image of an arrow up and down
 function switchArrow2() {
@@ -50,9 +52,10 @@ function populateWithCurrent(){
 
   //method call
   appearAndPopulate(page, currentYear, currentMode);
+
 }
 
-//Assigns input from website buttons to global variables
+//Assigns input from website buttons to gl`o`bal variables
 function setCurrentYear(year){
   currentYear = String(year);
   console.log(currentYear);
@@ -88,6 +91,8 @@ function appearAndPopulate(page, year, mode){
   console.log("Changed currentMode to "+String(currentMode));
   currentYear = String(year);
   console.log("Changed currentYear to "+String(currentYear));
+  currentPage = String(page);
+  console.log("Changed currentPage to "+String(currentPage));
 
 //creates ref for node
 var ref = rootRef.child('1oYN4YtfxmtndybqYwCeg2uH1j8ifUVjro794v-rW11g/'+page);
@@ -136,12 +141,26 @@ if(mode == "student"){
     document.getElementById("yb-section"+String(index)).innerHTML = "Section "+obj.section;
     document.getElementById("yb-quote"+String(index)).innerHTML = obj.quote;
     document.getElementById("yb-quoteAuthor"+String(index)).innerHTML = "- "+obj.quote_author;
-    document.getElementById("yb-studentPicture"+String(index)).src = obj.preferred_picture;
-    document.getElementById("yb-studentPicture"+String(index)).src = obj.preferred_picture;
-    document.getElementById("yb-modalImage"+String(index)).src = obj.preferred_picture;
+    var imgElem = "yb-studentPicture"+String(index);
+    var modElem = "yb-modalImage"+String(index);
     document.getElementById("yb-description"+String(index)).innerHTML = obj.student_description;
+    firebase.storage().ref('yb_photos/'+obj.first_name+"_"+obj.last_name+".png").getDownloadURL()
+        .then((url) => {
+
+          // Or inserted into an <img> element
+          var img1 = document.getElementById(imgElem);
+          img1.setAttribute('src', url);
+          var img2 = document.getElementById(modElem);
+          img2.setAttribute('src', url);
+        })
+        .catch((error) => {
+          console.log("WTF");
+        });
     incrementIndex();
   });
+
+
+
   //skeleton of future code for Firebase storage images
   // firebase.storage().ref('yb_photos/arrow4.gif').getDownloadURL()
   //     .then((url) => {
@@ -172,6 +191,51 @@ else if(mode == "alumnus"){
 }
 
 });
+};
+
+function loadSection(page, section){
+  var ref = rootRef.child('1oYN4YtfxmtndybqYwCeg2uH1j8ifUVjro794v-rW11g/'+page);
+  var count = 0;
+  ref.orderByChild("section").equalTo(section).on("child_added", function(snapshot) {
+    count++;
+  });
+  setTimeout(function(){loadSectionHTML(page, count)}, 100);
+  setTimeout(function(){populateSection(page, section)}, 300);
+}
+
+function populateSection(page, section){
+  console.log("starting test");
+  // var page = currentPage;
+  var ref = rootRef.child('1oYN4YtfxmtndybqYwCeg2uH1j8ifUVjro794v-rW11g/'+page);
+  // console.log(currentPage);
+  var index = 1;
+  ref.orderByChild("section").equalTo(section).on("child_added", function(snapshot) {
+    console.log(index);
+    const obj = JSON.parse(JSON.stringify(snapshot.val()));
+    document.getElementById("yb-fullName"+String(index)).innerHTML = obj.first_name + " " + obj.last_name;
+    document.getElementById("yb-modalName"+String(index)).innerHTML = obj.first_name + " " + obj.last_name;
+    document.getElementById("yb-favClass"+String(index)).innerHTML = "Favorite Class: "+obj.fav_class;
+    document.getElementById("yb-section"+String(index)).innerHTML = "Section "+obj.section;
+    document.getElementById("yb-quote"+String(index)).innerHTML = obj.quote;
+    document.getElementById("yb-quoteAuthor"+String(index)).innerHTML = "- "+obj.quote_author;
+    var imgElem = "yb-studentPicture"+String(index);
+    var modElem = "yb-modalImage"+String(index);
+    document.getElementById("yb-modalImage"+String(index)).src = obj.preferred_picture;
+    document.getElementById("yb-description"+String(index)).innerHTML = obj.student_description;
+    firebase.storage().ref('yb_photos/'+obj.first_name+"_"+obj.last_name+".png").getDownloadURL()
+        .then((url) => {
+
+          // Or inserted into an <img> element
+          var img1 = document.getElementById(imgElem);
+          img1.setAttribute('src', url);
+          var img2 = document.getElementById(modElem);
+          img2.setAttribute('src', url);
+        })
+        .catch((error) => {
+          console.log("WTF");
+        });
+    index++;
+  });
 };
 
 //generates HTML elements based on how many students are in a specific class
@@ -258,4 +322,42 @@ function loadAlumniHTML(year){
         +"</div>";
     }
   });
+};
+
+//really bad method
+function loadSectionHTML(section, count){
+  document.getElementById("alDataHouser").innerHTML = "";
+  document.getElementById("ybDataHouser").innerHTML = "";
+    for(i = 1 ; i <= count; i++){ // INDEXING FOR NUM STUDENTS
+      document.getElementById("ybDataHouser").innerHTML +=
+      "<div id = " + "yb-box"+i+ " class = " +"'col-sm-2 col-sm-offset-5 border'" + " data-toggle = " +"'modal'" +" data-target = " + "#yb-modal"+i+">"
+        +"<img id=" + "yb-studentPicture" + i + " class = 'gridImg' src ='Images/default-profile.png'> </img>"
+        +"<p id = "+ "yb-fullName" + i + " class = studentname>"
+        +"<div class='container-fluid'>"
+        +"<div class='modal fade' id = yb-modal" + i + " role='dialog' data-keyboard='false' data-backdrop='static'>"
+        +"<div class='modal-dialog'>"
+        +"<div class='modal-content'>"
+        +"<div class='modal-header'>"
+        +"<p class='modalname' id = yb-modalName" + i + ">"
+        +"</div>"
+        +"<div class='modal-body'>"
+        +"<div class='col-sm-4'>"
+        +"<img class='modalimage' id = yb-modalImage" + i + "> </img>"
+        +"<p id= yb-section" + i + " class='modalattribute'></p>"
+        +"<p id= yb-favClass" + i + " class='modalattribute'></p>"
+        +"</div>"
+        +"<div class = 'col-sm-8'>"
+        +"<p id = yb-description" + i + " class='modaltext left'></p>"
+        +"<p class= 'quote' id = yb-quote" + i + ">"
+        +"<p class='quote' id = yb-quoteAuthor" + i + ">"
+        +"</div>"
+        +"</div>"
+        +"<div class='modal-footer'>"
+        +"</div>"
+        +"</div>"
+        +"</div>"
+        +"</div>"
+        +"</div>"
+        +"</div>";
+    }
 };
