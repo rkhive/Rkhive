@@ -77,6 +77,8 @@
       </div>
 
       <button id = "btnUpdate" class = "btn hide floatRight inline"> Update Profile </button>
+
+      <button id = "btnResetPassword" class = "btn hide floatRight inline"> Reset Password </button>
     </div>
       <!-- The core Firebase JS SDK is always required and must be listed first -->
       <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-app.js"></script>
@@ -161,6 +163,17 @@
           firebase.auth().signOut();
         });
 
+        btnResetPassword.addEventListener('click', e => {
+          console.log(globalEmail);
+          firebase.auth().sendPasswordResetEmail(globalEmail)
+          .then(() => {
+            console.log("Email for password reset sent");
+          })
+          .catch(error => {
+            console.error(error);
+          })
+        });
+
         btnGiveUserInfo.addEventListener('click', e => {
           const user = firebase.auth().currentUser;
 
@@ -191,6 +204,7 @@
                         document.getElementById("favClassTitle").classList.remove("hide");
                         document.getElementById("editFavClass").classList.remove("hide");
                         document.getElementById("btnUpdate").classList.remove("hide");
+                        document.getElementById("btnResetPassword").classList.remove("hide");
                       })
                       .catch((error) => {
                         console.log("There was an error");
@@ -202,7 +216,6 @@
                     $(editQuote).html(obj.quote);
                     $(editQuoteAuthor).html(obj.quote_author);
                     $(editFavClass).html(obj.fav_class);
-
                 });
             });
           }
