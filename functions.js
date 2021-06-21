@@ -1,4 +1,4 @@
-//Define the Rkhive Firebase Databsae
+//Define the Rkhive Firebase Database
 const database = firebase.database();
 //'users' is the root reference mainly used
 const rootRefOne = database.ref('users');
@@ -52,7 +52,6 @@ function populateWithCurrent(){
 
   //method call
   appearAndPopulate(page, currentYear, currentMode);
-
 }
 
 //Assigns input from website buttons to gl`o`bal variables
@@ -93,6 +92,16 @@ function appearAndPopulate(page, year, mode){
   console.log("Changed currentYear to "+String(currentYear));
   currentPage = String(page);
   console.log("Changed currentPage to "+String(currentPage));
+
+//creates buttons for sections
+$(sectionOne).show();
+$(sectionOne).html("M");
+$(sectionTwo).show();
+$(sectionTwo).html("N");
+$(sectionThree).show();
+$(sectionThree).html("O");
+$(sectionFour).show();
+$(sectionFour).html("P");
 
 //creates ref for node
 var ref = rootRef.child('1oYN4YtfxmtndybqYwCeg2uH1j8ifUVjro794v-rW11g/'+page);
@@ -144,7 +153,7 @@ if(mode == "student"){
     var imgElem = "yb-studentPicture"+String(index);
     var modElem = "yb-modalImage"+String(index);
     document.getElementById("yb-description"+String(index)).innerHTML = obj.student_description;
-    firebase.storage().ref('yb_photos/'+obj.first_name+"_"+obj.last_name+".png").getDownloadURL()
+    firebase.storage().ref('yb_photos/'+obj.email+".png").getDownloadURL()
         .then((url) => {
 
           // Or inserted into an <img> element
@@ -222,7 +231,7 @@ function populateSection(page, section){
     var modElem = "yb-modalImage"+String(index);
     document.getElementById("yb-modalImage"+String(index)).src = obj.preferred_picture;
     document.getElementById("yb-description"+String(index)).innerHTML = obj.student_description;
-    firebase.storage().ref('yb_photos/'+obj.first_name+"_"+obj.last_name+".png").getDownloadURL()
+    firebase.storage().ref('yb_photos/'+obj.email+".png").getDownloadURL()
         .then((url) => {
 
           // Or inserted into an <img> element
