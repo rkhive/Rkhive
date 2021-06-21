@@ -40,7 +40,8 @@
         <ul class="nav navbar-nav">
           <li><a href="rkhive.html">MAMS Rkhive</a></li>
           <li><a href="about.html">About Rkhive</a></li>
-          <li><a href="imageUpload.html">Upload Images</a></li>
+          <!-- <li><a href="imageUpload.html">Upload Images</a></li> -->
+          <li><a href="login.html">Log in</a></li>
         </ul>
       </div>
     </nav>
@@ -57,24 +58,24 @@
           <div id="menus" class="collapse in" style="width: 50vw; margin-left: auto; margin-right: auto">
             <div style = "width: 49%; float: left" class="form-group center">
           <form>
-             <label id="menu1" onclick = 'switchArrow2();' data-target="#demo2">Select Year
+             <label class = "menuLabel" id="menu1" onclick = 'switchArrow2();' data-target="#demo2">Select Year
              <p><img id = "arrow2" class="pagearrow" src="Images/Arrow.png"></p>
            </label>
              <div id="demo2" class="collapse in">
              <select multiple class="form-control" id="exampleFormControlSelect">
                <option onClick="setCurrentYear('2022')">Class of 2022</option>
                <option onClick="setCurrentYear('2021')">Class of 2021</option>
-               <option onClick="loadSection('Students2022', 'M')">M</option>
+               <!-- <option onClick="loadSection('Students2022', 'M')">M</option>
                <option onClick="loadSection('Students2022', 'N')">N</option>
                <option onClick="loadSection('Students2022', 'O')">O</option>
-               <option onClick="loadSection('Students2022', 'P')">P</option>
+               <option onClick="loadSection('Students2022', 'P')">P</option> -->
              </select>
            </div>
           </form>
            </div>
              <div style = "width: 49%; float: right" class="form-group center">
            <form>
-             <label id="menu2" onclick = 'switchArrow3();' data-target="#demo3">Select
+             <label class = "menuLabel" id="menu2" onclick = 'switchArrow3();' data-target="#demo3">Select
                <abbr title="For each class, Yearbook Mode contains student profiles from high school and Alumni Mode contains continuously updatable information for each former student.">
                Mode
               </abbr>
@@ -90,7 +91,10 @@
          </div>
     </div>
 </div>
-
+<button id = "sectionOne" type="button" onClick="loadSection('Students2022', 'M')" class="btn btn-primary" style = "display:none"></button>
+<button id = "sectionTwo" type="button" onClick="loadSection('Students2022', 'N')" class="btn btn-primary" style = "display:none"></button>
+<button id = "sectionThree" type="button" onClick="loadSection('Students2022', 'O')" class="btn btn-primary" style = "display:none"></button>
+<button id = "sectionFour"type="button" onClick="loadSection('Students2022', 'P')" class="btn btn-primary" style = "display:none"></button>
         <div style="display:none">
           <img id="yb-studentPicture0"/>
           <img id="yb-modalImage0"/>
