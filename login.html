@@ -138,7 +138,10 @@
           else{
             $(userInfo).html("RKHIVE");
           }
-          promise.catch(e => console.log(e.message));
+          promise.catch(e => {
+            console.log(e.message);
+            $(userInfo).html(e.message);
+          });
         });
 
         //add signup event
