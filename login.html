@@ -80,6 +80,13 @@
 
       <button id = "btnResetPassword" class = "btn hide floatRight inline"> Reset Password </button>
     </div>
+    <!-- LOADER -->
+    <div class="loader-wrapper">
+      <span class="loader"><span class="loader-inner"></span></span>
+    </div>
+    <div class="loader-wrapper">
+      <span class="loader"><span class="loader-inner"></span></span>
+    </div>
       <!-- The core Firebase JS SDK is always required and must be listed first -->
       <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-app.js"></script>
       <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-database.js"></script>
@@ -304,5 +311,10 @@
   </body>
 
   <script src = "./functions.js"></script>
+  <script>
+  $(window).on("load",function(){
+    $(".loader-wrapper").fadeOut("slow");
+  });
+  </script>
 
   </html>
