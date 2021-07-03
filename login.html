@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Marcellus+SC&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+  <link rel="apple-touch-icon" sizes="180x180" href="Images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="Images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="Images/favicon-16x16.png">
+  <link rel="manifest" href="Images/site.webmanifest">
+  <title>Rkhive Mass Academy</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <div id="img">
+          <span class="white"><a class="navbar-brand active" href="index.html"><img style="display:block" src="Images/CornerLogoV2.png" height="55px"></a></span>
+          </div>
+        </div>
+        <ul class="nav navbar-nav">
+          <li><a href="rkhive.html">MAMS Rkhive</a></li>
+          <li><a href="about.html">About Rkhive</a></li>
+          <li><a href="login.html">Manage Profile</a></li>
+        </ul>
+      </div>
+    </nav>
+    <div class = "center">
+      <h1 class="topmargin">Please login to edit your profile.</h1>
+      <br>
+      <input id = "txtEmail" type = "email" placeholder = "Email">
+      <br>
+      <br>
+      <input id = "txtPassword" type = "password" placeholder = "Password">
+      <br>
+      <br>
+      <br>
+      <button id = "btnLogin" class = "btn editbutton"> Log In </button>
+      <button id = "btnSignUp" class = "btn editbutton hide"> Sign Up </button>
+      <button id = "btnLogout" class = "btn editbutton hide"> Log Out </button>
+      <button id = btnGiveUserInfo class = "btn editbutton hide"> User Details </button>
+      <br>
+      <div class="center">
+      <div id = "userInfo" class = "container center infoBox">
+      </div>
+    </div>
+      <div class = center>
+        <h4 id = "descTitle" class = "hide"> Edit Description: </h4>
+          <div id = "editDesc" class = "editBox hide" contenteditable="true"></div>
+
+        <h4 id = "quoteTitle" class = "hide"> Edit Quote: </h4>
+          <div id = "editQuote" class = "editBox hide" contenteditable="true"></div>
+
+        <h4 id = "quoteAuthorTitle" class = "hide"> Edit Quote Author: </h4>
+          <div id = "editQuoteAuthor" class = "editBox hide" contenteditable="true"></div>
+
+        <h4 id = "favClassTitle" class = "hide"> Edit Favorite Class: </h4>
+          <div id = "editFavClass" class = "editBox hide" contenteditable="true"></div>
+
+        <progress id="uploader" value="0" max="100"> 0% </progress>
+        <input id = 'fileButton' type = 'file' value = 'upload' class = "btn"></input>
+        <p id = progressPrint></p>
+
+        <img class = 'gridImg redBorder' src = "" id = "myimg" style = "display:none"></img>
+
+      </div>
+
+      <button id = "btnUpdate" class = "btn hide floatRight inline"> Update Profile </button>
+
+      <button id = "btnResetPassword" class = "btn hide floatRight inline"> Reset Password </button>
+    </div>
+      <!-- The core Firebase JS SDK is always required and must be listed first -->
+      <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-app.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-database.js"></script>
+
+      <!-- TODO: Add SDKs for Firebase products that you want to use
+           https://firebase.google.com/docs/web/setup#available-libraries -->
+      <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-analytics.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-storage.js"></script>
+       <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
+      <script>
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        var firebaseConfig = {
+          apiKey: "AIzaSyA-7xOhqPJjhq-cm6VuzjZZ5X3dti6UeFQ",
+          authDomain: "rkhive-1faec.firebaseapp.com",
+          databaseURL: "https://rkhive-1faec-default-rtdb.firebaseio.com",
+          projectId: "rkhive-1faec",
+          storageBucket: "rkhive-1faec.appspot.com",
+          messagingSenderId: "608713408633",
+          appId: "1:608713408633:web:fe413d775d51be77e2d4a8",
+          measurementId: "G-PCS017396G"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        firebase.analytics();
+
+        // Get elements for login
+        const txtEmail = document.getElementById("txtEmail");
+        const txtPassword = document.getElementById("txtPassword");
+        const btnLogin = document.getElementById("btnLogin");
+        const btnSignUp = document.getElementById("btnSignUp");
+        const btnLogout = document.getElementById("btnLogout");
+
+        // Declare global variable for email
+        var globalEmail = "";
+
+        // Get elements for progress bar and submit button
+        var uploader = document.getElementById('uploader');
+        var fileButton = document.getElementById('fileButton');
+
+        //the specific reference of the user
+        var userRef = "";
+
+        //add login event
+        btnLogin.addEventListener('click', e => {
+          //Get email and pass
+          const email = txtEmail.value;
+          const pass = txtPassword.value;
+          const auth = firebase.auth();
+
+          //Sign in
+          const promise = auth.signInWithEmailAndPassword(email, pass);
+          if(email){
+          $(userInfo).html("Logged in as "+email);
+          }
+          else{
+            $(userInfo).html("RKHIVE");
+          }
+          promise.catch(e => {
+            console.log(e.message);
+            $(userInfo).html(e.message);
+          });
+        });
+
+        //add signup event
+        btnSignUp.addEventListener('click', e => {
+          //Get email and pass
+          //TODO: validate these emails
+          const email = txtEmail.value;
+          const pass = txtPassword.value;
+          const auth = firebase.auth();
+
+          //Sign in
+          const promise = auth.createUserWithEmailAndPassword(email, pass);
+          $(userInfo).html("Created account as "+email);
+          promise.catch(e => {
+            console.log(e.message);
+            $(userInfo).html(e.message);
+          });
+        });
+
+        // TODO: hide all profile elements when logging out
+        btnLogout.addEventListener('click', e => {
+          firebase.auth().signOut();
+        });
+
+        btnResetPassword.addEventListener('click', e => {
+          console.log(globalEmail);
+          firebase.auth().sendPasswordResetEmail(globalEmail)
+          .then(() => {
+            console.log("Email for password reset sent");
+          })
+          .catch(error => {
+            console.error(error);
+          })
+        });
+
+        btnGiveUserInfo.addEventListener('click', e => {
+          const user = firebase.auth().currentUser;
+
+            if (user !== null) {
+              user.providerData.forEach((profile) => {
+                // TODO : update usersRef away from specific class
+                var usersRef = firebase.database().ref('1oYN4YtfxmtndybqYwCeg2uH1j8ifUVjro794v-rW11g/Students2022');
+                usersRef.orderByChild("email").equalTo(profile.email).on("child_added", function(snapshot) {
+                  // console.log(snapshot.key);
+                  userRef = snapshot.ref.path.toString();
+                  const obj = JSON.parse(JSON.stringify(snapshot.val()));
+                  //setting GLOBAL variable email
+                  globalEmail = profile.email;
+
+                  $(userInfo).html(
+                    "<div class = 'col-sm-2 col-sm-offset-5 border center' data-toggle=modal data-target=#modal>"
+                    +"<img id='userInfoImg' class='gridImg'>"
+                    +"<p class='studentname'>" + obj.first_name + " " + obj.last_name + "</p>"
+                    +"<div class='container-fluid'>"
+                    +"<div class='modal fade' id = modal role='dialog' data-keyboard='false' data-backdrop='static'>"
+                    +"<div class='modal-dialog'>"
+                    +"<div class='modal-content'>"
+                    +"<div class='modal-header'>"
+                    +"<p class='modalname'>"
+                    +"</div>"
+                    +"<div class='modal-body'>"
+                    +"<div class='col-sm-4'>"
+                    +"<img class='modalimage' id ='userInfoImg2' </img>"
+                    +"<p class='modalattribute'> Section: " + obj.section + "</p>"
+                    +"<p class='modalattribute'> Favorite Class: " + obj.fav_class + "</p>"
+                    +"</div>"
+                    +"<div class = 'col-sm-8'>"
+                    +"<p class='modaltext left'>" + obj.student_description + "</p>"
+                    +"<p class= 'quote'>" + obj.quote + "</p>"
+                    +"<p class= 'quote'> - " + obj.quote_author + "</p>"
+                    +"</div>"
+                   +"</div>"
+                    +"<div class='modal-footer'>"
+                    +"</div>"
+                    +"</div>"
+                    +"</div>"
+                    +"</div>"
+                    +"</div>"
+                    +"</div>");
+                    //
+                    //
+                    //
+                    //
+                    // "<div class = 'col-sm-2 col-sm-offset-5 border'" + " data-toggle = " +"'modal'" +" data-target = " + "#yb-modal"+i+">"
+                    //   +"<img id=" + "yb-studentPicture" + i + " class = 'gridImg' src ='Images/default-profile.png'> </img>"
+                    //   +"<p id = "+ "yb-fullName" + i + " class = studentname>"
+                    //   +"<div class='container-fluid'>"
+                    //   +"<div class='modal fade' id = yb-modal" + i + " role='dialog' data-keyboard='false' data-backdrop='static'>"
+                    //   +"<div class='modal-dialog'>"
+                    //   +"<div class='modal-content'>"
+                    //   +"<div class='modal-header'>"
+                    //   +"<p class='modalname' id = yb-modalName" + i + ">"
+                    //   +"</div>"
+                    //   +"<div class='modal-body'>"
+                    //   +"<div class='col-sm-4'>"
+                    //   +"<img class='modalimage' id = yb-modalImage" + i + "> </img>"
+                    //   +"<p id= yb-section" + i + " class='modalattribute'></p>"
+                    //   +"<p id= yb-favClass" + i + " class='modalattribute'></p>"
+                    //   +"</div>"
+                    //   +"<div class = 'col-sm-8'>"
+                    //   +"<p id = yb-description" + i + " class='modaltext left'></p>"
+                    //   +"<p class= 'quote' id = yb-quote" + i + ">"
+                    //   +"<p class='quote' id = yb-quoteAuthor" + i + ">"
+                    //   +"</div>"
+                    //   +"</div>"
+                    //   +"<div class='modal-footer'>"
+                    //   +"</div>"
+                    //   +"</div>"
+                    //   +"</div>"
+                    //   +"</div>"
+                    //   +"</div>"
+                    //   +"</div>";
+                    //
+                    //
+                    //
+                    //
+                    //
+                    //
+                    //
+                    //
+                    //
+                    //
+                    //
+                    //
+                    //
+                    //
+                    // "  Email: " + profile.email + "<br>" + "  Name: "+obj.first_name+" "+obj.last_name + "<br>" + "  Section: " +obj.section);
+                  // TODO: remove image when logging out or switching users
+                  firebase.storage().ref('yb_photos/'+obj.email+".png").getDownloadURL()
+                      .then((url) => {
+                        console.log(url);
+                        // TODO: write a method to remove the hide class from elements
+                        document.getElementById("userInfoImg").setAttribute('src', url);
+                        document.getElementById("userInfoImg2").setAttribute('src', url);
+                        document.getElementById("userInfoImg").classList.remove("hide");
+                        document.getElementById("descTitle").classList.remove("hide");
+                        document.getElementById("editDesc").classList.remove("hide");
+                        document.getElementById("quoteTitle").classList.remove("hide");
+                        document.getElementById("editQuote").classList.remove("hide");
+                        document.getElementById("quoteAuthorTitle").classList.remove("hide");
+                        document.getElementById("editQuoteAuthor").classList.remove("hide");
+                        document.getElementById("favClassTitle").classList.remove("hide");
+                        document.getElementById("editFavClass").classList.remove("hide");
+                        document.getElementById("btnUpdate").classList.remove("hide");
+                        document.getElementById("btnResetPassword").classList.remove("hide");
+                      })
+                      .catch((error) => {
+                        console.log("There was an error");
+                        $(userInfo).html("There was an error");
+                      });
+
+                    // displays the current state of the user's data
+                    $(editDesc).html(obj.student_description);
+                    $(editQuote).html(obj.quote);
+                    $(editQuoteAuthor).html(obj.quote_author);
+                    $(editFavClass).html(obj.fav_class);
+                });
+            });
+          }
+        });
+
+        btnUpdate.addEventListener('click', e => {
+          console.log(userRef);
+          firebase.database().ref(userRef).update({
+            student_description: document.getElementById("editDesc").innerHTML,
+            quote: document.getElementById("editQuote").innerHTML,
+            quote_author: document.getElementById("editQuoteAuthor").innerHTML,
+            fav_class: document.getElementById("editFavClass").innerHTML
+          });
+          console.log("yoooo");
+          window.alert("Profile has been updated!");
+        });
+        //add a realtime addEventListener
+        firebase.auth().onAuthStateChanged(firebaseUser => {
+          if(firebaseUser) {
+            console.log(firebaseUser);
+            btnLogout.classList.remove('hide');
+            btnGiveUserInfo.classList.remove('hide');
+          }
+          else {
+            $(userInfo).html("Not logged in");
+            btnLogout.classList.add('hide');
+            btnGiveUserInfo.classList.add('hide');
+          }
+        });
+
+        // TODO: make a better name for the function
+        // TODO: make images and information disappear and such
+        function showInputs(){
+          $(progressPrint).html("Upload Complete!");
+          firebase.storage().ref('yb_photos/'+globalEmail+".png").getDownloadURL()
+              .then((url) => {
+                // Or inserted into an <img> element
+                var img = document.getElementById('myimg');
+                img.setAttribute('src', url);
+              })
+              .catch((error) => {
+                // Handle any errors
+              });
+          document.getElementById("myimg").style.display = "block";
+        }
+
+        //listen for file selection
+        fileButton.addEventListener('change', function(e) {
+            //get file
+            var file = e.target.files[0];
+            console.log(file);
+            var blob = file.slice(0, file.size, 'image/png/jpg/jpeg');
+            newFile = new File([blob], globalEmail+".png", {type: 'image/png'});
+
+            //create storage refresh
+            //originally file.name
+            var storageRef = firebase.storage().ref('yb_photos/'+newFile.name);
+
+            //upload file
+            //originally file
+            var task = storageRef.put(newFile);
+
+            //update progress banner
+            task.on('state_changed',
+
+            function progress (snapshot){
+              var percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+              uploader.value = percentage;
+            },
+
+            function error(err) {
+
+            },
+
+            function complete(){
+              console.log("Updated picture to profile" +globalEmail);
+              showInputs();
+            }
+          );
+        });
+      </script>
+
+  </body>
+
+  <script src = "./functions.js"></script>
+
+  </html>

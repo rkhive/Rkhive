@@ -44,6 +44,16 @@ h3 {
   font-style: italic;
 }
 
+h4{
+  text-align: auto;
+  color: white;
+  font-family: 'Open Sans';
+  background-color: #6d213cff;
+  padding: 10px 10px;
+  margin-top: 45px;
+  font-size: 0.75cm !important;
+}
+
 a {
   font-family: 'Open Sans';
 }
@@ -94,6 +104,31 @@ button {
   font-weight: 500;
   font-size: 0.5cm !important;
   font-style: italic;
+}
+
+input {
+  padding: 8px 15px;
+  margin: 4px 0;
+  box-sizing: border-box;
+  border: none;
+  border-bottom: 2px solid #6d213cff;
+  outline: none;
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 800;
+  font-size: 0.5cm;
+}
+
+input:focus {
+  background-color: white;
+}
+
+.editBox{
+  font-family: 'Open Sans';
+  font-size: 1.25em;
+  font-style: italic;
+  font-weight: 800;
+  padding: 10px 10px;
 }
 
 .datahouser {
@@ -222,6 +257,33 @@ height: 50px;
 
 #img:hover {
   transform: rotate(-20deg);
+}
+
+.editbutton:link {
+    color: white;
+    border-width: 0px;
+}
+
+.editbutton:active {
+    color: white;
+    border-width: 0px;
+}
+
+.editbutton:focus {
+    color: white;
+    border-width: 0px;
+}
+
+.editbutton:visited {
+    color: white;
+    border-width: 0px;
+}
+
+.editbutton:hover{
+  color: #6d213cff;
+  background-color: white;
+  border-color: #6d213cff;
+  transition-duration: 1s;
 }
 
 .personDesc{
@@ -494,6 +556,51 @@ background-color: #869d7aff;
   overflow-y: scroll;
   scroll-behavior: smooth;
   text-align: center;
+}
+
+.topmargin {
+  margin-top: 45px;
+}
+
+.loader-wrapper {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #6d213cff;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+.loader {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  position: relative;
+  border: 4px solid #Fff;
+  animation: loader 2s infinite ease;
+}
+.loader-inner {
+  vertical-align: top;
+  display: inline-block;
+  width: 100%;
+  background-color: #fff;
+  animation: loader-inner 2s infinite ease-in;
+}
+@keyframes loader {
+  0% { transform: rotate(0deg);}
+  25% { transform: rotate(180deg);}
+  50% { transform: rotate(180deg);}
+  75% { transform: rotate(360deg);}
+  100% { transform: rotate(360deg);}
+}
+@keyframes loader-inner {
+  0% { height: 0%;}
+  25% { height: 0%;}
+  50% { height: 100%;}
+  75% { height: 100%;}
+  100% { height: 0%;}
 }
 
 /* sm */
