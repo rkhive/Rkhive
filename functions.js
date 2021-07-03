@@ -263,7 +263,7 @@ function loadStudentHTML(year){
     var numStudents = snapshot.val();
     for(i = 1 ; i <= numStudents; i++){ // INDEXING FOR NUM STUDENTS
       document.getElementById("ybDataHouser").innerHTML +=
-      "<div id = " + "yb-box"+i+ " class = " +"'col-sm-2 col-sm-offset-5 border'" + " data-toggle = " +"'modal'" +" data-target = " + "#yb-modal"+i+">"
+      "<div id = " + "yb-box"+i+ " class = " +"'box border'" + " data-toggle = " +"'modal'" +" data-target = " + "#yb-modal"+i+">"
         +"<img id=" + "yb-studentPicture" + i + " class = 'gridImg' src ='Images/blocks_load.gif'> </img>"
         +"<p id = "+ "yb-fullName" + i + " class = studentname>"
         +"<div class='container-fluid'>"
@@ -307,7 +307,7 @@ function loadAlumniHTML(year){
     for(i = 1 ; i <= numStudents; i++){ // INDEXING FOR NUM STUDENTS
       document.getElementById("alDataHouser").innerHTML +=
 
-      "<div id = " + "al-box"+i+ " class = " +"'col-sm-2 col-sm-offset-5 border'" + " data-toggle = " +"'modal'" +" data-target = " + "#al-modal"+i+">"
+      "<div id = " + "al-box"+i+ " class = " +"'box border'" + " data-toggle = " +"'modal'" +" data-target = " + "#al-modal"+i+">"
         +"<img id=" + "al-picture" + i + " class = 'gridImg'> </img>"
         +"<p id = "+ "al-fullName" + i + " class = studentname>"
         +"<div class='container-fluid'>"
@@ -345,7 +345,7 @@ function loadSectionHTML(section, count){
   document.getElementById("ybDataHouser").innerHTML = "";
     for(i = 1 ; i <= count; i++){ // INDEXING FOR NUM STUDENTS
       document.getElementById("ybDataHouser").innerHTML +=
-      "<div id = " + "yb-box"+i+ " class = " +"'col-sm-2 col-sm-offset-5 border'" + " data-toggle = " +"'modal'" +" data-target = " + "#yb-modal"+i+">"
+      "<div id = " + "yb-box"+i+ " class = " +"'box border'" + " data-toggle = " +"'modal'" +" data-target = " + "#yb-modal"+i+">"
         +"<img id=" + "yb-studentPicture" + i + " class = 'gridImg' src ='Images/blocks_load.gif'> </img>"
         +"<p id = "+ "yb-fullName" + i + " class = studentname>"
         +"<div class='container-fluid'>"

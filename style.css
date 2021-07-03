@@ -123,6 +123,11 @@ input:focus {
   background-color: white;
 }
 
+.box {
+ width: 225px;
+ float:left;
+}
+
 .editBox{
   font-family: 'Open Sans';
   font-size: 1.25em;
