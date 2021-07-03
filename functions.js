@@ -10,6 +10,17 @@ var currentPage = '';
 var names = [];
 var sectionCount = 0;
 
+window.onload = (event) => {
+  console.log('page is fully loaded');
+};
+
+
+function showWhenReady(){
+  $('document').waitForImages(function() {
+      $(".loader-wrapper").fadeOut("slow");
+    });
+}
+
 //a function to flip an image of an arrow up and down
 function switchArrow2() {
   if (document.getElementById("arrow2").getAttribute('src') == 'Images/Arrow.png'){
@@ -79,6 +90,9 @@ var rootRef = firebase.database().ref();
 
 //populates data and generates HTML to house the data on the website
 function appearAndPopulate(page, year, mode){
+  //SHOW the loader
+  // $(".loader-wrapper").show();
+
   if(mode == "student"){
     loadStudentHTML(year);
   }
@@ -168,20 +182,6 @@ if(mode == "student"){
     incrementIndex();
   });
 
-
-
-  //skeleton of future code for Firebase storage images
-  // firebase.storage().ref('yb_photos/arrow4.gif').getDownloadURL()
-  //     .then((url) => {
-  //
-  //       // Or inserted into an <img> element
-  //       var img = document.getElementById('yb-studentPicture1');
-  //       img.setAttribute('src', url);
-  //     })
-  //     .catch((error) => {
-  //       // Handle any errors
-  //   });
-
 }
 // gets values for each element in data set
 else if(mode == "alumnus"){
@@ -200,9 +200,15 @@ else if(mode == "alumnus"){
 }
 
 });
+
+showWhenReady();
+
 };
 
 function loadSection(page, section){
+  //SHOW the loader
+  // $(".loader-wrapper").show();
+
   var ref = rootRef.child('1oYN4YtfxmtndybqYwCeg2uH1j8ifUVjro794v-rW11g/'+page);
   var count = 0;
   ref.orderByChild("section").equalTo(section).on("child_added", function(snapshot) {
@@ -210,10 +216,10 @@ function loadSection(page, section){
   });
   setTimeout(function(){loadSectionHTML(page, count)}, 100);
   setTimeout(function(){populateSection(page, section)}, 300);
+  showWhenReady();
 }
 
 function populateSection(page, section){
-  console.log("starting test");
   // var page = currentPage;
   var ref = rootRef.child('1oYN4YtfxmtndybqYwCeg2uH1j8ifUVjro794v-rW11g/'+page);
   // console.log(currentPage);
@@ -258,7 +264,7 @@ function loadStudentHTML(year){
     for(i = 1 ; i <= numStudents; i++){ // INDEXING FOR NUM STUDENTS
       document.getElementById("ybDataHouser").innerHTML +=
       "<div id = " + "yb-box"+i+ " class = " +"'col-sm-2 col-sm-offset-5 border'" + " data-toggle = " +"'modal'" +" data-target = " + "#yb-modal"+i+">"
-        +"<img id=" + "yb-studentPicture" + i + " class = 'gridImg' src ='Images/default-profile.png'> </img>"
+        +"<img id=" + "yb-studentPicture" + i + " class = 'gridImg' src ='Images/blocks_load.gif'> </img>"
         +"<p id = "+ "yb-fullName" + i + " class = studentname>"
         +"<div class='container-fluid'>"
         +"<div class='modal fade' id = yb-modal" + i + " role='dialog' data-keyboard='false' data-backdrop='static'>"
@@ -340,7 +346,7 @@ function loadSectionHTML(section, count){
     for(i = 1 ; i <= count; i++){ // INDEXING FOR NUM STUDENTS
       document.getElementById("ybDataHouser").innerHTML +=
       "<div id = " + "yb-box"+i+ " class = " +"'col-sm-2 col-sm-offset-5 border'" + " data-toggle = " +"'modal'" +" data-target = " + "#yb-modal"+i+">"
-        +"<img id=" + "yb-studentPicture" + i + " class = 'gridImg' src ='Images/default-profile.png'> </img>"
+        +"<img id=" + "yb-studentPicture" + i + " class = 'gridImg' src ='Images/blocks_load.gif'> </img>"
         +"<p id = "+ "yb-fullName" + i + " class = studentname>"
         +"<div class='container-fluid'>"
         +"<div class='modal fade' id = yb-modal" + i + " role='dialog' data-keyboard='false' data-backdrop='static'>"
