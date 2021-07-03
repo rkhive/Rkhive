@@ -28,44 +28,40 @@
         <ul class="nav navbar-nav">
           <li><a href="rkhive.html">MAMS Rkhive</a></li>
           <li><a href="about.html">About Rkhive</a></li>
-          <!-- <li><a href="imageUpload.html">Upload Images</a></li> -->
           <li><a href="login.html">Manage Profile</a></li>
         </ul>
       </div>
     </nav>
-    <div class = "container">
-      <input id = "txtEmail" type = "email" placeholder = "Email">
-
-      <input id = "txtPassword" type = "password" placeholder = "Password">
-
-        <br><br>
-
-      <button id = "btnLogin" class = "btn"> Log in </button>
-
-      <button id = "btnSignUp" class = "btn hide"> Sign Up </button>
-
-      <button id = "btnLogout" class = "btn hide"> Log Out </button>
-
-      <button id = btnGiveUserInfo class = "btn hide"> User Details </button>
-
+    <div class = "center">
+      <h1 class="topmargin">Please login to edit your profile.</h1>
       <br>
-
+      <input id = "txtEmail" type = "email" placeholder = "Email">
+      <br>
+      <br>
+      <input id = "txtPassword" type = "password" placeholder = "Password">
+      <br>
+      <br>
+      <br>
+      <button id = "btnLogin" class = "btn editbutton"> Log In </button>
+      <button id = "btnSignUp" class = "btn editbutton hide"> Sign Up </button>
+      <button id = "btnLogout" class = "btn editbutton hide"> Log Out </button>
+      <button id = btnGiveUserInfo class = "btn editbutton hide"> User Details </button>
+      <br>
+      <div class="center">
       <div id = "userInfo" class = "container center infoBox">
-        RKHIVE
       </div>
+    </div>
       <div class = center>
-        <img class = 'gridImg hide' src = "" id = "userInfoImg"></img>
-
-        <h3 id = "descTitle" class = "hide"> Edit Description: </h3>
+        <h4 id = "descTitle" class = "hide"> Edit Description: </h4>
           <div id = "editDesc" class = "editBox hide" contenteditable="true"></div>
 
-        <h3 id = "quoteTitle" class = "hide"> Edit Quote: </h3>
+        <h4 id = "quoteTitle" class = "hide"> Edit Quote: </h4>
           <div id = "editQuote" class = "editBox hide" contenteditable="true"></div>
 
-        <h3 id = "quoteAuthorTitle" class = "hide"> Edit Quote Author: </h3>
+        <h4 id = "quoteAuthorTitle" class = "hide"> Edit Quote Author: </h4>
           <div id = "editQuoteAuthor" class = "editBox hide" contenteditable="true"></div>
 
-        <h3 id = "favClassTitle" class = "hide"> Edit Favorite Class: </h3>
+        <h4 id = "favClassTitle" class = "hide"> Edit Favorite Class: </h4>
           <div id = "editFavClass" class = "editBox hide" contenteditable="true"></div>
 
         <progress id="uploader" value="0" max="100"> 0% </progress>
@@ -79,13 +75,6 @@
       <button id = "btnUpdate" class = "btn hide floatRight inline"> Update Profile </button>
 
       <button id = "btnResetPassword" class = "btn hide floatRight inline"> Reset Password </button>
-    </div>
-    <!-- LOADER -->
-    <div class="loader-wrapper">
-      <span class="loader"><span class="loader-inner"></span></span>
-    </div>
-    <div class="loader-wrapper">
-      <span class="loader"><span class="loader-inner"></span></span>
     </div>
       <!-- The core Firebase JS SDK is always required and must be listed first -->
       <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-app.js"></script>
@@ -197,13 +186,92 @@
                   const obj = JSON.parse(JSON.stringify(snapshot.val()));
                   //setting GLOBAL variable email
                   globalEmail = profile.email;
-                  $(userInfo).html("  Email: " + profile.email + "<br>" + "  Name: "+obj.first_name+" "+obj.last_name + "<br>" + "  Section: " +obj.section);
+
+                  $(userInfo).html(
+                    "<div class = 'col-sm-2 col-sm-offset-5 border center' data-toggle=modal data-target=#modal>"
+                    +"<img id='userInfoImg' class='gridImg'>"
+                    +"<p class='studentname'>" + obj.first_name + " " + obj.last_name + "</p>"
+                    +"<div class='container-fluid'>"
+                    +"<div class='modal fade' id = modal role='dialog' data-keyboard='false' data-backdrop='static'>"
+                    +"<div class='modal-dialog'>"
+                    +"<div class='modal-content'>"
+                    +"<div class='modal-header'>"
+                    +"<p class='modalname'>"
+                    +"</div>"
+                    +"<div class='modal-body'>"
+                    +"<div class='col-sm-4'>"
+                    +"<img class='modalimage' id ='userInfoImg2' </img>"
+                    +"<p class='modalattribute'> Section: " + obj.section + "</p>"
+                    +"<p class='modalattribute'> Favorite Class: " + obj.fav_class + "</p>"
+                    +"</div>"
+                    +"<div class = 'col-sm-8'>"
+                    +"<p class='modaltext left'>" + obj.student_description + "</p>"
+                    +"<p class= 'quote'>" + obj.quote + "</p>"
+                    +"<p class= 'quote'> - " + obj.quote_author + "</p>"
+                    +"</div>"
+                   +"</div>"
+                    +"<div class='modal-footer'>"
+                    +"</div>"
+                    +"</div>"
+                    +"</div>"
+                    +"</div>"
+                    +"</div>"
+                    +"</div>");
+                    //
+                    //
+                    //
+                    //
+                    // "<div class = 'col-sm-2 col-sm-offset-5 border'" + " data-toggle = " +"'modal'" +" data-target = " + "#yb-modal"+i+">"
+                    //   +"<img id=" + "yb-studentPicture" + i + " class = 'gridImg' src ='Images/default-profile.png'> </img>"
+                    //   +"<p id = "+ "yb-fullName" + i + " class = studentname>"
+                    //   +"<div class='container-fluid'>"
+                    //   +"<div class='modal fade' id = yb-modal" + i + " role='dialog' data-keyboard='false' data-backdrop='static'>"
+                    //   +"<div class='modal-dialog'>"
+                    //   +"<div class='modal-content'>"
+                    //   +"<div class='modal-header'>"
+                    //   +"<p class='modalname' id = yb-modalName" + i + ">"
+                    //   +"</div>"
+                    //   +"<div class='modal-body'>"
+                    //   +"<div class='col-sm-4'>"
+                    //   +"<img class='modalimage' id = yb-modalImage" + i + "> </img>"
+                    //   +"<p id= yb-section" + i + " class='modalattribute'></p>"
+                    //   +"<p id= yb-favClass" + i + " class='modalattribute'></p>"
+                    //   +"</div>"
+                    //   +"<div class = 'col-sm-8'>"
+                    //   +"<p id = yb-description" + i + " class='modaltext left'></p>"
+                    //   +"<p class= 'quote' id = yb-quote" + i + ">"
+                    //   +"<p class='quote' id = yb-quoteAuthor" + i + ">"
+                    //   +"</div>"
+                    //   +"</div>"
+                    //   +"<div class='modal-footer'>"
+                    //   +"</div>"
+                    //   +"</div>"
+                    //   +"</div>"
+                    //   +"</div>"
+                    //   +"</div>"
+                    //   +"</div>";
+                    //
+                    //
+                    //
+                    //
+                    //
+                    //
+                    //
+                    //
+                    //
+                    //
+                    //
+                    //
+                    //
+                    //
+                    // "  Email: " + profile.email + "<br>" + "  Name: "+obj.first_name+" "+obj.last_name + "<br>" + "  Section: " +obj.section);
                   // TODO: remove image when logging out or switching users
                   firebase.storage().ref('yb_photos/'+obj.email+".png").getDownloadURL()
                       .then((url) => {
                         console.log(url);
                         // TODO: write a method to remove the hide class from elements
                         document.getElementById("userInfoImg").setAttribute('src', url);
+                        document.getElementById("userInfoImg2").setAttribute('src', url);
                         document.getElementById("userInfoImg").classList.remove("hide");
                         document.getElementById("descTitle").classList.remove("hide");
                         document.getElementById("editDesc").classList.remove("hide");
@@ -311,10 +379,5 @@
   </body>
 
   <script src = "./functions.js"></script>
-  <script>
-  $(window).on("load",function(){
-    $(".loader-wrapper").fadeOut("slow");
-  });
-  </script>
 
   </html>
