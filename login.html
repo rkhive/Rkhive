@@ -45,39 +45,49 @@
       <button id = "btnLogin" class = "btn editbutton"> Log In </button>
       <button id = "btnSignUp" class = "btn editbutton hide"> Sign Up </button>
       <button id = "btnLogout" class = "btn editbutton hide"> Log Out </button>
-      <button id = btnGiveUserInfo class = "btn editbutton hide"> User Details </button>
+      <button id = "btnGiveUserInfo" class = "btn editbutton hide"> User Details </button>
       <br>
       <div class="center">
-      <div id = "userInfo" class = "container center infoBox">
+      <div id = "userInfo">
       </div>
     </div>
       <div class = center>
-        <h4 id = "descTitle" class = "hide"> Edit Description: </h4>
+        <h4 id = "descTitle" class = "hide"> <span class="glyphicon glyphicon-pencil"></span> Edit Description: </h4>
           <div id = "editDesc" class = "editBox hide" contenteditable="true"></div>
 
-        <h4 id = "quoteTitle" class = "hide"> Edit Quote: </h4>
+        <h4 id = "quoteTitle" class = "hide"> <span class="glyphicon glyphicon-pencil"></span> Edit Quote: </h4>
           <div id = "editQuote" class = "editBox hide" contenteditable="true"></div>
 
-        <h4 id = "quoteAuthorTitle" class = "hide"> Edit Quote Author: </h4>
+        <h4 id = "quoteAuthorTitle" class = "hide"> <span class="glyphicon glyphicon-pencil"></span> Edit Quote Author: </h4>
           <div id = "editQuoteAuthor" class = "editBox hide" contenteditable="true"></div>
 
-        <h4 id = "favClassTitle" class = "hide"> Edit Favorite Class: </h4>
+        <h4 id = "favClassTitle" class = "hide"> <span class="glyphicon glyphicon-pencil"></span> Edit Favorite Class: </h4>
           <div id = "editFavClass" class = "editBox hide" contenteditable="true"></div>
 
         <progress id="uploader" value="0" max="100"> 0% </progress>
-        <input id = 'fileButton' type = 'file' value = 'upload' class = "btn"></input>
-        <p id = progressPrint></p>
 
-        <img class = 'gridImg redBorder' src = "" id = "myimg" style = "display:none"></img>
+        <label for="fileButton" class="choosefile"> <p>Upload New Photo</p> </label>
+          <input id = 'fileButton' type = 'file' value = 'upload' class = "center"></input>
+          <p id = progressPrint ></p>
 
+          <img class = 'gridImg redBorder' src = "" id = "myimg" style = "display:none"></img>
+
+        <button id = "btnUpdate" class = "btn hide floatRight inline"> Update Profile </button>
+
+        <button id = "btnResetPassword" class = "btn hide floatRight inline"> Reset Password </button>
       </div>
-
-      <button id = "btnUpdate" class = "btn hide floatRight inline"> Update Profile </button>
-
-      <button id = "btnResetPassword" class = "btn hide floatRight inline"> Reset Password </button>
     </div>
     <div class="loader-wrapper">
       <span class="loader"><span class="loader-inner"></span></span>
+    </div>
+
+    <div class="footer center white">
+    <p style="padding-bottom:15px">Have a question, suggestion, or bug to report?</p>
+    <button class="btn editbutton">
+      <a href="mailto:rkhivemanagement@gmail.com" class="white" style="margin-right:4px"> Email Rkhive Management </a>
+        <span class="glyphicon-envelope"></span>
+    </button>
+    </p>
     </div>
       <!-- The core Firebase JS SDK is always required and must be listed first -->
       <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-app.js"></script>
@@ -191,7 +201,9 @@
                   globalEmail = profile.email;
 
                   $(userInfo).html(
-                    "<div class = 'col-sm-2 col-sm-offset-5 border center' data-toggle=modal data-target=#modal>"
+                    "<h2>Preview your Yearbook profile: </h2>"
+                    +"<br>"
+                    +"<div class = 'samplemodal space' data-toggle=modal data-target=#modal>"
                     +"<img id='userInfoImg' class='gridImg'>"
                     +"<p class='studentname'>" + obj.first_name + " " + obj.last_name + "</p>"
                     +"<div class='container-fluid'>"
@@ -199,7 +211,7 @@
                     +"<div class='modal-dialog'>"
                     +"<div class='modal-content'>"
                     +"<div class='modal-header'>"
-                    +"<p class='modalname'>"
+                    +"<p class='modalname'>" + obj.first_name + " " + obj.last_name + "</p>"
                     +"</div>"
                     +"<div class='modal-body'>"
                     +"<div class='col-sm-4'>"
@@ -219,55 +231,9 @@
                     +"</div>"
                     +"</div>"
                     +"</div>"
+                    +"</div>"
                     +"</div>");
-                    //
-                    //
-                    //
-                    //
-                    // "<div class = 'col-sm-2 col-sm-offset-5 border'" + " data-toggle = " +"'modal'" +" data-target = " + "#yb-modal"+i+">"
-                    //   +"<img id=" + "yb-studentPicture" + i + " class = 'gridImg' src ='Images/default-profile.png'> </img>"
-                    //   +"<p id = "+ "yb-fullName" + i + " class = studentname>"
-                    //   +"<div class='container-fluid'>"
-                    //   +"<div class='modal fade' id = yb-modal" + i + " role='dialog' data-keyboard='false' data-backdrop='static'>"
-                    //   +"<div class='modal-dialog'>"
-                    //   +"<div class='modal-content'>"
-                    //   +"<div class='modal-header'>"
-                    //   +"<p class='modalname' id = yb-modalName" + i + ">"
-                    //   +"</div>"
-                    //   +"<div class='modal-body'>"
-                    //   +"<div class='col-sm-4'>"
-                    //   +"<img class='modalimage' id = yb-modalImage" + i + "> </img>"
-                    //   +"<p id= yb-section" + i + " class='modalattribute'></p>"
-                    //   +"<p id= yb-favClass" + i + " class='modalattribute'></p>"
-                    //   +"</div>"
-                    //   +"<div class = 'col-sm-8'>"
-                    //   +"<p id = yb-description" + i + " class='modaltext left'></p>"
-                    //   +"<p class= 'quote' id = yb-quote" + i + ">"
-                    //   +"<p class='quote' id = yb-quoteAuthor" + i + ">"
-                    //   +"</div>"
-                    //   +"</div>"
-                    //   +"<div class='modal-footer'>"
-                    //   +"</div>"
-                    //   +"</div>"
-                    //   +"</div>"
-                    //   +"</div>"
-                    //   +"</div>"
-                    //   +"</div>";
-                    //
-                    //
-                    //
-                    //
-                    //
-                    //
-                    //
-                    //
-                    //
-                    //
-                    //
-                    //
-                    //
-                    //
-                    // "  Email: " + profile.email + "<br>" + "  Name: "+obj.first_name+" "+obj.last_name + "<br>" + "  Section: " +obj.section);
+
                   // TODO: remove image when logging out or switching users
                   firebase.storage().ref('yb_photos/'+obj.email+".png").getDownloadURL()
                       .then((url) => {

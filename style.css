@@ -50,7 +50,7 @@ h4{
   font-family: 'Open Sans';
   background-color: #6d213cff;
   padding: 10px 10px;
-  margin-top: 45px;
+  margin-top: 35px;
   font-size: 0.75cm !important;
 }
 
@@ -60,10 +60,12 @@ a {
 
 a:hover {
   text-decoration: none;
+  color: inherit;
 }
 
 a:active {
   text-decoration: none;
+  color: inherit;
 }
 
 p {
@@ -121,6 +123,14 @@ input {
 
 input:focus {
   background-color: white;
+}
+
+.email {
+  color: white;
+}
+
+.email:hover {
+  color: #adb9e3ff;
 }
 
 .box {
@@ -204,6 +214,18 @@ input:focus {
   padding: 0 none !important;
 }
 
+.choosefile {
+  font-family: 'Open Sans';
+}
+
+.choosefile:hover {
+  text-decoration: underline;
+}
+
+input[type="file"] {
+    display: none;
+}
+
 .subtitle {
   padding-bottom: 15px;
   background-color: white;
@@ -285,7 +307,7 @@ height: 50px;
 }
 
 .editbutton:hover{
-  color: #6d213cff;
+  color: #6d213cff !important;
   background-color: white;
   border-color: #6d213cff;
   transition-duration: 1s;
@@ -593,6 +615,25 @@ background-color: #869d7aff;
   background-color: #fff;
   animation: loader-inner 2s infinite ease-in;
 }
+.samplemodal {
+  border-style: solid;
+  border-radius: 15px;
+  border-color: black;
+  border-width: 3px;
+  padding: 5px;
+  margin: 1vw;
+  transition: background-color 1s;
+  text-align: center;
+  min-height: 30vh;
+  background-color: #e0e0e0ff;
+  width: 225px;
+}
+
+.space {
+  margin-left: auto;
+  margin-right: auto;
+}
+
 @keyframes loader {
   0% { transform: rotate(0deg);}
   25% { transform: rotate(180deg);}
