@@ -64,10 +64,10 @@
         <h4 id = "favClassTitle" class = "hide"> <span class="glyphicon glyphicon-pencil"></span> Edit Favorite Class: </h4>
           <div id = "editFavClass" class = "editBox hide" contenteditable="true"></div>
 
-        <progress id="uploader" value="0" max="100"> 0% </progress>
+        <progress id="uploader" value="0" max="100" class="hide"> 0% </progress>
 
-        <label for="fileButton" class="choosefile"> <p>Upload New Photo</p> </label>
-          <input id = 'fileButton' type = 'file' value = 'upload' class = "center"></input>
+        <label id = 'fileButtonLabel' for="fileButton" class="hide choosefile"> <p><span class="glyphicon glyphicon-pencil"></span>   Upload New Photo</p> </label>
+          <input id = 'fileButton' type = 'file' value = 'upload' class = "hide center"></input>
           <p id = progressPrint ></p>
 
           <img class = 'gridImg redBorder' src = "" id = "myimg" style = "display:none"></img>
@@ -252,6 +252,9 @@
                         document.getElementById("editFavClass").classList.remove("hide");
                         document.getElementById("btnUpdate").classList.remove("hide");
                         document.getElementById("btnResetPassword").classList.remove("hide");
+                        document.getElementById("fileButton").classList.remove("hide");
+                        document.getElementById("fileButtonLabel").classList.remove("hide");
+                        document.getElementById("uploader").classList.remove("hide");
                       })
                       .catch((error) => {
                         console.log("There was an error");
