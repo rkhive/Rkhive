@@ -72,10 +72,6 @@ p {
   font-family: 'Open Sans';
 }
 
-ul {
-  list-style-type: none;
-}
-
 label {
   text-align: center;
   width: 100%;
@@ -96,18 +92,6 @@ option {
   font-family: 'Open Sans';
 }
 
-button {
-  text-align: center;
-  color: white;
-  font-family: 'Open Sans';
-  background-color: white;
-  border-width: 0px;
-  padding: 0px;
-  font-weight: 500;
-  font-size: 0.5cm !important;
-  font-style: italic;
-}
-
 input {
   padding: 8px 15px;
   margin: 4px 0;
@@ -124,6 +108,42 @@ input {
 input:focus {
   background-color: white;
 }
+
+/* NAVBAR RULES */
+
+.navbar {
+  background-color: #6d213cff;
+  border-radius: 0px;
+  padding-bottom: 10px;
+}
+
+.navbar a {
+  color: white;
+}
+
+.navbar-brand p {
+  float: right;
+  margin-top: 5px;
+  margin-left: 5px;
+}
+
+.navbar-toggler {
+  text-align: right;
+  margin-left: auto;
+}
+
+.navbar-nav {
+  list-style-type: none;
+  margin-top: 18px;
+}
+
+.nav-item {
+  margin-right: 30px;
+  font-family: 'Open Sans';
+  font-size: 1.25em;
+}
+
+/* OTHER RULES */
 
 .email {
   color: white;
@@ -150,56 +170,6 @@ input:focus {
   display: block;
   margin-bottom: 15px;
   height: 80vh;
-}
-
-.navbar {
-  background-color: #6d213cff;
-  border-width: 0px;
-  border-radius: 0px;
-}
-
-.navbar a {
-  color: #000000;
-}
-
-.navbar-brand {
-  color: white !important;
-  font-size: 1.25em;
-}
-
-.navbar-brand a {
-  color: white;
-}
-
-.nav.navbar-nav li a {
-  color: white;
-  transition: background-color 1s;
-  transition: color 1s;
-  font-size: 1.25em;
-}
-
-.nav.navbar-nav li a:hover {
-  background-color: white;
-  color: #6d213cff;
-}
-
-.nav.navbar-header{
-  transition: background-color 1s;
-  float: left;
-}
-
-.nav.navbar-header:hover {
-  background-color: white;
-  color: #6d213cff;
-}
-
-.navbar-default {
-  border-width: 0px;
-  border-radius: 0px;
-}
-
-.navbar-header {
-  padding: 0px 0px;
 }
 
 .info {
@@ -276,14 +246,6 @@ height: 50px;
 
 .realign {
   margin-left: 4vw;
-}
-
-#img {
-  transition: transform .7s ease-in-out;
-}
-
-#img:hover {
-  transform: rotate(-20deg);
 }
 
 .editbutton:link {
