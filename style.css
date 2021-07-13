@@ -114,11 +114,12 @@ input:focus {
 .navbar {
   background-color: #6d213cff;
   border-radius: 0px;
-  padding-bottom: 10px;
+  border-width: 0px;
 }
 
 .navbar a {
   color: white;
+  padding-right: 0px;
 }
 
 .navbar-brand p {
@@ -127,20 +128,54 @@ input:focus {
   margin-left: 5px;
 }
 
-.navbar-toggler {
-  text-align: right;
-  margin-left: auto;
+#navbarvertical {
+  width: 768px;
+}
+
+.navbar-collapse {
+  border-width: 10px;
+  border-color: #6d213cff;
 }
 
 .navbar-nav {
   list-style-type: none;
-  margin-top: 18px;
+  padding-left: 40px;
+  border-width: 0px;
 }
 
 .nav-item {
-  margin-right: 30px;
+  padding-top: 18px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-bottom: 15px;
   font-family: 'Open Sans';
   font-size: 1.25em;
+  transition: color 1s;
+}
+
+.nav-item:hover {
+  color: #6d213cff;
+}
+
+
+.navbar button {
+  float: right;
+  background-color: #6d213cff;
+  border-width: 0px;
+  margin-top: 18px;
+  margin-right: 15px;
+}
+
+@media (min-width: 767px) {
+    .navbar-menu {
+      display: none;
+    }
+}
+
+@media (max-width: 767px) {
+    .navbar-menu {
+      display: inline;
+    }
 }
 
 /* OTHER RULES */
