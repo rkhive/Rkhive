@@ -247,7 +247,7 @@ function populateSection(page, section){
           img2.setAttribute('src', url);
         })
         .catch((error) => {
-          console.log("WTF");
+          console.log("There was an error");
         });
     index++;
   });
