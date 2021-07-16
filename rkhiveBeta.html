@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="styleBeta.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Marcellus+SC&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+  <title>Rkhive Mass Academy</title>
+  </head>
+  <style>
+  ul {
+    list-style-type: none;
+  }
+  .personDesc{
+    text-align: center;
+    padding: 0px;
+  }
+  th{
+    text-align: center;
+  }
+  .entry{
+    border-width: 2px;
+    border-style: solid;
+  }
+  </style>
+  <body>
+    <div class="container">
+        <h1>Rkhive Beta</h1>
+        <div id="searchWrapper">
+            <input
+                type="text"
+                name="searchBar"
+                id="searchBar"
+                placeholder="search for a student"
+            />
+        </div>
+        <button id = 'mButton' onclick = "searchSection('M')">M</button>
+        <button id = 'nButton' onclick = "searchSection('N')">N</button>
+        <button id = 'oButton' onclick = "searchSection('O')">O</button>
+        <button id = 'pButton' onclick = "searchSection('P')">P</button>
+        <ul id="charactersList"></ul>
+    </div>
+      <!-- The core Firebase JS SDK is always required and must be listed first -->
+      <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-app.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-database.js"></script>
+
+      <!-- TODO: Add SDKs for Firebase products that you want to use
+           https://firebase.google.com/docs/web/setup#available-libraries -->
+      <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-analytics.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-storage.js"></script>
+
+  </body>
+
+  <script src = "appBeta.js"></script>
+
+  </html>
