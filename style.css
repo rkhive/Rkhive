@@ -20,12 +20,10 @@ body, html {
 }
 
 h1 {
+  font-family: 'Open Sans';
   text-align: center;
   color: white;
-  font-family: 'Open Sans';
   background-color: #6d213cff;
-  padding: 15px 7px;
-  font-weight: 900;
 }
 
 h2 {
@@ -215,6 +213,73 @@ input:focus {
       font-weight: 900;
       letter-spacing: 2px;
     }
+}
+
+/* INDEX RULES */
+
+.index-welcome {
+  background-color: white;
+  height: 80vh;
+}
+
+.index-welcome h1 {
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.index-welcome-message {
+  padding-top: 125px;
+  padding-left: 5vw;
+  padding-right: 5vw;
+  font-size: 1.5em;
+  font-weight: 900;
+  color: #6d213cff;
+}
+
+@media (min-width: 767px) {
+  .index-arrow {
+  width: 10vw;
+  margin-bottom: 100px;
+  transition: 2s;
+  }
+
+  .index-arrow:hover {
+  opacity: 0.65;
+  }
+}
+
+@media (max-width: 767px) {
+  .index-arrow {
+  width: 100px;
+  margin-bottom: 100px;
+  transition: 2s;
+  }
+
+  .index-arrow:hover {
+  opacity: 0.65;
+  }
+}
+
+/* UTILITY RULES */
+
+.white {
+  color: white;
+}
+
+.maroon {
+  color: #6d213cff;
+}
+
+.left {
+  text-align: left;
+}
+
+.center {
+  text-align: center;
+}
+
+.right {
+  text-align: right;
 }
 
 /* OTHER RULES */
@@ -414,20 +479,6 @@ font-size: 1.25em;
   font-weight: bolder;
 }
 
-.mainpage {
-height: 80vh;
-}
-
-.bgimage {
-  background-image: url('Images/HexBackground v1.png');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  height: 80vh;
-  margin-top: 5vh;
-  margin-bottom: 5vh;
-}
-
 .btn {
   font-family: 'Open Sans';
   width: auto;
@@ -481,28 +532,8 @@ background-color: #adb9e3ff;
 background-color: #869d7aff;
 }
 
-.arrow {
-  width: 10vw;
-  padding-bottom: 1vh;
-  transition: opacity 2.5s;
-}
-
-.arrow:hover {
-  opacity: 0.65;
-}
-
-.indexinfo {
-  font-size: 1.5em;
-  padding-top: 30px;
-  font-weight: 900;
-}
-
 .noborders {
   border-width: 0 none;
-}
-
-.white {
-  color: white;
 }
 
 .dropdown-menu a {
@@ -513,18 +544,6 @@ background-color: #869d7aff;
 .dropdown-menu a:hover {
   background-color: white;
   color: #6d213cff;
-}
-
-.left {
-  text-align: left;
-}
-
-.center {
-  text-align: center;
-}
-
-.right {
-  text-align: right;
 }
 
 .studentname {
