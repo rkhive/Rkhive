@@ -13,15 +13,16 @@ var firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 firebase.analytics();
-const charactersList = document.getElementById('charactersList');
+const usersList = document.getElementById('usersList');
 const searchBar = document.getElementById('searchBar');
 const database = firebase.database();
 const rootRef = database.ref();
 var ref = rootRef.child('1oYN4YtfxmtndybqYwCeg2uH1j8ifUVjro794v-rW11g');
-let hpCharacters = [];
 // const mButton = document.getElementById('mButton');
 var year = "2022"; //defaults to 2022
 var mode = "Students"; //defaults to students
+
+// TODO: make variable and allow input from control center
 const MIN_YEAR = "2021";
 const MAX_YEAR = "2023";
 
@@ -35,26 +36,45 @@ function checkKey(e) {
 
     if (e.keyCode == '37') {
         // left arrow
-        if(parseInt(year) > parseInt(MIN_YEAR)){
-          year = "" + (parseInt(year) - 1);
-          update();
-        }
+        downYear();
     }
     else if (e.keyCode == '39') {
        // right arrow
-       if(parseInt(year) < parseInt(MAX_YEAR)){
-         year = "" + (parseInt(year) + 1);
-         update();
-       }
+       upYear();
     }
 
+}
+
+function changeYear(el, d){
+  if(d == 'r' && parseInt(year) > parseInt(MIN_YEAR)){
+    year = "" + (parseInt(year) - 1);
+    update();
+  }
+  else if(d == 'l' && parseInt(year) < parseInt(MAX_YEAR)){
+    year = "" + (parseInt(year) + 1);
+    update();
+  }
+}
+
+function upYear(){
+  if(parseInt(year) < parseInt(MAX_YEAR)){
+    year = "" + (parseInt(year) + 1);
+    update();
+  }
+}
+
+function downYear(){
+  if(parseInt(year) > parseInt(MIN_YEAR)){
+    year = "" + (parseInt(year) - 1);
+    update();
+  }
 }
 
 function update(){
   currentRef = ref.child(mode+year);
   currentRef.on('value', (snapshot) => {
     // console.log(snapshot.val());
-    displayStudents(snapshot.val());
+    displayUsers(snapshot.val());
   });
 }
 
@@ -82,12 +102,12 @@ function searchSection(section){
   // var mRef = ref.orderByChild("section").equalTo("M");
   currentRef.on('value', (snapshot) => {
     const data = snapshot.val();
-    const filteredCharacters = data.filter((character) => {
+    const filteredUsers = data.filter((user) => {
         return (
-            character.section.toUpperCase().includes(section)
+            user.section.toUpperCase().includes(section)
         );
     });
-    displayStudents(filteredCharacters);
+    displayUsers(filteredUsers);
   })
 }
 
@@ -95,40 +115,88 @@ searchBar.addEventListener('keyup', (e) => {
     currentRef.on('value', (snapshot) => {
       const data = snapshot.val();
       const searchString = e.target.value.toLowerCase();
-      //originally hpCharacters instead of data but who cares
-      const filteredCharacters = data.filter((character) => {
+      const filteredUsers = data.filter((user) => {
           return (
-              character.first_name.toLowerCase().includes(searchString) ||
-              character.last_name.toLowerCase().includes(searchString) ||
-              character.fav_class.toLowerCase().includes(searchString)
+              user.first_name.toLowerCase().includes(searchString) ||
+              user.last_name.toLowerCase().includes(searchString) ||
+              user.fav_class.toLowerCase().includes(searchString)
           );
       });
-      displayStudents(filteredCharacters);
+      displayUsers(filteredUsers);
     });
 });
 
-const displayStudents = (characters) => {
-    const htmlString = characters
-        .map((character) => {
+const displayUsers = (users) => {
+    const htmlString = users
+        .map((user) => {
           // UNCOMMENT if Rkhive is backed up through sheets
 
-          // firebase.storage().ref('yb_photos/'+character.email+".png").getDownloadURL()
+          // firebase.storage().ref('yb_photos/'+user.email+".png").getDownloadURL()
           // .then((url) => {
-          //   currentRef.child(character.id).update({
+          //   currentRef.child(user.id).update({
           //     preferred_picture : url
           //   });
           // });
             return `
-            <li class="character">
-                <h2>${character.first_name} ${character.last_name}</h2>
-                <br>
-                <p>Favorite Class: ${character.fav_class}</p>
-                <img src = ${character.preferred_picture}></img>
+            <li class="user">
+              <div>
+                <h3>${user.first_name} ${user.last_name}</h3>
+                <img class = gridImg src = ${user.preferred_picture}></img>
+                <p>Section: ${user.section}</p>
+                <p>Favorite Class: ${user.fav_class}</p>
+              </div>
             </li>
         `;
         })
         .join('');
-    charactersList.innerHTML = htmlString;
+    usersList.innerHTML = htmlString;
 };
 
+function detectswipe(el,func) {
+  swipe_det = new Object();
+  swipe_det.sX = 0; swipe_det.sY = 0; swipe_det.eX = 0; swipe_det.eY = 0;
+  var min_x = 30;  //min x swipe for horizontal swipe
+  var max_x = 30;  //max x difference for vertical swipe
+  var min_y = 50;  //min y swipe for vertical swipe
+  var max_y = 60;  //max y difference for horizontal swipe
+  var direc = "";
+  ele = document.getElementById(el);
+  ele.addEventListener('touchstart',function(e){
+    var t = e.touches[0];
+    swipe_det.sX = t.screenX;
+    swipe_det.sY = t.screenY;
+  },false);
+  ele.addEventListener('touchmove',function(e){
+    e.preventDefault();
+    var t = e.touches[0];
+    swipe_det.eX = t.screenX;
+    swipe_det.eY = t.screenY;
+  },false);
+  ele.addEventListener('touchend',function(e){
+    //horizontal detection
+    if ((((swipe_det.eX - min_x > swipe_det.sX) || (swipe_det.eX + min_x < swipe_det.sX)) && ((swipe_det.eY < swipe_det.sY + max_y) && (swipe_det.sY > swipe_det.eY - max_y) && (swipe_det.eX > 0)))) {
+      if(swipe_det.eX > swipe_det.sX) direc = "r";
+      else direc = "l";
+    }
+    //vertical detection
+    else if ((((swipe_det.eY - min_y > swipe_det.sY) || (swipe_det.eY + min_y < swipe_det.sY)) && ((swipe_det.eX < swipe_det.sX + max_x) && (swipe_det.sX > swipe_det.eX - max_x) && (swipe_det.eY > 0)))) {
+      if(swipe_det.eY > swipe_det.sY) direc = "d";
+      else direc = "u";
+    }
+
+    if (direc != "") {
+      if(typeof func == 'function') func(el,direc);
+    }
+    direc = "";
+    swipe_det.sX = 0; swipe_det.sY = 0; swipe_det.eX = 0; swipe_det.eY = 0;
+  },false);
+}
+
+//testing swipe feature
+function myFunction(el,d) {
+  alert("you swiped on element with id '"+el+"' to "+d+" direction");
+}
+
 update();
+
+detectswipe('usersList', changeYear);
