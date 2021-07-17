@@ -70,11 +70,13 @@
                 placeholder="search for a student"
             />
         </div>
-        <button id = 'mButton' onclick = "searchSection('M')">M</button>
-        <button id = 'nButton' onclick = "searchSection('N')">N</button>
-        <button id = 'oButton' onclick = "searchSection('O')">O</button>
-        <button id = 'pButton' onclick = "searchSection('P')">P</button>
-        <ul id="charactersList"></ul>
+        <button id = 'mButton' class = 'hide' onclick = "searchSection('M')">M</button>
+        <button id = 'nButton' class = 'hide' onclick = "searchSection('N')">N</button>
+        <button id = 'oButton' class = 'hide' onclick = "searchSection('O')">O</button>
+        <button id = 'pButton' class = 'hide' onclick = "searchSection('P')">P</button>
+
+        <!-- DATA HERE -->
+        <ul id="usersList"></ul>
     </div>
       <!-- The core Firebase JS SDK is always required and must be listed first -->
       <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-app.js"></script>
