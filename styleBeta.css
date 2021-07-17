@@ -17,39 +17,52 @@ h1 {
     text-align: center;
 }
 
-#charactersList {
+#usersList {
     padding-inline-start: 0;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     grid-gap: 20px;
+    text-align: center;
 }
 
-.character {
+.gridImgBeta{
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+  padding: 0px;
+  margin-top: 1.5vh;
+}
+
+.user {
     list-style-type: none;
     background-color: #eaeaea;
     border-radius: 3px;
-    padding: 10px 20px;
+    padding: 20px 20px;
     display: grid;
-    grid-template-columns: 3fr 1fr;
+    /* grid-template-columns: 3fr 1fr;
     grid-template-areas:
         'name image'
         'house image';
-    text-align: left;
+    text-align: center; */
 }
 
-.character > h2 {
+.user > h2 {
     grid-area: name;
     margin-bottom: 0px;
 }
 
-.character > p {
+.user > p {
     grid-area: house;
     margin: 0;
 }
 
-.character > img {
+.user > img {
     max-height: 100px;
     grid-area: image;
+}
+
+.user > div {
+  text-align: center;
 }
 
 #searchBar {
