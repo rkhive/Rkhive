@@ -92,7 +92,7 @@ function searchSection(section){
 }
 
 searchBar.addEventListener('keyup', (e) => {
-    ref.on('value', (snapshot) => {
+    currentRef.on('value', (snapshot) => {
       const data = snapshot.val();
       const searchString = e.target.value.toLowerCase();
       //originally hpCharacters instead of data but who cares
