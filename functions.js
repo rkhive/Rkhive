@@ -150,7 +150,7 @@ else if(String(mode) == 'alumnus'){
 //capture a snapshot upon refresh
 ref.once('value', function(snap) { //once means user must refresh
 //create an index for students
-var index= 0;
+var index= 1;
 function incrementIndex(){
    index++;
 }
