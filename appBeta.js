@@ -76,6 +76,7 @@ function update(){
     // console.log(snapshot.val());
     displayUsers(snapshot.val());
   });
+  $(yogDisplay).html("Showing Class of "+year);
 }
 
 function setYear(year){
@@ -129,7 +130,7 @@ searchBar.addEventListener('keyup', (e) => {
 const displayUsers = (users) => {
     const htmlString = users
         .map((user) => {
-          // UNCOMMENT if Rkhive is backed up through sheets
+          // UNCOMMENT if realtime database has incorrect URLs
 
           // firebase.storage().ref('yb_photos/'+user.email+".png").getDownloadURL()
           // .then((url) => {
@@ -138,19 +139,47 @@ const displayUsers = (users) => {
           //   });
           // });
             return `
-            <li class="user">
-              <div>
-                <h3>${user.first_name} ${user.last_name}</h3>
-                <img class = gridImg src = ${user.preferred_picture}></img>
-                <p>Section: ${user.section}</p>
-                <p>Favorite Class: ${user.fav_class}</p>
+            <li class="user hvr-grow">
+              <div data-toggle="modal" data-target="#myModal${user.id}">
+              <img class = gridImgBeta src = ${user.preferred_picture}></img>
+              <h5 class = "sheen-name">${user.first_name} ${user.last_name}</h5>
               </div>
             </li>
+
+
+
+            <div id="myModal${user.id}" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+
+
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">${user.first_name +" "+user.last_name}</h4>
+              </div>
+              <div class="modal-body">
+              <img class = "modalImg" src = ${user.preferred_picture}></img>
+                <p>${user.student_description}</p>
+                <br>
+                <p>Section ${user.section}</p>
+                <p>Favorite Class: ${user.fav_class}</p>
+                <p>${user.quote}</p>
+                <p>-${user.quote_author}</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+
+          </div>
+        </div>
         `;
         })
         .join('');
     usersList.innerHTML = htmlString;
 };
+
+//TODO: Ignore up and down swipes
 
 function detectswipe(el,func) {
   swipe_det = new Object();
