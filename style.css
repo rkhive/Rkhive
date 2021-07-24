@@ -217,6 +217,21 @@ input:focus {
 
 /* INDEX RULES */
 
+.index-logo {
+  height: 65vh;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 14vh;
+  margin-bottom: 21vh;
+  transition: 1s;
+}
+
+.index-logo:hover {
+  height: 90vh;
+  margin-top: 4vh;
+  margin-bottom: 6vh;
+}
+
 .index-welcome {
   background-color: white;
   height: 80vh;
@@ -225,6 +240,8 @@ input:focus {
 .index-welcome h1 {
   padding-top: 15px;
   padding-bottom: 15px;
+  padding-left: 15px;
+  padding-right: 15px;
 }
 
 .index-welcome-message {
@@ -495,14 +512,6 @@ transition: font-weight 0.25s;
 
 .bold:hover {
 font-weight: 900;
-}
-
-.logo {
-transition: width 1s;
-}
-
-.logo:hover {
-  width: 47vw;
 }
 
 .bgblue {
