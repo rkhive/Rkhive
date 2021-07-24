@@ -432,25 +432,6 @@ height: 50px;
   background-color: #869d7aff;
 }
 
-.quote {
-  font-style: italic;
-  font-weight: bolder;
-  font-size: 1.5em;
-  text-align: center;
-  margin-top: 25px;
-  border-left: 0px;
-  font-family: 'Open Sans';
-}
-
-.quoteauthor {
-  font-style: italic;
-  font-weight: bolder;
-  font-size: 1.5em;
-  text-align: center;
-  margin-top: 10px;
-  border-left: 0px;
-  font-family: 'Open Sans';
-}
 
 .nav-pills {
 margin: auto;
@@ -590,48 +571,6 @@ background-color: #869d7aff;
   object-fit: cover;
   padding: 0px;
   margin-top: 1.5vh;
-}
-
-.modal-dialog{
-  margin: auto;
-  margin-top: 5vh;
-  width: 500px;
-  height: 350px;
-}
-
-.modal-header {
-    border-bottom: 0 none;
-    background-color: #6d213cff;
-}
-
-.modal-footer {
-    border-top: 0 none;
-}
-
-.modalname {
-  text-align: center;
-  margin-top: 2.5vh;
-  font-size: 3em;
-  color: white;
-}
-
-.modalimage{
-  text-align: left;
-  margin-left: 2vw;
-  margin-top: 2vh;
-  width: 100%;
-}
-
-.modalattribute{
-  margin-left: 2vw;
-  margin-top: 2vh;
-  font-size: 1.5em;
-}
-
-.modaltext{
-  margin-left: 2vw;
-  font-size: 1.25em;
-  margin-top: 2vh;
 }
 
 .scrolling-box {

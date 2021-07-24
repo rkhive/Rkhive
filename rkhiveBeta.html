@@ -6,31 +6,17 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="styleBeta.css">
   <link rel="stylesheet" href="hover.css">
   <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Marcellus+SC&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
-  <title>Rkhive Mass Academy</title>
+  <link rel="apple-touch-icon" sizes="180x180" href="Images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="Images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="Images/favicon-16x16.png">
+  <link rel="manifest" href="Images/site.webmanifest">
+  <title>Rkhive Beta | Rkhive Mass Academy</title>
   </head>
-  <style>
-  ul {
-    list-style-type: none;
-  }
-  .personDesc{
-    text-align: center;
-    padding: 0px;
-  }
-  th{
-    text-align: center;
-  }
-  .entry{
-    border-width: 2px;
-    border-style: solid;
-  }
-  </style>
+
   <body>
     <nav class="navbar navbar-expand-sm">
       <div class="navbar-home">
@@ -61,29 +47,27 @@
         </ul>
         </div>
     </nav>
-    <div class="container">
+
+    <div class="center">
+    <div class="rkhive-beta-heading">
         <h1>Rkhive Beta</h1>
-        <div>
-      <img class = 'arrowKeyImg' src = "Images/left-key.png"></img>
-        <p id = "yogDisplay"></p>
-        <img class = 'arrowKeyImg' src = "Images/right-key.png"></img>
+    </div>
+    <div class="rkhive-beta">
+      <img class="beta-arrow" src="Images/MaroonLeftArrow.png"></img>
+      <p id="yogDisplay"></p>
+      <img class="beta-arrow" src="Images/MaroonRightArrow.png"></img>
+      <div id="searchWrapper">
+        <input type="text" name="searchBar" id="searchBar" placeholder="search for a student"/>
       </div>
-      <br>
-        <div id="searchWrapper">
-            <input
-                type="text"
-                name="searchBar"
-                id="searchBar"
-                placeholder="search for a student"
-            />
-        </div>
+
         <button id = 'mButton' class = 'hide' onclick = "searchSection('M')">M</button>
         <button id = 'nButton' class = 'hide' onclick = "searchSection('N')">N</button>
         <button id = 'oButton' class = 'hide' onclick = "searchSection('O')">O</button>
         <button id = 'pButton' class = 'hide' onclick = "searchSection('P')">P</button>
-        <br>
+
         <!-- DATA HERE -->
         <ul id="usersList"></ul>
+
     </div>
       <!-- The core Firebase JS SDK is always required and must be listed first -->
       <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-app.js"></script>

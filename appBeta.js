@@ -45,6 +45,15 @@ function checkKey(e) {
 
 }
 
+function scaleFontSize(element) {
+  var elements = document.getElementsByClassName("usersList-name");
+var names = '';
+for(var i = 0; i < elements.length; i++) {
+  names += elements[i].name;
+}
+document.write(names);
+}
+
 function changeYear(el, d){
   if(d == 'r' && parseInt(year) > parseInt(MIN_YEAR)){
     year = "" + (parseInt(year) - 1);
@@ -141,38 +150,34 @@ const displayUsers = (users) => {
             return `
             <li class="user hvr-grow">
               <div data-toggle="modal" data-target="#myModal${user.id}">
-              <img class = gridImgBeta src = ${user.preferred_picture}></img>
-              <h5 class = "sheen-name">${user.first_name} ${user.last_name}</h5>
+              <img class=user-grid-image src=${user.preferred_picture}></img>
+              <div class="usersList-name">
+              <p class="sheen-name">${user.first_name} ${user.last_name}</p>
+              </div>
               </div>
             </li>
 
-
-
             <div id="myModal${user.id}" class="modal fade" role="dialog">
-            <div class="modal-dialog">
-
-
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">${user.first_name +" "+user.last_name}</h4>
-              </div>
-              <div class="modal-body">
-              <img class = "modalImg" src = ${user.preferred_picture}></img>
-                <p>${user.student_description}</p>
-                <br>
-                <p>Section ${user.section}</p>
-                <p>Favorite Class: ${user.fav_class}</p>
-                <p>${user.quote}</p>
-                <p>-${user.quote_author}</p>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <p>${user.first_name +" "+user.last_name}</p>
+                  </div>
+                  <div class="modal-body">
+                    <div class="col-sm-4">
+                      <img src=${user.preferred_picture}></img>
+                      <p class="modal-attribute">Section ${user.section}</p>
+                      <p class="modal-attribute">Favorite Class: ${user.fav_class}</p>
+                    </div>
+                    <div class="col-sm-8">
+                      <p class='modal-description'>${user.student_description}</p>
+                      <p class='modal-quote'>${user.quote}</p>
+                      <p class='modal-quote'>- ${user.quote_author}</p>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
-
-          </div>
-        </div>
         `;
         })
         .join('');
