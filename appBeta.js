@@ -15,6 +15,8 @@ firebase.initializeApp(firebaseConfig);
 firebase.analytics();
 const usersList = document.getElementById('usersList');
 const searchBar = document.getElementById('searchBar');
+let maroonLeftArrow = document.getElementById('maroonLeftArrow');
+let maroonRigtArrow = document.getElementById('maroonRightArrow');
 const database = firebase.database();
 const rootRef = database.ref();
 var ref = rootRef.child('1oYN4YtfxmtndybqYwCeg2uH1j8ifUVjro794v-rW11g');
@@ -27,6 +29,14 @@ const MIN_YEAR = "2021";
 const MAX_YEAR = "2023";
 
 var currentRef = ref.child(mode+year);
+
+maroonLeftArrow.addEventListener('click', e => {
+  downYear();
+});
+
+maroonRightArrow.addEventListener('click', e => {
+  upYear();
+});
 
 document.onkeydown = checkKey;
 
