@@ -7,13 +7,15 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="styleBeta.css">
+  <link rel="stylesheet" href="hover.css">
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
   <link rel="apple-touch-icon" sizes="180x180" href="Images/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="Images/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="Images/favicon-16x16.png">
   <link rel="manifest" href="Images/site.webmanifest">
-  <title>Manage Your Profile | Rkhive</title>
+  <title>Manage Profile | Rkhive Mass Academy</title>
 </head>
   <body>
     <nav class="navbar navbar-expand-sm">
@@ -57,34 +59,35 @@
       <button id = "btnLogout" class = "btn editbutton hide"> Log Out </button>
       <button id = "btnGiveUserInfo" class = "btn editbutton hide"> User Details </button>
       <br>
-      <div class="center">
+      <br>
+      <div class = 'center'>
       <div id = "userInfo">
       </div>
     </div>
-      <div class = center>
-        <h4 id = "descTitle" class = "hide"> <span class="glyphicon glyphicon-pencil"></span> Edit Description: </h4>
-          <div id = "editDesc" class = "editBox hide" contenteditable="true"></div>
+      <div id = 'editBoxes' class = "center hide">
+        <h4 id = "descTitle" > <span class="glyphicon glyphicon-pencil"></span> Edit Description: </h4>
+          <div id = "editDesc" class = "editBox" contenteditable="true"></div>
 
-        <h4 id = "quoteTitle" class = "hide"> <span class="glyphicon glyphicon-pencil"></span> Edit Quote: </h4>
-          <div id = "editQuote" class = "editBox hide" contenteditable="true"></div>
+        <h4 id = "quoteTitle" > <span class="glyphicon glyphicon-pencil"></span> Edit Quote: </h4>
+          <div id = "editQuote" class = "editBox" contenteditable="true"></div>
 
-        <h4 id = "quoteAuthorTitle" class = "hide"> <span class="glyphicon glyphicon-pencil"></span> Edit Quote Author: </h4>
-          <div id = "editQuoteAuthor" class = "editBox hide" contenteditable="true"></div>
+        <h4 id = "quoteAuthorTitle" > <span class="glyphicon glyphicon-pencil"></span> Edit Quote Author: </h4>
+          <div id = "editQuoteAuthor" class = "editBox" contenteditable="true"></div>
 
-        <h4 id = "favClassTitle" class = "hide"> <span class="glyphicon glyphicon-pencil"></span> Edit Favorite Class: </h4>
-          <div id = "editFavClass" class = "editBox hide" contenteditable="true"></div>
+        <h4 id = "favClassTitle" > <span class="glyphicon glyphicon-pencil"></span> Edit Favorite Class: </h4>
+          <div id = "editFavClass" class = "editBox" contenteditable="true"></div>
 
-        <progress id="uploader" value="0" max="100" class="hide"> 0% </progress>
+        <progress id="uploader" value="0" max="100"> 0% </progress>
 
-        <label id = 'fileButtonLabel' for="fileButton" class="hide choosefile"> <p><span class="glyphicon glyphicon-pencil"></span>   Upload New Photo</p> </label>
-          <input id = 'fileButton' type = 'file' value = 'upload' class = "hide center"></input>
+        <label id = 'fileButtonLabel' for="fileButton" class="choosefile"> <p><span class="glyphicon glyphicon-pencil"></span>   Upload New Photo</p> </label>
+          <input id = 'fileButton' type = 'file' value = 'upload' class = "center"></input>
           <p id = progressPrint ></p>
 
           <img class = 'gridImg redBorder' src = "" id = "myimg" style = "display:none"></img>
 
-        <button id = "btnUpdate" class = "btn hide floatRight inline"> Update Profile </button>
+        <button id = "btnUpdate" class = "btn floatRight inline"> Update Profile </button>
 
-        <button id = "btnResetPassword" class = "btn hide floatRight inline"> Reset Password </button>
+        <button id = "btnResetPassword" class = "btn floatRight inline"> Reset Password </button>
       </div>
     </div>
     <div class="loader-wrapper">
@@ -187,6 +190,7 @@
         // TODO: hide all profile elements when logging out
         btnLogout.addEventListener('click', e => {
           firebase.auth().signOut();
+          document.getElementById('editBoxes').classList.add('hide');
         });
 
         btnResetPassword.addEventListener('click', e => {
@@ -218,69 +222,41 @@
                     globalEmail = profile.email;
 
                     $(userInfo).html(
-                      "<h2>Preview your Yearbook profile: </h2>"
-                      +"<br>"
-                      +"<div class = 'samplemodal space' data-toggle=modal data-target=#modal>"
-                      +"<img id='userInfoImg' class='gridImg'>"
-                      +"<p class='studentname'>" + obj.first_name + " " + obj.last_name + "</p>"
-                      +"<div class='container-fluid'>"
-                      +"<div class='modal fade' id = modal role='dialog' data-keyboard='false' data-backdrop='static'>"
+                      "<div class='user hvr-grow'>"
+                      +"<div data-toggle='modal' data-target='#myModal'>"
+                      +"<img class = user-grid-image src="+obj.preferred_picture+"></img>"
+                      +"<div class='usersList-name'>"
+                      +"<p class='sheen-name'>"+obj.first_name+" "+ obj.last_name+"</p>"
+                      +"</div>"
+                      +"</div>"
+                      +"</div>"
+
+                      +"<div id='myModal' class='modal fade' role='dialog'>"
                       +"<div class='modal-dialog'>"
                       +"<div class='modal-content'>"
                       +"<div class='modal-header'>"
-                      +"<p class='modalname'>" + obj.first_name + " " + obj.last_name + "</p>"
+                      +"<p>" + obj.first_name +" "+obj.last_name+"</p>"
                       +"</div>"
                       +"<div class='modal-body'>"
                       +"<div class='col-sm-4'>"
-                      +"<img class='modalimage' id ='userInfoImg2' </img>"
-                      +"<p class='modalattribute'> Section: " + obj.section + "</p>"
-                      +"<p class='modalattribute'> Favorite Class: " + obj.fav_class + "</p>"
+                      +"<img src=" + obj.preferred_picture +"></img>"
+                      +"<p class='modal-attribute'>Section "+obj.section+"</p>"
+                      +"<p class='modal-attribute'>Favorite Class: "+ obj.fav_class+"</p>"
                       +"</div>"
-                      +"<div class = 'col-sm-8'>"
-                      +"<p class='modaltext left'>" + obj.student_description + "</p>"
-                      +"<p class= 'quote'>" + obj.quote + "</p>"
-                      +"<p class= 'quote'> - " + obj.quote_author + "</p>"
-                      +"</div>"
-                     +"</div>"
-                      +"<div class='modal-footer'>"
+                      +"<div class='col-sm-8'>"
+                      +"<p class='modal-description' contenteditable = 'true'>"+ obj.student_description+"</p>"
+                      +"<p class='modal-quote'>"+ obj.quote +"</p>"
+                      +"<p class='modal-quote'>- "+ obj.quote_author+"</p>"
                       +"</div>"
                       +"</div>"
                       +"</div>"
                       +"</div>"
                       +"</div>"
-                      +"</div>"
-                      +"</div>");
+                    );
 
-                    // TODO: remove image when logging out or switching users
-                    // TODO: remove this because it is unecessary
-                    firebase.storage().ref(userYog+'_yb_photos/'+obj.email+".png").getDownloadURL()
-                        .then((url) => {
-                          firebase.database().ref(userRef).update({
-                            preferred_picture: url
-                          });
-                          console.log(url);
-                          // TODO: write a method to remove the hide class from elements
-                          document.getElementById("userInfoImg").setAttribute('src', url);
-                          document.getElementById("userInfoImg2").setAttribute('src', url);
-                          document.getElementById("userInfoImg").classList.remove("hide");
-                          document.getElementById("descTitle").classList.remove("hide");
-                          document.getElementById("editDesc").classList.remove("hide");
-                          document.getElementById("quoteTitle").classList.remove("hide");
-                          document.getElementById("editQuote").classList.remove("hide");
-                          document.getElementById("quoteAuthorTitle").classList.remove("hide");
-                          document.getElementById("editQuoteAuthor").classList.remove("hide");
-                          document.getElementById("favClassTitle").classList.remove("hide");
-                          document.getElementById("editFavClass").classList.remove("hide");
-                          document.getElementById("btnUpdate").classList.remove("hide");
-                          document.getElementById("btnResetPassword").classList.remove("hide");
-                          document.getElementById("fileButton").classList.remove("hide");
-                          document.getElementById("fileButtonLabel").classList.remove("hide");
-                          document.getElementById("uploader").classList.remove("hide");
-                        })
-                        .catch((error) => {
-                          console.log("There was an error");
-                          $(userInfo).html("There was an error");
-                        });
+                    // shows the edit boxes for user information
+                    document.getElementById('editBoxes').classList.remove('hide');
+
 
                       // displays the current state of the user's data
                       $(editDesc).html(obj.student_description);
@@ -301,8 +277,8 @@
             quote_author: document.getElementById("editQuoteAuthor").innerHTML,
             fav_class: document.getElementById("editFavClass").innerHTML
           });
-          console.log("yoooo");
           window.alert("Profile has been updated!");
+          location.reload();
         });
         //add a realtime addEventListener
         firebase.auth().onAuthStateChanged(firebaseUser => {
@@ -322,19 +298,6 @@
         // TODO: make images and information disappear and such
         function showInputs(){
           $(progressPrint).html("Upload Complete!");
-
-          // Not really necessary... just showing another copy of the image
-
-          // firebase.storage().ref(userYog+'_yb_photos/'+globalEmail+".png").getDownloadURL()
-          //     .then((url) => {
-          //       // Or inserted into an <img> element
-          //       var img = document.getElementById('myimg');
-          //       img.setAttribute('src', url);
-          //     })
-          //     .catch((error) => {
-          //       // Handle any errors
-          //     });
-          // document.getElementById("myimg").style.display = "block";
         }
 
         //listen for file selection
