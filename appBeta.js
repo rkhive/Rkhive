@@ -95,7 +95,7 @@ function update(){
     // console.log(snapshot.val());
     displayUsers(snapshot.val());
   });
-  $(yogDisplay).html("Showing Class of "+year);
+  $(yogDisplay).html("Class of "+year);
 }
 
 function setYear(year){
@@ -139,7 +139,11 @@ searchBar.addEventListener('keyup', (e) => {
           return (
               user.first_name.toLowerCase().includes(searchString) ||
               user.last_name.toLowerCase().includes(searchString) ||
-              user.fav_class.toLowerCase().includes(searchString)
+              user.section.toLowerCase().includes(searchString) ||
+              user.fav_class.toLowerCase().includes(searchString) ||
+              user.student_description.toLowerCase().includes(searchString) ||
+              user.quote.toLowerCase().includes(searchString) ||
+              user.quote_author.toLowerCase().includes(searchString)
           );
       });
       displayUsers(filteredUsers);
@@ -171,7 +175,11 @@ const displayUsers = (users) => {
               <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <p>${user.first_name +" "+user.last_name}</p>
+                    <p>${user.first_name +" "+user.last_name}
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span class="modal-close" aria-hidden="true">&times;</span>
+                    </button>
+                    </p>
                   </div>
                   <div class="modal-body">
                     <div class="col-sm-4">
