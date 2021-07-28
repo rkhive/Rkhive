@@ -420,3 +420,8 @@ li {
   font-size: 1.3em;
   text-align: center;
 }
+
+.editable{
+  color: #6d213cff;
+  font-weight: bolder;
+}
