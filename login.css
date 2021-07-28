@@ -9,6 +9,7 @@ Yellow: #feb95fff
 Brown: #8b5d33ff
 */
 
+
 body, html {
   scroll-behavior: smooth;
   overflow-y: scroll;
@@ -17,6 +18,8 @@ body, html {
   background-color: white;
 
   font-size: 100%;
+
+  box-sizing: border-box;
 }
 
 h1 {
@@ -24,34 +27,6 @@ h1 {
   text-align: center;
   color: white;
   background-color: #6d213cff;
-}
-
-h2 {
-  text-align: auto;
-  color: white;
-  font-family: 'Open Sans';
-  background-color: #6d213cff;
-  padding: 15px 15px;
-}
-
-h3 {
-  text-align: center;
-  color: white;
-  font-family: 'Open Sans';
-  background-color: #6d213cff;
-  font-weight: 500;
-  font-size: 0.5cm !important;
-  font-style: italic;
-}
-
-h4{
-  text-align: auto;
-  color: white;
-  font-family: 'Open Sans';
-  background-color: #6d213cff;
-  padding: 10px 10px;
-  margin-top: 35px;
-  font-size: 0.75cm !important;
 }
 
 a {
@@ -76,41 +51,12 @@ li {
   font-family: 'Open Sans';
 }
 
-label {
-  text-align: center;
-  width: 100%;
-  color: white;
-  font-family: 'Open Sans';
-  background-color: #6d213cff;
-  padding: 10px 7px;
-  font-weight: 900;
-  font-size: 1.5em;
-  margin-bottom: 3vh;
-}
-
-option {
-  font-weight: bolder;
-  font-size: 1.5em;
-  text-align: center;
-  border-left: 0px;
-  font-family: 'Open Sans';
-}
-
 input {
-  padding: 8px 15px;
-  margin: 4px 0;
-  box-sizing: border-box;
-  border: none;
-  border-bottom: 2px solid #6d213cff;
-  outline: none;
   font-family: 'Open Sans';
-  font-style: italic;
-  font-weight: 800;
-  font-size: 0.5cm;
 }
 
-input:focus {
-  background-color: white;
+button {
+  font-family: 'Open Sans';
 }
 
 /* NAVBAR RULES */
@@ -215,96 +161,355 @@ input:focus {
     }
 }
 
-/* INDEX RULES */
+/* LOGIN RULES */
 
-.index-logo {
-  height: 65vh;
+.login-welcome {
+  margin-bottom: 25px;
+}
+
+.login-welcome h1 {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.login-signin {
+  margin-bottom: 25px;
+}
+
+.login-signin input {
+  padding: 8px 15px;
+  box-sizing: border-box;
+  border: none;
+  border-bottom: 2px solid #6d213cff;
+  outline: none;
+  font-style: italic;
+  font-weight: 900;
+  font-size: 1.25em;
+  display: block;
+  width: 20vw;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 14vh;
-  margin-bottom: 21vh;
+  margin-bottom: 10px;
+  }
+
+.login-signin input:focus {
+  background-color: white;
+}
+
+.login-buttons {
+  margin-top: 40px;
+  margin-bottom: 20px;
+}
+
+.login-buttons button {
+  color: white;
+  background-color: #6d213cff;
+  font-weight: 900;
+  font-size: 1.75em;
+  padding: 8px 16px;
+  border-radius: 0px;
+  border-width: 2px;
+  border-color: #6d213cff;
+  margin-left: 10px;
+  margin-right: 10px;
   transition: 1s;
 }
 
-.index-logo:hover {
-  height: 90vh;
-  margin-top: 4vh;
-  margin-bottom: 6vh;
-}
-
-.index-welcome {
-  background-color: white;
-  height: 80vh;
-}
-
-.index-welcome h1 {
-  padding-top: 15px;
-  padding-bottom: 15px;
-  padding-left: 15px;
-  padding-right: 15px;
-}
-
-.index-welcome-message {
-  padding-top: 125px;
-  padding-left: 5vw;
-  padding-right: 5vw;
-  font-size: 1.5em;
-  font-weight: 900;
+.login-buttons button:hover{
   color: #6d213cff;
-}
-
-@media (min-width: 767px) {
-  .index-arrow {
-  width: 10vw;
-  margin-bottom: 100px;
-  transition: 2s;
-  }
-
-  .index-arrow:hover {
-  opacity: 0.65;
-  }
-}
-
-@media (max-width: 767px) {
-  .index-arrow {
-  width: 100px;
-  margin-bottom: 100px;
-  transition: 2s;
-  }
-
-  .index-arrow:hover {
-  opacity: 0.65;
-  }
-}
-
-/* ABOUT RULES */
-
-.about-welcome {
   background-color: white;
 }
 
-.about-welcome h1 {
+#userInfo {
+  font-family: 'Open Sans';
+  color: #6d213cff;
+  margin-bottom: 20px;
+  font-size: 1.25em;
+}
+
+.login-editing label {
+  font-family: 'Open Sans';
+  color: #6d213cff;
+  margin-bottom: 20px;
+  font-size: 1.25em;
+  transition: 1s;
+}
+
+.login-editing label:hover {
+  letter-spacing: 1px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.login-editing span {
+    margin-right: 7px;
+}
+
+.login-editing button {
+  color: white;
+  background-color: #6d213cff;
+  font-weight: 900;
+  font-size: 0.875em;
+  padding: 4px 8px;
+  border-radius: 0px;
+  border-width: 2px;
+  border-color: #6d213cff;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 25px;
+  transition: 1s;
+}
+
+.login-editing button:hover{
+  color: #6d213cff;
+  background-color: white;
+}
+
+/* RKHIVE RULES */
+
+.rkhive-heading h1 {
   padding-top: 15px;
   padding-bottom: 15px;
-  padding-left: 15px;
-  padding-right: 15px;
 }
 
-.about-info {
-  float: right;
-  margin-top: 30px;
-  margin-left: 45px;
-  margin-right: 45px;
-  margin-bottom: 45px;
-  font-size: 1.4em;
+.rkhive {
+  margin-left: 2vw;
+  margin-right: 2vw;
+  text-align: center;
+  margin-bottom: 5vh;
 }
 
-.about-founders {
-  float: left;
-  width: 40vw;
+.rkhive-instructions {
+  color: #6d213cff;
+  font-style: italic;
+  font-size: 0.8em;
   display: inline;
-  margin-right: 30px;
   margin-bottom: 10px;
+}
+
+.rkhive span {
+  margin: 7px;
+}
+
+.rkhive-button-hide {
+  border-width: 0px;
+  background-color: transparent;
+}
+
+.arrow{
+  margin-top: 10px;
+  margin-bottom: 20px;
+  height: 35px;
+  width: 65px;
+  transition: 1s;
+  cursor: pointer;
+}
+
+.arrow:hover {
+  opacity: 0.5;
+  height: 30px;
+  width: 75px;
+}
+
+.yogDisplay {
+  color: #6d213cff;
+  font-size: 1.25em;
+  display: inline;
+  font-family: 'Open Sans';
+}
+
+#yogDisplay{
+  color: #6d213cff;
+  font-size: 1.25em;
+  display: inline;
+  font-weight: 900;
+}
+
+#searchWrapper {
+  position: relative;
+}
+
+#searchWrapper::after {
+  content: '🔍';
+  position: absolute;
+  top: 14px;
+  right: 8px;
+}
+
+.rkhive input {
+  padding: 8px 15px;
+  margin-bottom: 30px;
+  box-sizing: border-box;
+  border: none;
+  border-bottom: 2px solid #6d213cff;
+  outline: none;
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 800;
+  font-size: 0.5cm;
+  width: 100%;
+}
+
+.rkhive input:focus {
+  background-color: white;
+}
+
+#usersList {
+  padding-inline-start: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-gap: 30px;
+}
+
+.user {
+  list-style-type: none;
+  background-color: #eaeaea;
+  border-radius: 15px;
+  border-color: #6d213cff;
+  border-width: 15px;
+  padding: 20px 20px;
+  display: grid;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.user-grid-image{
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  padding: 0px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.sheen-name {
+  line-height: normal;
+  font-size: 1.5em;
+  font-weight: bold;
+  display: block;
+  position: relative;
+  overflow: hidden;
+  text-decoration: none;
+  color: rgb(0,0,0,1);
+}
+
+.sheen-name::after {
+  content: '';
+  width: 20%;
+  height: 100%;
+  position: absolute;
+  left: auto;
+  top: 0;
+  bottom: 0;
+  right: -20%;
+  background-image:
+    linear-gradient(135deg,
+      rgba(255,255,255,0),
+      rgba(255,255,255,.8),
+      rgba(255,255,255,0)
+    );
+}
+
+.sheen-name:hover::after {
+  transition: all 1s ease-out;
+  right: 100%;
+}
+
+.sheen-name:hover{
+  color:#6d213cff;
+}
+
+.modal-dialog{
+  width: 90vw;
+  margin-top: 4vh;
+  margin-bottom: 4vh;
+}
+
+.modal-content {
+  border-width: 0px;
+}
+
+.modal-header {
+  background-color: #6d213cff;
+  border-width: 0px;
+  padding-top: 20px;
+}
+
+.modal-header button {
+  color: white !important;
+  opacity: 1;
+  display: inline;
+  transition: 1s;
+}
+
+.modal-header button:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+.modal-close {
+  font-size: 1.2em;
+}
+
+.modal-header p {
+  color: white;
+  font-size: 2em;
+}
+
+.modal-body {
+  background-color: white;
+  padding: 30px;
+  position: relative;
+  overflow-y: auto;
+}
+
+.modal-body img{
+  float: left;
+  text-align: left;
+  width: 100%;
+  margin-bottom: 25px;
+}
+
+.modal-attribute {
+  color: black;
+  text-align: center;
+  font-size: 1.2em;
+}
+
+.modal-description {
+  text-align: left;
+  font-size: 1.1em;
+  margin-bottom: 25px;
+}
+
+.modal-quote {
+  font-style: italic;
+  font-weight: bolder;
+  font-size: 1.1em;
+  text-align: left;
+}
+
+.modal-body button {
+  color: white;
+  background-color: #6d213cff;
+  font-weight: 900;
+  font-size: 1.4em;
+  padding: 8px 16px;
+  border-radius: 0px;
+  border-width: 2px;
+  border-color: #6d213cff;
+  transition: 1s;
+}
+
+.modal-body button:hover{
+  color: #6d213cff;
+  background-color: white;
+}
+
+.editable {
+  color: #6d213cff;
 }
 
 /* LOADER RULES */
@@ -501,33 +706,6 @@ height: 50px;
   margin-left: 4vw;
 }
 
-.editbutton:link {
-    color: white;
-    border-width: 0px;
-}
-
-.editbutton:active {
-    color: white;
-    border-width: 0px;
-}
-
-.editbutton:focus {
-    color: white;
-    border-width: 0px;
-}
-
-.editbutton:visited {
-    color: white;
-    border-width: 0px;
-}
-
-.editbutton:hover{
-  color: #6d213cff !important;
-  background-color: white;
-  border-color: #6d213cff;
-  transition-duration: 1s;
-}
-
 .personDesc{
   text-align: center;
   padding: 0px;
@@ -564,18 +742,6 @@ font-size: 1.25em;
   background-color: white;
   color: #6d213cff;
   font-weight: bolder;
-}
-
-.btn {
-  font-family: 'Open Sans';
-  width: auto;
-  text-align: center;
-  color: white;
-  background-color: #6d213cff;
-  font-weight: 900;
-  margin-bottom: 3vh;
-  font-size: 2em;
-  border-radius: 0px;
 }
 
 .btn-sm {
@@ -663,6 +829,10 @@ font-weight: 900;
   overflow-y: scroll;
   scroll-behavior: smooth;
   text-align: center;
+}
+
+.topmargin {
+  margin-top: 45px;
 }
 
 .samplemodal {

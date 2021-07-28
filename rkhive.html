@@ -14,7 +14,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="Images/Favicons/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="Images/Favicons/favicon-16x16.png">
   <link rel="manifest" href="Images/site.webmanifest">
-  <title>The Mass Academy Rkhive | Rkhive</title>
+  <title>The Mass Academy Rkhive</title>
   </head>
 
   <body>
@@ -74,6 +74,10 @@
         <ul id="usersList"></ul>
 
     </div>
+    <!-- LOADER -->
+    <div class="loader-wrapper">
+      <span class="loader"><span class="loader-inner"></span></span>
+    </div>
       <!-- The core Firebase JS SDK is always required and must be listed first -->
       <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-app.js"></script>
       <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-database.js"></script>
@@ -82,9 +86,13 @@
            https://firebase.google.com/docs/web/setup#available-libraries -->
       <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-analytics.js"></script>
       <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-storage.js"></script>
-
   </body>
 
+  <script>
+  $(window).on("load",function(){
+    $(".loader-wrapper").fadeOut("slow");
+  });
+  </script>
   <script src = "appBeta.js"></script>
 
   </html>

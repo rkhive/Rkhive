@@ -152,52 +152,6 @@ li {
     }
 }
 
-/* UTILITY RULES */
-
-.white {
-  color: white;
-}
-
-.maroon {
-  color: #6d213cff;
-}
-
-.bgred {
-  background-color: #6d213cff;
-}
-
-.bggreen {
-  background-color: #869d7aff;
-}
-
-.bgblue {
-  background-color: #adb9e3ff;
-}
-
-.left {
-  text-align: left;
-}
-
-.center {
-  text-align: center;
-}
-
-.right {
-  text-align: right;
-}
-
-.floatleft {
-  float: left;
-}
-
-.floatright {
-  float: right;
-}
-
-.none {
-  display: none;
-}
-
 /* RKHIVE RULES */
 
 .rkhive-heading h1 {
@@ -418,10 +372,103 @@ li {
   font-style: italic;
   font-weight: bolder;
   font-size: 1.3em;
-  text-align: center;
+  text-align: left;
 }
 
 .editable{
   color: #6d213cff;
   font-weight: bolder;
+}
+
+/* LOADER RULES */
+
+.loader-wrapper {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #6d213cff;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loader {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  position: relative;
+  border: 4px solid #Fff;
+  animation: loader 2s infinite ease;
+}
+
+.loader-inner {
+  vertical-align: top;
+  display: inline-block;
+  width: 100%;
+  background-color: #fff;
+  animation: loader-inner 2s infinite ease-in;
+}
+
+@keyframes loader {
+  0% { transform: rotate(0deg);}
+  25% { transform: rotate(180deg);}
+  50% { transform: rotate(180deg);}
+  75% { transform: rotate(360deg);}
+  100% { transform: rotate(360deg);}
+}
+
+@keyframes loader-inner {
+  0% { height: 0%;}
+  25% { height: 0%;}
+  50% { height: 100%;}
+  75% { height: 100%;}
+  100% { height: 0%;}
+}
+
+/* UTILITY RULES */
+
+.white {
+  color: white;
+}
+
+.maroon {
+  color: #6d213cff;
+}
+
+.bgred {
+  background-color: #6d213cff;
+}
+
+.bggreen {
+  background-color: #869d7aff;
+}
+
+.bgblue {
+  background-color: #adb9e3ff;
+}
+
+.left {
+  text-align: left;
+}
+
+.center {
+  text-align: center;
+}
+
+.right {
+  text-align: right;
+}
+
+.floatleft {
+  float: left;
+}
+
+.floatright {
+  float: right;
+}
+
+.none {
+  display: none;
 }

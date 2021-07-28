@@ -6,8 +6,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="rkhive.css">
+  <link rel="stylesheet" href="login.css">
   <link rel="stylesheet" href="hover.css">
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
@@ -33,10 +32,10 @@
       <div class="collapse navbar-collapse" id="navbarvertical">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link" href="rkhive.html">The Mass Academy Rkhive </a>
+            <a class="nav-link" href="rkhive.html">The Rkhive </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="about.html">About </a>
+            <a class="nav-link" href="about.html">Our Story</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="login.html">Manage Your Profile </a>
@@ -44,313 +43,296 @@
         </ul>
         </div>
     </nav>
-    <div class = "center">
-      <h1 class="topmargin">Please login to edit your profile.</h1>
-      <br>
-      <input id = "txtEmail" type = "email" placeholder = "Email">
-      <br>
-      <br>
-      <input id = "txtPassword" type = "password" placeholder = "Password">
-      <br>
-      <br>
-      <br>
-      <button id = "btnLogin" class = "btn editbutton"> Log In </button>
-      <button id = "btnSignUp" class = "btn editbutton hide"> Sign Up </button>
-      <button id = "btnLogout" class = "btn editbutton hide"> Log Out </button>
-      <button id = "btnGiveUserInfo" class = "btn editbutton hide"> User Details </button>
-      <br>
-      <br>
-      <div class = 'center'>
-      <div id = "userInfo">
+  <div class="center">
+    <div class="login-welcome">
+      <h1>Please login to edit your profile.</h1>
+    </div>
+    <div class="login-signin">
+      <input id="txtEmail" type="email" placeholder="Email">
+      <input id="txtPassword" type="password" placeholder="Password">
+    </div>
+    <div class="login-buttons">
+      <button id="btnLogin" class=""> Log In </button>
+      <button id="btnSignUp" class="hide"> Sign Up </button>
+      <button id="btnLogout" class="hide"> Log Out </button>
+      <button id="btnGiveUserInfo" class="hide"> User Details </button>
+    </div>
+    <div id="userInfo">
+    </div>
+    <div class="login-editing">
+
+    <label id = 'fileButtonLabel' for="fileButton" class="choosefile"> <p><span class="glyphicon glyphicon-camera"></span>Upload New Photo</p> </label>
+    <input id = 'fileButton' type = 'file' value = 'upload'></input>
+
+      <p id="progressPrint"></p>
+      <progress id="uploader" class="none" value="0" max="100"></progress>
+    <button id="btnResetPassword"> Reset Password </button>
       </div>
     </div>
-      <div id = 'editBoxes' class = "center hide">
-        <!-- <h4 id = "descTitle" > <span class="glyphicon glyphicon-pencil"></span> Edit Description: </h4>
-          <div id = "editDesc" class = "editBox" contenteditable="true"></div>
 
-        <h4 id = "quoteTitle" > <span class="glyphicon glyphicon-pencil"></span> Edit Quote: </h4>
-          <div id = "editQuote" class = "editBox" contenteditable="true"></div>
-
-        <h4 id = "quoteAuthorTitle" > <span class="glyphicon glyphicon-pencil"></span> Edit Quote Author: </h4>
-          <div id = "editQuoteAuthor" class = "editBox" contenteditable="true"></div>
-
-        <h4 id = "favClassTitle" > <span class="glyphicon glyphicon-pencil"></span> Edit Favorite Class: </h4>
-          <div id = "editFavClass" class = "editBox" contenteditable="true"></div> -->
-
-        <label id = 'fileButtonLabel' for="fileButton" class="choosefile"> <p><span class="glyphicon glyphicon-pencil"></span>   Upload New Photo</p> </label>
-          <input id = 'fileButton' type = 'file' value = 'upload' class = "center"></input>
-          <p id = progressPrint ></p>
-          <progress id="uploader" value="0" max="100"> 0% </progress>
-            <br>
-
-        <button id = "btnResetPassword" class = "btn floatRight inline"> Reset Password </button>
-      </div>
-    </div>
+    <!-- LOADER -->
     <div class="loader-wrapper">
       <span class="loader"><span class="loader-inner"></span></span>
     </div>
 
-    <div class="footer center white">
-    <p style="padding-bottom:15px">Have a question, suggestion, or bug to report?</p>
-    <button class="btn editbutton">
-      <a href="mailto:rkhivemanagement@gmail.com" class="white" style="margin-right:4px"> Email Rkhive Management </a>
-        <span class="glyphicon-envelope"></span>
-    </button>
-    </p>
-    </div>
-      <!-- The core Firebase JS SDK is always required and must be listed first -->
-      <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-app.js"></script>
-      <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-database.js"></script>
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-database.js"></script>
 
-      <!-- TODO: Add SDKs for Firebase products that you want to use
-           https://firebase.google.com/docs/web/setup#available-libraries -->
-      <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-analytics.js"></script>
-      <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-storage.js"></script>
-      <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
-      <script>
-        // Your web app's Firebase configuration
-        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-        var firebaseConfig = {
-          apiKey: "AIzaSyA-7xOhqPJjhq-cm6VuzjZZ5X3dti6UeFQ",
-          authDomain: "rkhive-1faec.firebaseapp.com",
-          databaseURL: "https://rkhive-1faec-default-rtdb.firebaseio.com",
-          projectId: "rkhive-1faec",
-          storageBucket: "rkhive-1faec.appspot.com",
-          messagingSenderId: "608713408633",
-          appId: "1:608713408633:web:fe413d775d51be77e2d4a8",
-          measurementId: "G-PCS017396G"
-        };
-        // Initialize Firebase
-        firebase.initializeApp(firebaseConfig);
-        firebase.analytics();
-        $(progressPrint).html("");
-        // Get elements for login
-        const txtEmail = document.getElementById("txtEmail");
-        const txtPassword = document.getElementById("txtPassword");
-        // TODO: hide the email and password prompts if already logged in
-        const btnLogin = document.getElementById("btnLogin");
-        const btnSignUp = document.getElementById("btnSignUp");
-        const btnLogout = document.getElementById("btnLogout");
-        let userYog; //GLOBAL YOG
-        let userType; //GLOBAL TYPE
+<!-- TODO: Add SDKs for Firebase products that you want to use
+https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-analytics.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-storage.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
+<script>
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+var firebaseConfig = {
+  apiKey: "AIzaSyA-7xOhqPJjhq-cm6VuzjZZ5X3dti6UeFQ",
+  authDomain: "rkhive-1faec.firebaseapp.com",
+  databaseURL: "https://rkhive-1faec-default-rtdb.firebaseio.com",
+  projectId: "rkhive-1faec",
+  storageBucket: "rkhive-1faec.appspot.com",
+  messagingSenderId: "608713408633",
+  appId: "1:608713408633:web:fe413d775d51be77e2d4a8",
+  measurementId: "G-PCS017396G"
+};
 
-        // Declare global variable for email
-        var globalEmail = "";
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+firebase.analytics();
+$(progressPrint).html("");
+// Get elements for login
+const txtEmail = document.getElementById("txtEmail");
+const txtPassword = document.getElementById("txtPassword");
+// TODO: hide the email and password prompts if already logged in
+const btnLogin = document.getElementById("btnLogin");
+const btnSignUp = document.getElementById("btnSignUp");
+const btnLogout = document.getElementById("btnLogout");
+let userYog; //GLOBAL YOG
+let userType; //GLOBAL TYPE
 
-        // Get elements for progress bar and submit button
-        var uploader = document.getElementById('uploader');
-        uploader.value = 0;
-        var fileButton = document.getElementById('fileButton');
+// Declare global variable for email
+var globalEmail = "";
 
-        //the specific reference of the user
-        var userRef = "";
+// Get elements for progress bar and submit button
+var uploader = document.getElementById('uploader');
+uploader.value = 0;
+var fileButton = document.getElementById('fileButton');
 
-        //add login event
-        btnLogin.addEventListener('click', e => {
-          //Get email and pass
-          const email = txtEmail.value;
-          const pass = txtPassword.value;
-          const auth = firebase.auth();
+//the specific reference of the user
+var userRef = "";
 
-          //Sign in
-          const promise = auth.signInWithEmailAndPassword(email, pass);
-          if(email){
-          $(userInfo).html("Logged in as "+email);
-          }
-          else{
-            $(userInfo).html("RKHIVE");
-          }
-          promise.catch(e => {
-            console.log(e.message);
-            $(userInfo).html(e.message);
-          });
-        });
+//add login event
+btnLogin.addEventListener('click', e => {
+//Get email and pass
+const email = txtEmail.value;
+const pass = txtPassword.value;
+const auth = firebase.auth();
 
-        //add signup event
-        btnSignUp.addEventListener('click', e => {
-          //Get email and pass
-          //TODO: validate these emails
-          const email = txtEmail.value;
-          const pass = txtPassword.value;
-          const auth = firebase.auth();
+//Sign in
+const promise = auth.signInWithEmailAndPassword(email, pass);
+if(email) {
+  $(userInfo).html("Logged in as "+email);
+}
+else {
+  $(userInfo).html("RKHIVE");
+}
+promise.catch(e => {
+console.log(e.message);
+$(userInfo).html(e.message);
+});
+});
 
-          //Sign in
-          const promise = auth.createUserWithEmailAndPassword(email, pass);
-          $(userInfo).html("Created account as "+email);
-          promise.catch(e => {
-            console.log(e.message);
-            $(userInfo).html(e.message);
-          });
-        });
+//add signup event
+btnSignUp.addEventListener('click', e => {
+  //Get email and pass
+  //TODO: validate these emails
+  const email = txtEmail.value;
+  const pass = txtPassword.value;
+  const auth = firebase.auth();
 
-        // TODO: hide all profile elements when logging out
-        btnLogout.addEventListener('click', e => {
-          firebase.auth().signOut();
-          // document.getElementById('editBoxes').classList.add('hide');
-        });
+  //Sign in
+  const promise = auth.createUserWithEmailAndPassword(email, pass);
+  $(userInfo).html("Created account as "+email);
+  promise.catch(e => {
+    console.log(e.message);
+    $(userInfo).html(e.message);
+  });
+});
 
-        btnResetPassword.addEventListener('click', e => {
-          console.log(globalEmail);
-          firebase.auth().sendPasswordResetEmail(globalEmail)
-          .then(() => {
-            console.log("Email for password reset sent");
-          })
-          .catch(error => {
-            console.error(error);
-          })
-        });
+// TODO: hide all profile elements when logging out
+btnLogout.addEventListener('click', e => {
+  firebase.auth().signOut();
+  // document.getElementById('editBoxes').classList.add('hide');
+});
 
-        btnGiveUserInfo.addEventListener('click', e => {
-          const user = firebase.auth().currentUser;
-            if (user !== null) {
-              user.providerData.forEach((profile) => {
-                //GETS the specific YOG of the current user
-                var masterRef = firebase.database().ref('1oYN4YtfxmtndybqYwCeg2uH1j8ifUVjro794v-rW11g/masterUsers/'+profile.email.replace('@wpi.edu', ""));
-                masterRef.on("value", function(e) {
-                  userYog = JSON.parse(JSON.stringify(e.val())).yog;
-                  userType = JSON.parse(JSON.stringify(e.val())).type;
-                  var usersRef = firebase.database().ref('1oYN4YtfxmtndybqYwCeg2uH1j8ifUVjro794v-rW11g/'+userType+userYog);
-                  usersRef.orderByChild("email").equalTo(profile.email).on("child_added", function(snapshot) {
-                    // console.log(snapshot.key);
-                    userRef = snapshot.ref.path.toString();
-                    const obj = JSON.parse(JSON.stringify(snapshot.val()));
-                    //setting GLOBAL variable email
-                    globalEmail = profile.email;
+btnResetPassword.addEventListener('click', e => {
+  console.log(globalEmail);
+  firebase.auth().sendPasswordResetEmail(globalEmail)
+  .then(() => {
+    console.log("Email for password reset sent");
+  })
+  .catch(error => {
+    console.error(error);
+  })
+});
 
-                    $(userInfo).html(
-                      "<div class='user hvr-grow'>"
-                      +"<div data-toggle='modal' data-target='#myModal'>"
-                      +"<img class = user-grid-image src="+obj.preferred_picture+"></img>"
-                      +"<div class='usersList-name'>"
-                      +"<p class='sheen-name'>"+obj.first_name+" "+ obj.last_name+"</p>"
-                      +"</div>"
-                      +"</div>"
-                      +"</div>"
+btnGiveUserInfo.addEventListener('click', e => {
+  const user = firebase.auth().currentUser;
+  if (user !== null) {
+    user.providerData.forEach((profile) => {
+      //GETS the specific YOG of the current user
+      var masterRef = firebase.database().ref('1oYN4YtfxmtndybqYwCeg2uH1j8ifUVjro794v-rW11g/masterUsers/'+profile.email.replace('@wpi.edu', ""));
+      masterRef.on("value", function(e) {
+        userYog = JSON.parse(JSON.stringify(e.val())).yog;
+        userType = JSON.parse(JSON.stringify(e.val())).type;
+        var usersRef = firebase.database().ref('1oYN4YtfxmtndybqYwCeg2uH1j8ifUVjro794v-rW11g/'+userType+userYog);
+        usersRef.orderByChild("email").equalTo(profile.email).on("child_added", function(snapshot) {
+          // console.log(snapshot.key);
+          userRef = snapshot.ref.path.toString();
+          const obj = JSON.parse(JSON.stringify(snapshot.val()));
+          //setting GLOBAL variable email
+          globalEmail = profile.email;
 
-                      +"<div id='myModal' class='modal fade' role='dialog'>"
-                        +"<div class='modal-dialog'>"
-                          +"<div class='modal-content'>"
-                            +"<div class='modal-header'>"
-                              +"<p>" + obj.first_name +" "+obj.last_name+"</p>"
-                            +"</div>"
-                            +"<div class='modal-body'>"
-                              +"<div class='col-sm-4'>"
-                                // +"<div class = 'img-container'>"
-                                //   +"<div class = 'img-overlay'>"
-                                //     +"<div class = 'img-overlay-text'> Upload New </div>"
-                                //   +"</div>"
-                                  +"<img class = 'img-display' src=" + obj.preferred_picture +"></img>"
-                                // +"</div>"
-                                +"<p class='modal-attribute' >Section <span id = 'sectionEdit' class = 'editable' contenteditable = 'true'>"+obj.section+"</span></p>"
-                                +"<p class='modal-attribute' >Favorite Class: <span id = 'favClassEdit' class = 'editable'contenteditable = 'true'>"+ obj.fav_class+"</span></p>"
-                              +"</div>"
-                                +"<div class='col-sm-8'>"
-                                  +"<p id = 'descEdit' class='modal-description editable' contenteditable = 'true'>"+ obj.student_description+"</p>"
-                                  +"<p class='modal-quote' > \" <span id = 'quoteEdit' class = 'editable' contenteditable = true>"+ obj.quote +"</span> \"</p>"
-                                  +"<p class='modal-quote' >- <span id = 'quoteAuthorEdit' class = 'editable' contenteditable = 'true'>"+ obj.quote_author+"</span></p>"
-                                  +"<br>"
-                                  +"<button id = 'btnUpdate' class = 'btn floatRight inline' onclick = 'btnUpdate()'> Update Profile </button>"
-                                +"</div>"
-                              +"</div>"
-                            +"</div>"
+          $(userInfo).html(
+            "<p>Click on your profile below to edit your information.</p>"
+            +"<div class='user hvr-grow'>"
+            +"<div data-toggle='modal' data-target='#myModal'>"
+            +"<img class = user-grid-image src="+obj.preferred_picture+"></img>"
+            +"<div class='usersList-name'>"
+            +"<p class='sheen-name'>"+obj.first_name+" "+ obj.last_name+"</p>"
+            +"</div>"
+            +"</div>"
+            +"</div>"
+
+            +"<div id='myModal' class='modal fade' role='dialog'>"
+              +"<div class='modal-dialog'>"
+                +"<div class='modal-content'>"
+                  +"<div class='modal-header'>"
+                    +"<p>" + obj.first_name +" "+obj.last_name
+                    +"<button type='button' class='close' data-dismiss='modal' aria-label='Close'>"
+                      +"<span class='modal-close' aria-hidden='true'>&times;</span>"
+                    +"</button>"
+                    +"</p>"
+                  +"</div>"
+                  +"<div class='modal-body'>"
+                    +"<div class='col-sm-4'>"
+                      +"<div class = 'img-container'>"
+                        +"<div class = 'img-overlay'>"
                         +"</div>"
+                        +"<img class = 'img-display' src=" + obj.preferred_picture +"></img>"
                       +"</div>"
-                    );
-
-                    // shows the edit boxes for user information
-                    document.getElementById('editBoxes').classList.remove('hide');
-                      // displays the current state of the user's data
-                      // $(editDesc).html(obj.student_description);
-                      // $(editQuote).html(obj.quote);
-                      // $(editQuoteAuthor).html(obj.quote_author);
-                      // $(editFavClass).html(obj.fav_class);
-                  });
-                });
-            });
-          }
-        });
-
-        function btnUpdate(){
-          console.log(userRef);
-          firebase.database().ref(userRef).update({
-            student_description: document.getElementById("descEdit").innerHTML,
-            quote: document.getElementById("quoteEdit").innerHTML,
-            quote_author: document.getElementById("quoteAuthorEdit").innerHTML,
-            fav_class: document.getElementById("favClassEdit").innerHTML,
-            section: document.getElementById("sectionEdit").innerHTML
-          });
-          window.alert("Profile has been updated!");
-          location.reload();
-        };
-
-        // btnUpdate.addEventListener('click', e => {
-        //   console.log(userRef);
-        //   firebase.database().ref(userRef).update({
-        //     student_description: document.getElementById("editDesc").innerHTML,
-        //     quote: document.getElementById("editQuote").innerHTML,
-        //     quote_author: document.getElementById("editQuoteAuthor").innerHTML,
-        //     fav_class: document.getElementById("editFavClass").innerHTML
-        //   });
-        //   window.alert("Profile has been updated!");
-        //   location.reload();
-        // });
-
-        //add a realtime addEventListener
-        firebase.auth().onAuthStateChanged(firebaseUser => {
-          if(firebaseUser) {
-            console.log(firebaseUser);
-            btnLogout.classList.remove('hide');
-            btnGiveUserInfo.classList.remove('hide');
-          }
-          else {
-            $(userInfo).html("Not logged in");
-            btnLogout.classList.add('hide');
-            btnGiveUserInfo.classList.add('hide');
-          }
-        });
-
-        // TODO: make a better name for the function
-        // TODO: make images and information disappear and such
-        function showInputs(){
-          $(progressPrint).html("Upload Complete!");
-          location.reload();
-        }
-
-        //listen for file selection
-        fileButton.addEventListener('change', function(e) {
-            //get file
-            var file = e.target.files[0];
-            console.log(file);
-            var blob = file.slice(0, file.size, 'image/png/jpg/jpeg');
-            newFile = new File([blob], globalEmail+".png", {type: 'image/png'});
-
-            //create storage refresh
-            //originally file.name
-            var storageRef = firebase.storage().ref(userYog+'_yb_photos/'+newFile.name);
-
-            //upload file
-            //originally file
-            var task = storageRef.put(newFile);
-
-            //update progress banner
-            task.on('state_changed',
-
-            function progress (snapshot){
-              var percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-              uploader.value = percentage;
-            },
-
-            function error(err) {
-
-            },
-
-            function complete(){
-              console.log("Updated picture to profile " +globalEmail);
-              showInputs();
-            }
+                      +"<p class='modal-attribute' >Section <span id = 'sectionEdit' class = 'editable' contenteditable = 'true'>"+obj.section+"</span></p>"
+                      +"<p class='modal-attribute' >Favorite Class: <span id = 'favClassEdit' class = 'editable'contenteditable = 'true'>"+ obj.fav_class+"</span></p>"
+                    +"</div>"
+                      +"<div class='col-sm-8'>"
+                        +"<p id = 'descEdit' class='modal-description editable' contenteditable = 'true'>"+ obj.student_description+"</p>"
+                        +"<p class='modal-quote' > \" <span id = 'quoteEdit' class = 'editable' contenteditable = true>"+ obj.quote +"</span> \" </p>"
+                        +"<p class='modal-quote' >- <span id = 'quoteAuthorEdit' class = 'editable' contenteditable = 'true'>"+ obj.quote_author+"</span></p>"
+                        +"<br>"
+                        +"<button id='btnUpdate' onclick = 'btnUpdate()'> Update Profile </button>"
+                      +"</div>"
+                    +"</div>"
+                  +"</div>"
+              +"</div>"
+            +"</div>"
           );
+
+          // shows the edit boxes for user information
+          document.getElementById('editBoxes').classList.remove('hide');
+            // displays the current state of the user's data
+            // $(editDesc).html(obj.student_description);
+            // $(editQuote).html(obj.quote);
+            // $(editQuoteAuthor).html(obj.quote_author);
+            // $(editFavClass).html(obj.fav_class);
         });
-      </script>
+      });
+  });
+}
+});
+
+function btnUpdate(){
+  console.log(userRef);
+  firebase.database().ref(userRef).update({
+    student_description: document.getElementById("descEdit").innerHTML,
+    quote: document.getElementById("quoteEdit").innerHTML,
+    quote_author: document.getElementById("quoteAuthorEdit").innerHTML,
+    fav_class: document.getElementById("favClassEdit").innerHTML,
+    section: document.getElementById("sectionEdit").innerHTML
+  });
+  window.alert("Profile has been updated!");
+  location.reload();
+};
+
+// btnUpdate.addEventListener('click', e => {
+//   console.log(userRef);
+//   firebase.database().ref(userRef).update({
+//     student_description: document.getElementById("editDesc").innerHTML,
+//     quote: document.getElementById("editQuote").innerHTML,
+//     quote_author: document.getElementById("editQuoteAuthor").innerHTML,
+//     fav_class: document.getElementById("editFavClass").innerHTML
+//   });
+//   window.alert("Profile has been updated!");
+//   location.reload();
+// });
+
+//add a realtime addEventListener
+firebase.auth().onAuthStateChanged(firebaseUser => {
+  if(firebaseUser) {
+    console.log(firebaseUser);
+    btnLogout.classList.remove('hide');
+    btnGiveUserInfo.classList.remove('hide');
+  }
+  else {
+    $(userInfo).html("Not logged in");
+    btnLogout.classList.add('hide');
+    btnGiveUserInfo.classList.add('hide');
+  }
+});
+
+// TODO: make a better name for the function
+// TODO: make images and information disappear and such
+function showInputs(){
+  $(progressPrint).html("Upload Complete!");
+  location.reload();
+}
+
+//listen for file selection
+fileButton.addEventListener('change', function(e) {
+    //get file
+    var file = e.target.files[0];
+    console.log(file);
+    var blob = file.slice(0, file.size, 'image/png/jpg/jpeg');
+    newFile = new File([blob], globalEmail+".png", {type: 'image/png'});
+
+    //create storage refresh
+    //originally file.name
+    var storageRef = firebase.storage().ref(userYog+'_yb_photos/'+newFile.name);
+
+    //upload file
+    //originally file
+    var task = storageRef.put(newFile);
+
+    //update progress banner
+    task.on('state_changed',
+
+    function progress (snapshot){
+      var percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+      uploader.value = percentage;
+    },
+
+    function error(err) {
+
+    },
+
+    function complete(){
+      console.log("Updated picture to profile " +globalEmail);
+      showInputs();
+    }
+  );
+});
+</script>
 
   </body>
 
