@@ -277,6 +277,36 @@ input:focus {
   }
 }
 
+/* ABOUT RULES */
+
+.about-welcome {
+  background-color: white;
+}
+
+.about-welcome h1 {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.about-info {
+  float: right;
+  margin-top: 30px;
+  margin-left: 45px;
+  margin-right: 45px;
+  margin-bottom: 45px;
+  font-size: 1.4em;
+}
+
+.about-founders {
+  float: left;
+  width: 40vw;
+  display: inline;
+  margin-right: 30px;
+  margin-bottom: 10px;
+}
+
 /* UTILITY RULES */
 
 .white {
@@ -326,10 +356,6 @@ input:focus {
   display: block;
   margin-bottom: 15px;
   height: 80vh;
-}
-
-.info {
-  font-size: 1.5em;
 }
 
 .heading-gap {
