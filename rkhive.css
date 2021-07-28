@@ -162,6 +162,18 @@ li {
   color: #6d213cff;
 }
 
+.bgred {
+  background-color: #6d213cff;
+}
+
+.bggreen {
+  background-color: #869d7aff;
+}
+
+.bgblue {
+  background-color: #adb9e3ff;
+}
+
 .left {
   text-align: left;
 }

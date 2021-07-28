@@ -317,6 +317,18 @@ input:focus {
   color: #6d213cff;
 }
 
+.bgred {
+  background-color: #6d213cff;
+}
+
+.bggreen {
+  background-color: #869d7aff;
+}
+
+.bgblue {
+  background-color: #adb9e3ff;
+}
+
 .left {
   text-align: left;
 }
@@ -327,6 +339,18 @@ input:focus {
 
 .right {
   text-align: right;
+}
+
+.floatleft {
+  float: left;
+}
+
+.floatright {
+  float: right;
+}
+
+.none {
+  display: none;
 }
 
 /* OTHER RULES */
@@ -467,14 +491,6 @@ height: 50px;
   border-style: solid;
 }
 
-.bgred {
-  background-color: #6d213cff;
-}
-
-.bggreen {
-  background-color: #869d7aff;
-}
-
 
 .nav-pills {
 margin: auto;
@@ -540,14 +556,6 @@ transition: font-weight 0.25s;
 font-weight: 900;
 }
 
-.bgblue {
-background-color: #adb9e3ff;
-}
-
-.bggreen {
-background-color: #869d7aff;
-}
-
 .noborders {
   border-width: 0 none;
 }
@@ -594,10 +602,6 @@ background-color: #869d7aff;
 .col-centered{
     float: none;
     margin: 0 auto;
-}
-
-.floatleft {
-  float: left;
 }
 
 .gridImg {
