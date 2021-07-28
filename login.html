@@ -7,13 +7,13 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="styleBeta.css">
+  <link rel="stylesheet" href="rkhive.css">
   <link rel="stylesheet" href="hover.css">
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
-  <link rel="apple-touch-icon" sizes="180x180" href="Images/Favicons/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="Images/Favicons/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="Images/Favicons/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="Images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="Images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="Images/favicon-16x16.png">
   <link rel="manifest" href="Images/site.webmanifest">
   <title>Manage Profile | Rkhive Mass Academy</title>
 </head>
@@ -33,10 +33,10 @@
       <div class="collapse navbar-collapse" id="navbarvertical">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link" href="rkhive.html">The Rkhive </a>
+            <a class="nav-link" href="rkhive.html">The Mass Academy Rkhive </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="about.html">Our Story</a>
+            <a class="nav-link" href="about.html">About </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="login.html">Manage Your Profile </a>
@@ -65,7 +65,7 @@
       </div>
     </div>
       <div id = 'editBoxes' class = "center hide">
-        <h4 id = "descTitle" > <span class="glyphicon glyphicon-pencil"></span> Edit Description: </h4>
+        <!-- <h4 id = "descTitle" > <span class="glyphicon glyphicon-pencil"></span> Edit Description: </h4>
           <div id = "editDesc" class = "editBox" contenteditable="true"></div>
 
         <h4 id = "quoteTitle" > <span class="glyphicon glyphicon-pencil"></span> Edit Quote: </h4>
@@ -75,17 +75,13 @@
           <div id = "editQuoteAuthor" class = "editBox" contenteditable="true"></div>
 
         <h4 id = "favClassTitle" > <span class="glyphicon glyphicon-pencil"></span> Edit Favorite Class: </h4>
-          <div id = "editFavClass" class = "editBox" contenteditable="true"></div>
-
-        <progress id="uploader" value="0" max="100"> 0% </progress>
+          <div id = "editFavClass" class = "editBox" contenteditable="true"></div> -->
 
         <label id = 'fileButtonLabel' for="fileButton" class="choosefile"> <p><span class="glyphicon glyphicon-pencil"></span>   Upload New Photo</p> </label>
           <input id = 'fileButton' type = 'file' value = 'upload' class = "center"></input>
           <p id = progressPrint ></p>
-
-          <img class = 'gridImg redBorder' src = "" id = "myimg" style = "display:none"></img>
-
-        <button id = "btnUpdate" class = "btn floatRight inline"> Update Profile </button>
+          <progress id="uploader" value="0" max="100"> 0% </progress>
+            <br>
 
         <button id = "btnResetPassword" class = "btn floatRight inline"> Reset Password </button>
       </div>
@@ -127,7 +123,7 @@
         // Initialize Firebase
         firebase.initializeApp(firebaseConfig);
         firebase.analytics();
-        $(progressPrint).html("")
+        $(progressPrint).html("");
         // Get elements for login
         const txtEmail = document.getElementById("txtEmail");
         const txtPassword = document.getElementById("txtPassword");
@@ -190,7 +186,7 @@
         // TODO: hide all profile elements when logging out
         btnLogout.addEventListener('click', e => {
           firebase.auth().signOut();
-          document.getElementById('editBoxes').classList.add('hide');
+          // document.getElementById('editBoxes').classList.add('hide');
         });
 
         btnResetPassword.addEventListener('click', e => {
@@ -232,54 +228,73 @@
                       +"</div>"
 
                       +"<div id='myModal' class='modal fade' role='dialog'>"
-                      +"<div class='modal-dialog'>"
-                      +"<div class='modal-content'>"
-                      +"<div class='modal-header'>"
-                      +"<p>" + obj.first_name +" "+obj.last_name+"</p>"
-                      +"</div>"
-                      +"<div class='modal-body'>"
-                      +"<div class='col-sm-4'>"
-                      +"<img src=" + obj.preferred_picture +"></img>"
-                      +"<p class='modal-attribute'>Section "+obj.section+"</p>"
-                      +"<p class='modal-attribute'>Favorite Class: "+ obj.fav_class+"</p>"
-                      +"</div>"
-                      +"<div class='col-sm-8'>"
-                      +"<p class='modal-description' contenteditable = 'true'>"+ obj.student_description+"</p>"
-                      +"<p class='modal-quote'>"+ obj.quote +"</p>"
-                      +"<p class='modal-quote'>- "+ obj.quote_author+"</p>"
-                      +"</div>"
-                      +"</div>"
-                      +"</div>"
-                      +"</div>"
+                        +"<div class='modal-dialog'>"
+                          +"<div class='modal-content'>"
+                            +"<div class='modal-header'>"
+                              +"<p>" + obj.first_name +" "+obj.last_name+"</p>"
+                            +"</div>"
+                            +"<div class='modal-body'>"
+                              +"<div class='col-sm-4'>"
+                                // +"<div class = 'img-container'>"
+                                //   +"<div class = 'img-overlay'>"
+                                //     +"<div class = 'img-overlay-text'> Upload New </div>"
+                                //   +"</div>"
+                                  +"<img class = 'img-display' src=" + obj.preferred_picture +"></img>"
+                                // +"</div>"
+                                +"<p class='modal-attribute' >Section <span id = 'sectionEdit' class = 'editable' contenteditable = 'true'>"+obj.section+"</span></p>"
+                                +"<p class='modal-attribute' >Favorite Class: <span id = 'favClassEdit' class = 'editable'contenteditable = 'true'>"+ obj.fav_class+"</span></p>"
+                              +"</div>"
+                                +"<div class='col-sm-8'>"
+                                  +"<p id = 'descEdit' class='modal-description editable' contenteditable = 'true'>"+ obj.student_description+"</p>"
+                                  +"<p class='modal-quote' > \" <span id = 'quoteEdit' class = 'editable' contenteditable = true>"+ obj.quote +"</span> \"</p>"
+                                  +"<p class='modal-quote' >- <span id = 'quoteAuthorEdit' class = 'editable' contenteditable = 'true'>"+ obj.quote_author+"</span></p>"
+                                  +"<br>"
+                                  +"<button id = 'btnUpdate' class = 'btn floatRight inline' onclick = 'btnUpdate()'> Update Profile </button>"
+                                +"</div>"
+                              +"</div>"
+                            +"</div>"
+                        +"</div>"
                       +"</div>"
                     );
 
                     // shows the edit boxes for user information
                     document.getElementById('editBoxes').classList.remove('hide');
-
-
                       // displays the current state of the user's data
-                      $(editDesc).html(obj.student_description);
-                      $(editQuote).html(obj.quote);
-                      $(editQuoteAuthor).html(obj.quote_author);
-                      $(editFavClass).html(obj.fav_class);
+                      // $(editDesc).html(obj.student_description);
+                      // $(editQuote).html(obj.quote);
+                      // $(editQuoteAuthor).html(obj.quote_author);
+                      // $(editFavClass).html(obj.fav_class);
                   });
                 });
             });
           }
         });
 
-        btnUpdate.addEventListener('click', e => {
+        function btnUpdate(){
           console.log(userRef);
           firebase.database().ref(userRef).update({
-            student_description: document.getElementById("editDesc").innerHTML,
-            quote: document.getElementById("editQuote").innerHTML,
-            quote_author: document.getElementById("editQuoteAuthor").innerHTML,
-            fav_class: document.getElementById("editFavClass").innerHTML
+            student_description: document.getElementById("descEdit").innerHTML,
+            quote: document.getElementById("quoteEdit").innerHTML,
+            quote_author: document.getElementById("quoteAuthorEdit").innerHTML,
+            fav_class: document.getElementById("favClassEdit").innerHTML,
+            section: document.getElementById("sectionEdit").innerHTML
           });
           window.alert("Profile has been updated!");
           location.reload();
-        });
+        };
+
+        // btnUpdate.addEventListener('click', e => {
+        //   console.log(userRef);
+        //   firebase.database().ref(userRef).update({
+        //     student_description: document.getElementById("editDesc").innerHTML,
+        //     quote: document.getElementById("editQuote").innerHTML,
+        //     quote_author: document.getElementById("editQuoteAuthor").innerHTML,
+        //     fav_class: document.getElementById("editFavClass").innerHTML
+        //   });
+        //   window.alert("Profile has been updated!");
+        //   location.reload();
+        // });
+
         //add a realtime addEventListener
         firebase.auth().onAuthStateChanged(firebaseUser => {
           if(firebaseUser) {
@@ -298,6 +313,7 @@
         // TODO: make images and information disappear and such
         function showInputs(){
           $(progressPrint).html("Upload Complete!");
+          location.reload();
         }
 
         //listen for file selection
