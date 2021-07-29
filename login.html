@@ -169,13 +169,14 @@ btnLogout.addEventListener('click', e => {
 
 btnResetPassword.addEventListener('click', e => {
   console.log(globalEmail);
-  firebase.auth().sendPasswordResetEmail(globalEmail)
-  .then(() => {
-    console.log("Email for password reset sent");
-  })
-  .catch(error => {
-    console.error(error);
-  })
+  window.alert('hello');
+  // firebase.auth().sendPasswordResetEmail(globalEmail)
+  // .then(() => {
+  //   console.log("Email for password reset sent");
+  // })
+  // .catch(error => {
+  //   console.error(error);
+  // })
 });
 
 btnGiveUserInfo.addEventListener('click', e => {
