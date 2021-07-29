@@ -465,6 +465,10 @@ button {
   overflow-y: auto;
 }
 
+.img-container span {
+  margin-right: 7px;
+}
+
 .modal-body img{
   float: left;
   text-align: left;
