@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="eng" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1> Rkhive Control Panel </h1>
+    <p id = "submitStatus"> Choose Year and Mode </p>
+    <input id = "txtMode" placeholder = "Students or Alumni">
+    <br><br>
+    <input id = "txtYear" placeholder = "YOG">
+    <br><br>
+    <button id = "submit"> Submit </button>
+
+    <label id = 'fileButtonLabel' for="fileButton"> <p>Upload Class CSV</p> </label>
+      <input id = 'fileButton' type = 'file' value = 'upload'></input>
+      <br><br>
+      <button id = "showResults"> Show Results </button>
+      <button id = "createData"> Create Data </button>
+      <button id = "createAccounts"> Create Accounts </button>
+      <br><br>
+      <button id = 'addToMaster'> Add to Master </button>
+      <br><br>
+      <label id = 'imageButtonLabel' for="imageButton"> <p>Upload Default Image for Class (MUST have csv loaded)</p> </label>
+        <input id = 'imageButton' type = 'file' value = 'upload'></input>
+      <br><br>
+      <button id = 'imageDataButton'> Add to Class Data</button>
+      <!-- <img id = 'previewImg' src = ""></img> -->
+      <!-- The core Firebase JS SDK is always required and must be listed first -->
+      <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-app.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-database.js"></script>
+
+      <!-- TODO: Add SDKs for Firebase products that you want to use
+           https://firebase.google.com/docs/web/setup#available-libraries -->
+      <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-analytics.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-storage.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
+  </body>
+  <script src = "creator.js"></script>
+</html>
