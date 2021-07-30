@@ -45,7 +45,7 @@
     </nav>
   <div class="center">
     <div class="login-welcome">
-      <h1>Please login to edit your profile.</h1>
+      <h1 id = 'login-banner'>Please login to edit your profile.</h1>
     </div>
     <div class="login-signin">
       <input id="txtEmail" type="email" placeholder="Email">
@@ -59,7 +59,7 @@
     </div>
     <div id="userInfo">
     </div>
-    <div class="login-editing">
+    <div id = 'upload-image' class="login-editing none">
 
     <label id = 'fileButtonLabel' for="fileButton" class="choosefile"> <p><span class="glyphicon glyphicon-camera"></span>Upload New Photo</p> </label>
     <input id = 'fileButton' type = 'file' value = 'upload'></input>
@@ -67,7 +67,7 @@
       <p id="progressPrint"></p>
       <progress id="uploader" class="none" value="0" max="100"></progress>
     <button id="btnResetPassword"> Reset Password </button>
-      </div>
+    </div>
     </div>
 
     <!-- LOADER -->
@@ -164,7 +164,7 @@ btnSignUp.addEventListener('click', e => {
 // TODO: hide all profile elements when logging out
 btnLogout.addEventListener('click', e => {
   firebase.auth().signOut();
-  // document.getElementById('editBoxes').classList.add('hide');
+  document.getElementById('upload-image').classList.add('none');
 });
 
 btnResetPassword.addEventListener('click', e => {
@@ -246,8 +246,8 @@ btnGiveUserInfo.addEventListener('click', e => {
             +"</div>"
           );
 
-          // shows the edit boxes for user information
-          document.getElementById('editBoxes').classList.remove('hide');
+          // shows the upload photo button 
+          document.getElementById('upload-image').classList.remove('none');
             // displays the current state of the user's data
             // $(editDesc).html(obj.student_description);
             // $(editQuote).html(obj.quote);
@@ -290,6 +290,7 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
     console.log(firebaseUser);
     btnLogout.classList.remove('hide');
     btnGiveUserInfo.classList.remove('hide');
+    $('login-banner').html("hello");
   }
   else {
     $(userInfo).html("Not logged in");
