@@ -29,6 +29,7 @@ var txtMode = document.getElementById('txtMode');
 var submitStatus = document.getElementById("submitStatus");
 let globalYear = "";
 let globalMode = "";
+let uidArray = [];
 
 submit.addEventListener('click', e => {
   globalYear = txtYear.value;
