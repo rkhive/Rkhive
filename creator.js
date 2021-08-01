@@ -80,6 +80,7 @@ createData.addEventListener('click', e => {
     firebase.database().ref('1oYN4YtfxmtndybqYwCeg2uH1j8ifUVjro794v-rW11g/'+globalMode+globalYear+"/"+i).set({
       email: emailsArray[i-1][0],
       id: i,
+      uid: "",
       fav_class: "N/A",
       first_name: emailsArray[i-1][2],
       last_name: emailsArray[i-1][3],
