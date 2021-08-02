@@ -20,6 +20,7 @@ var fileButton = document.getElementById('fileButton');
 var showResults = document.getElementById('showResults');
 var createData = document.getElementById('createData');
 var createAccounts = document.getElementById('createAccounts');
+var downloadAccountMeta = document.getElementById('downloadAccountMeta');
 var imageButton = document.getElementById('imageButton');
 var imageDataButton = document.getElementById('imageDataButton');
 var addToMaster = document.getElementById('addToMaster');
@@ -80,7 +81,7 @@ createData.addEventListener('click', e => {
     firebase.database().ref('1oYN4YtfxmtndybqYwCeg2uH1j8ifUVjro794v-rW11g/'+globalMode+globalYear+"/"+i).set({
       email: emailsArray[i-1][0],
       id: i,
-      uid: "",
+      uid: emailsArray[i-1][4],
       fav_class: "N/A",
       first_name: emailsArray[i-1][2],
       last_name: emailsArray[i-1][3],
@@ -107,6 +108,37 @@ createAccounts.addEventListener('click', e => {
   }
   console.log("done");
 });
+
+downloadAccountMeta.addEventListener('click', e =>{
+  for(let i = 1; i < emailsArray.length; i++){
+    myDisplay();
+  }
+});
+
+async function logUserUIDs(i){
+  let uid = "";
+  firebase.auth().signInWithEmailAndPassword(emailsArray[i-1][0], emailsArray[i-1][1]);
+  firebase.auth().onAuthStateChanged((user) =>{
+    uid = user.uid;
+  });
+  let promise = new Promise(function(resolve, reject) {
+    resolve(uid);
+  });
+
+  console.log(await promise);
+}
+
+async function myDisplay() {
+  let myPromise = new Promise(function(myResolve, myReject) {
+    let uid = "hey";
+    firebase.auth().signInWithEmailAndPassword(emailsArray[1][0], emailsArray[1][1]);
+    firebase.auth().onAuthStateChanged((user) =>{
+      uid = user.uid;
+    });
+    myResolve(uid);
+  });
+  console.log(await myPromise);
+}
 
 addToMaster.addEventListener('click', e => {
   for(let i = 1; i <= emailsArray.length; i++){
