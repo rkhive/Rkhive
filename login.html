@@ -130,6 +130,10 @@ const email = txtEmail.value;
 const pass = txtPassword.value;
 const auth = firebase.auth();
 
+//hide upload new photo
+
+document.getElementById('upload-image').classList.add('none');
+
 //Sign in
 const promise = auth.signInWithEmailAndPassword(email, pass);
 if(email) {
