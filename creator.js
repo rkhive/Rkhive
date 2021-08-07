@@ -24,10 +24,21 @@ var imageButton = document.getElementById('imageButton');
 var imageDataButton = document.getElementById('imageDataButton');
 var addToMaster = document.getElementById('addToMaster');
 var submit = document.getElementById("submit");
+var submitMinAndMax = document.getElementById('submitMinAndMax');
+var minYear = document.getElementById('minYear');
+var maxYear = document.getElementById('maxYear');
 var txtYear = document.getElementById('txtYear');
 var submitStatus = document.getElementById("submitStatus");
 let globalYear = "";
 let uidArray = [];
+
+submitMinAndMax.addEventListener('click', e =>{
+  firebase.database().ref('yb/meta').set({
+    min: minYear.value,
+    max: maxYear.value
+  });
+  console.log('done');
+});
 
 submit.addEventListener('click', e => {
   globalYear = txtYear.value;

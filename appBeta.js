@@ -22,10 +22,13 @@ const rootRef = database.ref();
 var ref = rootRef.child('yb');
 var year = "2022"; //defaults to 2022
 
+var MIN_YEAR = "";
+var MAX_YEAR = "";
 
-// TODO: make variable and allow input from control center
-const MIN_YEAR = "2021";
-const MAX_YEAR = "2023";
+database.ref('yb/meta').on('value', function(snapshot){
+  MIN_YEAR = snapshot.val().min;
+  MAX_YEAR = snapshot.val().max;
+});
 
 var currentRef = ref.child(year);
 
