@@ -20,22 +20,18 @@ var fileButton = document.getElementById('fileButton');
 var showResults = document.getElementById('showResults');
 var createData = document.getElementById('createData');
 var createAccounts = document.getElementById('createAccounts');
-var downloadAccountMeta = document.getElementById('downloadAccountMeta');
 var imageButton = document.getElementById('imageButton');
 var imageDataButton = document.getElementById('imageDataButton');
 var addToMaster = document.getElementById('addToMaster');
 var submit = document.getElementById("submit");
 var txtYear = document.getElementById('txtYear');
-var txtMode = document.getElementById('txtMode');
 var submitStatus = document.getElementById("submitStatus");
 let globalYear = "";
-let globalMode = "";
 let uidArray = [];
 
 submit.addEventListener('click', e => {
   globalYear = txtYear.value;
-  globalMode = txtMode.value;
-  submitStatus.innerHTML = globalMode+globalYear;
+  submitStatus.innerHTML = globalYear;
 });
 
 fileButton.addEventListener('change', function(e) {
@@ -48,7 +44,7 @@ imageButton.addEventListener('change', function(e) {
   var blob = file.slice(0, file.size, 'image/png/jpg/jpeg');
 
   for(let i = 1; i <= emailsArray.length; i++){
-    newFile = new File([blob], emailsArray[i-1][0]+".png", {type: 'image/png'});
+    newFile = new File([blob], i+".png", {type: 'image/png'});
     var storageRef = firebase.storage().ref(globalYear+'_'+'yb_photos/'+newFile.name);
 
     var task = storageRef.put(newFile);
@@ -59,10 +55,9 @@ imageButton.addEventListener('change', function(e) {
 
 imageDataButton.addEventListener('click', e => {
   for(let i = 1; i <= emailsArray.length; i++){
-    firebase.storage().ref(globalYear+'_'+'yb_photos/'+newFile.name).getDownloadURL()
+    firebase.storage().ref(globalYear+'_'+'yb_photos/'+i+".png").getDownloadURL()
     .then((url) => {
-      // document.getElementById('previewImg').setAttribute('src', url);
-      firebase.database().ref('1oYN4YtfxmtndybqYwCeg2uH1j8ifUVjro794v-rW11g/'+globalYear+"/"+i).update({
+      firebase.database().ref('yb/'+globalYear+"/"+i).update({
         preferred_picture : url
       });
     });
@@ -78,7 +73,7 @@ showResults.addEventListener('click', e => {
 createData.addEventListener('click', e => {
   // TODO: allow these to change
   for(let i = 1; i <= emailsArray.length; i++){
-    firebase.database().ref('1oYN4YtfxmtndybqYwCeg2uH1j8ifUVjro794v-rW11g/'+globalYear+"/"+i).set({
+    firebase.database().ref('yb/'+globalYear+"/"+i).set({
       email: emailsArray[i-1][0],
       id: i,
       uid: emailsArray[i-1][4],
@@ -91,10 +86,11 @@ createData.addEventListener('click', e => {
       section: "N/A",
       student_description: "A student at Mass Academy.",
       yog: globalYear,
-      active: 1,
-      contactOne: ""
+      active: "show",
+      contactOne: "",
+      contactTwo: ""
     });
-  };
+  }
   console.log("done");
 });
 
@@ -110,43 +106,11 @@ createAccounts.addEventListener('click', e => {
   console.log("done");
 });
 
-downloadAccountMeta.addEventListener('click', e =>{
-  for(let i = 1; i < emailsArray.length; i++){
-    myDisplay();
-  }
-});
-
-// async function logUserUIDs(i){
-//   let uid = "";
-//   firebase.auth().signInWithEmailAndPassword(emailsArray[i-1][0], emailsArray[i-1][1]);
-//   firebase.auth().onAuthStateChanged((user) =>{
-//     uid = user.uid;
-//   });
-//   let promise = new Promise(function(resolve, reject) {
-//     resolve(uid);
-//   });
-
-//   console.log(await promise);
-// }
-
-async function myDisplay() {
-  let myPromise = new Promise(function(myResolve, myReject) {
-    let uid = "hey";
-    firebase.auth().signInWithEmailAndPassword(emailsArray[1][0], emailsArray[1][1]);
-    firebase.auth().onAuthStateChanged((user) =>{
-      uid = user.uid;
-    });
-    myResolve(uid);
-  });
-  console.log(await myPromise);
-}
-
 addToMaster.addEventListener('click', e => {
   for(let i = 1; i <= emailsArray.length; i++){
-    //KEY by email WITHOUT @wpi.edu
-    firebase.database().ref('1oYN4YtfxmtndybqYwCeg2uH1j8ifUVjro794v-rW11g/masterUsers/'+emailsArray[i-1][4]).set({
-      // type: globalMode,
-      yog: globalYear
+    firebase.database().ref('yb/masterUsers/'+emailsArray[i-1][4]).set({
+      yog: globalYear,
+      id: i
     });
   };
   console.log("done");
@@ -154,9 +118,7 @@ addToMaster.addEventListener('click', e => {
 
 function getAsText(fileToRead) {
   let reader = new FileReader();
-
   reader.readAsText(fileToRead);
-
   reader.onload = loadHandler;
   reader.onerroer = errorHandler;
 }

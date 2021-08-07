@@ -45,7 +45,7 @@
     </nav>
   <div class="center">
     <div class="login-welcome">
-      <h1 id = 'login-banner'>Please login to edit your profile.</h1>
+      <h1 id = 'login-banner'><span id = 'bannerText'>Please login to edit your profile.</span></h1>
     </div>
     <div class="login-signin">
       <input id="txtEmail" type="email" placeholder="Email">
@@ -123,12 +123,20 @@ var fileButton = document.getElementById('fileButton');
 //the specific reference of the user
 var userRef = "";
 
+//the global uid
+var globalUID = "";
+
+//the global id
+var globalID = "";
+
 //add login event
 btnLogin.addEventListener('click', e => {
 //Get email and pass
 const email = txtEmail.value;
 const pass = txtPassword.value;
 const auth = firebase.auth();
+$(txtEmail).val('');
+$(txtPassword).val('');
 
 //hide upload new photo
 
@@ -169,6 +177,9 @@ btnSignUp.addEventListener('click', e => {
 btnLogout.addEventListener('click', e => {
   firebase.auth().signOut();
   document.getElementById('upload-image').classList.add('none');
+  $(txtEmail).val('');
+  $(txtPassword).val('');
+  $(bannerText).html("Please login to edit your profile.")
 });
 
 btnResetPassword.addEventListener('click', e => {
@@ -192,17 +203,19 @@ btnGiveUserInfo.addEventListener('click', e => {
   if (user !== null) {
     user.providerData.forEach((profile) => {
       //GETS the specific YOG of the current user
-      var masterRef = firebase.database().ref('1oYN4YtfxmtndybqYwCeg2uH1j8ifUVjro794v-rW11g/masterUsers/'+profile.email.replace('@wpi.edu', ""));
+      console.log(profile.uid);
+      var masterRef = firebase.database().ref('yb/masterUsers/'+globalUID);
       masterRef.on("value", function(e) {
         userYog = JSON.parse(JSON.stringify(e.val())).yog;
-        userType = JSON.parse(JSON.stringify(e.val())).type;
-        var usersRef = firebase.database().ref('1oYN4YtfxmtndybqYwCeg2uH1j8ifUVjro794v-rW11g/'+userType+userYog);
-        usersRef.orderByChild("email").equalTo(profile.email).on("child_added", function(snapshot) {
+        var usersRef = firebase.database().ref('yb/'+userYog);
+        var userID = JSON.parse(JSON.stringify(e.val())).id;
+        usersRef.orderByChild("id").equalTo(userID).on("child_added", function(snapshot) {
           // console.log(snapshot.key);
           userRef = snapshot.ref.path.toString();
           const obj = JSON.parse(JSON.stringify(snapshot.val()));
           //setting GLOBAL variable email
           globalEmail = profile.email;
+          globalID = obj.id;
 
           $(userInfo).html(
             "<p>Click on your profile below to edit your information.</p>"
@@ -230,8 +243,8 @@ btnGiveUserInfo.addEventListener('click', e => {
                       +"<div class = 'img-container'>"
                         +"<div class = 'img-overlay'>"
                         +"</div>"
-                        +"<label id = 'fileButtonLabel' for='fileButton' class='choosefile'> <p><span class='glyphicon glyphicon-camera'></span>Upload New Photo</p> </label>"
-                        +"<input id = 'fileButton' type = 'file' value = 'upload'></input>"
+                        // +"<label id = 'fileButtonLabel' for='fileButton' class='choosefile'> <p><span class='glyphicon glyphicon-camera'></span>Upload New Photo</p> </label>"
+                        // +"<input id = 'fileButton' type = 'file' value = 'upload'></input>"
                         +"<img class = 'img-display' src=" + obj.preferred_picture +"></img>"
                       +"</div>"
                       +"<p class='modal-attribute' >Section <span id = 'sectionEdit' class = 'editable' contenteditable = 'true'>"+obj.section+"</span></p>"
@@ -291,10 +304,11 @@ function btnUpdate(){
 //add a realtime addEventListener
 firebase.auth().onAuthStateChanged(firebaseUser => {
   if(firebaseUser) {
-    console.log(firebaseUser.uid);
+    globalUID = firebaseUser.uid;
+    console.log(globalUID);
     btnLogout.classList.remove('hide');
     btnGiveUserInfo.classList.remove('hide');
-    $('login-banner').html("hello");
+    $(bannerText).html("Welcome, "+firebaseUser.email+"!");
   }
   else {
     $(userInfo).html("Not logged in");
@@ -316,7 +330,7 @@ fileButton.addEventListener('change', function(e) {
     var file = e.target.files[0];
     console.log(file);
     var blob = file.slice(0, file.size, 'image/png/jpg/jpeg');
-    newFile = new File([blob], globalEmail+".png", {type: 'image/png'});
+    newFile = new File([blob], globalID+".png", {type: 'image/png'});
 
     //create storage refresh
     //originally file.name
@@ -339,7 +353,7 @@ fileButton.addEventListener('change', function(e) {
     },
 
     function complete(){
-      console.log("Updated picture to profile " +globalEmail);
+      window.alert('Profile Picture Updated!');
       showInputs();
     }
   );
