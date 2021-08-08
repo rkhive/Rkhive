@@ -154,6 +154,14 @@ li {
 
 /* RKHIVE RULES */
 
+.show{
+  display: block;
+}
+
+.hide{
+  display:none;
+}
+
 .rkhive-heading h1 {
   padding-top: 15px;
   padding-bottom: 15px;

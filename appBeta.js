@@ -155,7 +155,7 @@ const displayUsers = (users) => {
     const htmlString = users
         .map((user) => {
             return `
-            <li class="user hvr-grow">
+            <li class="user hvr-grow ${user.active}">
               <div data-toggle="modal" data-target="#myModal${user.id}">
               <img class=user-grid-image src=${user.preferred_picture}></img>
               <div class="usersList-name">

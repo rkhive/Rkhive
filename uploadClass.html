@@ -6,6 +6,7 @@
   </head>
   <body>
     <h1> Rkhive Control Panel </h1>
+    <p id = 'status' style = 'text-align: center;'>Welcome</p>
     <p> Choose Min/Max Years </p>
     <input id = minYear placeholder = "Min Year">
     <input id = maxYear placeholder = "Max Year">
@@ -14,6 +15,7 @@
     <input id = "txtYear" placeholder = "YOG">
     <br><br>
     <button id = "submit"> Submit </button>
+    <button id = "editClass"> Disable / Enable Students</button>
 
     <label id = 'fileButtonLabel' for="fileButton"> <p>Upload Class CSV</p> </label>
       <input id = 'fileButton' type = 'file' value = 'upload'></input>
@@ -30,6 +32,7 @@
         <input id = 'imageButton' type = 'file' value = 'upload'></input>
       <br><br>
       <button id = 'imageDataButton'> Add to Class Data</button>
+      <ul id = 'dataDisplay'></ul>
       <!-- The core Firebase JS SDK is always required and must be listed first -->
       <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-app.js"></script>
       <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-database.js"></script>

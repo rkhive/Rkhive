@@ -24,6 +24,7 @@ var imageButton = document.getElementById('imageButton');
 var imageDataButton = document.getElementById('imageDataButton');
 var addToMaster = document.getElementById('addToMaster');
 var submit = document.getElementById("submit");
+var editClass = document.getElementById('editClass');
 var submitMinAndMax = document.getElementById('submitMinAndMax');
 var minYear = document.getElementById('minYear');
 var maxYear = document.getElementById('maxYear');
@@ -37,17 +38,47 @@ submitMinAndMax.addEventListener('click', e =>{
     min: minYear.value,
     max: maxYear.value
   });
-  console.log('done');
+  document.getElementById('status').innerHTML = 'Set Min to '+minYear.value+" and Max to "+maxYear.value;
 });
 
 submit.addEventListener('click', e => {
   globalYear = txtYear.value;
   submitStatus.innerHTML = globalYear;
+  document.getElementById('status').innerHTML = 'Set Year to '+globalYear;
 });
+
+editClass.addEventListener('click', e =>{
+  document.getElementById('dataDisplay').innerHTML = "";
+  firebase.database().ref('yb/'+globalYear).on('value', function(snapshot){
+    snapshot.forEach(function(child){
+      var obj = JSON.parse(JSON.stringify(child.val()));
+      document.getElementById('dataDisplay').innerHTML += 
+      "<li> "+obj.id+" "+ obj.first_name+" "+obj.last_name+ " <button onclick = enable("+obj.id+")> Enable </button>"
+      +" <button onclick = disable("+obj.id+")> Disable </button></li>";
+    });
+  });
+});
+
+function enable(id){
+  document.getElementById('status').innerHTML = 'Enabled '+id;
+  window.alert("Enabled "+id);
+  firebase.database().ref('yb/'+globalYear+"/"+id).update({
+    active: 'show'
+  });
+}
+
+function disable(id){
+  document.getElementById('status').innerHTML = 'Disabled '+id;
+  window.alert("Disabled "+id);
+  firebase.database().ref('yb/'+globalYear+"/"+id).update({
+    active: 'hide'
+  });
+}
 
 fileButton.addEventListener('change', function(e) {
   var file = e.target.files[0];
   getAsText(file);
+  document.getElementById('status').innerHTML = 'Uploaded '+file.name;
 });
 
 imageButton.addEventListener('change', function(e) {
@@ -79,6 +110,11 @@ imageDataButton.addEventListener('click', e => {
 
 showResults.addEventListener('click', e => {
   console.log(emailsArray);
+  document.getElementById('dataDisplay').innerHTML = "";
+  for(let i = 1; i <= emailsArray.length; i++){
+    document.getElementById('dataDisplay').innerHTML += 
+    "<li>"+emailsArray[i-1][2]+" "+emailsArray[i-1][3]+"</li>";
+  }
 });
 
 createData.addEventListener('click', e => {
