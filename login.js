@@ -93,6 +93,7 @@ var firebaseConfig = {
   btnLogout.addEventListener('click', e => {
     firebase.auth().signOut();
     document.getElementById('upload-image').classList.add('none');
+    $(stemProjInfo).hide();
     $(txtEmail).val('');
     $(txtPassword).val('');
     $(bannerText).html("Please login to edit your profile.")
@@ -116,6 +117,7 @@ var firebaseConfig = {
   
   btnGiveUserInfo.addEventListener('click', e => {
     $(userInfoExtras).show();
+    $(stemProjInfo).hide();
     const user = firebase.auth().currentUser;
     if (user !== null) {
       user.providerData.forEach((profile) => {
