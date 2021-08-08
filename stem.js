@@ -87,7 +87,12 @@ function createProject(){
         title: $(txtProjTitle).val(),
         category: $(txtProjCategory).val(),
         abstract: $(txtProjAbstract).html(),
-        author: userInfoArr[0]+ " " + userInfoArr[1]
+        author: userInfoArr[0]+ " " + userInfoArr[1],
+        yog: userInfoArr[2],
+        id: userInfoArr[3],
+        email: userInfoArr[4],
+        userPic: userInfoArr[5],
+        active: userInfoArr[6]
     });
     $(stemProjCreate).hide();
 }

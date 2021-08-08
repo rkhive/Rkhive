@@ -94,6 +94,7 @@ function downYear(){
 function update(){
   currentRef = ref.child(year);
   currentRef.on('value', (snapshot) => {
+    console.log(snapshot.val());
     displayUsers(snapshot.val());
   });
   $(yogDisplay).html("Class of "+year);
