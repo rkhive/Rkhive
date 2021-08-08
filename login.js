@@ -43,7 +43,7 @@ var firebaseConfig = {
   //the global id
   var globalID = "";
 
-  var projectExists = -1;
+  $(stemProjCreate).hide();
   
   //add login event
   btnLogin.addEventListener('click', e => {
@@ -94,6 +94,7 @@ var firebaseConfig = {
     firebase.auth().signOut();
     document.getElementById('upload-image').classList.add('none');
     $(stemProjInfo).hide();
+    $(stemProjCreate).hide();
     $(txtEmail).val('');
     $(txtPassword).val('');
     $(bannerText).html("Please login to edit your profile.")
@@ -118,6 +119,7 @@ var firebaseConfig = {
   btnGiveUserInfo.addEventListener('click', e => {
     $(userInfoExtras).show();
     $(stemProjInfo).hide();
+    $(stemProjCreate).hide();
     const user = firebase.auth().currentUser;
     if (user !== null) {
       user.providerData.forEach((profile) => {

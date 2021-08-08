@@ -1,6 +1,7 @@
 let userInfoArr = [];
 
 btnStemProj.addEventListener('click', e =>{
+    pushData();
     $(userInfoExtras).hide();
     firebase.database().ref('stem').on('value', function(snapshot){
         if(snapshot.hasChild(globalUID)){
@@ -9,7 +10,8 @@ btnStemProj.addEventListener('click', e =>{
             displayStemProj();
         }
         else{
-            console.log("Add your STEM Project Information");
+            $(userInfo).html('Add your STEM Project Information');
+            initializeStemProj();
         }
     });
 });
@@ -52,6 +54,7 @@ function displayStemProj(){
                     +"<p id = 'descEdit' class='modal-description editable' contenteditable = 'true'>"+ stemInfo.abstract+"</p>"
                     +"<br>"
                     +"<button id='btnUpdate' onclick = 'btnUpdate()'> Update Project </button>"
+                    +"<button id = 'deleteProj' onclick = 'deleteProject()'>Delete Project</button>"
                   +"</div>"
                 +"</div>"
               +"</div>"
@@ -59,6 +62,10 @@ function displayStemProj(){
         +"</div>"
         );
     });
+}
+
+function initializeStemProj(){
+    $(stemProjCreate).show();
 }
 
 function pushData(){
@@ -72,16 +79,24 @@ function pushData(){
             userInfoArr.push(obj.first_name, obj.last_name, obj.yog, obj.id, obj.email, obj.preferred_picture, obj.active);
         });
     });
+    console.log('Data has been pushed!');
 }
 
 function createProject(){
-    firebase.database().ref('stem/'+UID).set({
-        title: "A STEM Project",
-        category: "Bio",
-        abstract: "This is a STEM project",
+    firebase.database().ref('stem/'+globalUID).set({
+        title: $(txtProjTitle).val(),
+        category: $(txtProjCategory).val(),
+        abstract: $(txtProjAbstract).html(),
         author: userInfoArr[0]+ " " + userInfoArr[1]
     });
-};
+    $(stemProjCreate).hide();
+}
+
+function deleteProject(){
+    firebase.database().ref('stem/'+globalUID).remove();
+    window.alert('STEM Project Deleted Successfully.');
+    location.reload();
+}
 
 
 function checkIfExists(UID){
