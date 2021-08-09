@@ -102,7 +102,7 @@ function createProject(){
     $(stemProjCreate).hide();
     $(txtProjTitle).val('');
     $(txtProjCategory).val('');
-    $(txtProjAbstract).html('');
+    $(txtProjAbstract).html('Abstract');
 }
 
 function deleteProject(){

@@ -53,7 +53,8 @@ var firebaseConfig = {
   const auth = firebase.auth();
   $(txtEmail).val('');
   $(txtPassword).val('');
-  
+  $(stemProjInfo).hide();
+  $(stemProjCreate).hide();
   //hide upload new photo
   
   document.getElementById('upload-image').classList.add('none');
