@@ -20,10 +20,11 @@ function displayStemProj(){
     firebase.database().ref('stem/'+userInfoArr[2]+"/"+userInfoArr[3]).on('value', function(snapshot){
         const stemInfo = JSON.parse(JSON.stringify(snapshot.val()));
         $(stemProjInfo).show();
+        document.getElementById('upload-abs').classList.remove('none');
         $(stemProjInfo).html(
         "<div class='user hvr-grow'>"
         +"<div data-toggle='modal' data-target='#myModal'>"
-        +"<img class = user-grid-image src="+stemInfo.userPic+"></img>"
+        +"<img class = user-grid-image src="+stemInfo.graphAbs+"></img>"
         +"<div class='usersList-name'>"
         +"<p class='sheen-name'>"+stemInfo.title+"</p>"
         +"</div>"
@@ -34,10 +35,10 @@ function displayStemProj(){
           +"<div class='modal-dialog'>"
             +"<div class='modal-content'>"
               +"<div class='modal-header'>"
-                +"<p>" + stemInfo.title
-                +"<button type='button' class='close' data-dismiss='modal' aria-label='Close'>"
-                  +"<span class='modal-close' aria-hidden='true'>&times;</span>"
-                +"</button>"
+              +"<button type='button' class='close' data-dismiss='modal' aria-label='Close'>"
+              +"<span class='modal-close' aria-hidden='true'>&times;</span>"
+            +"</button>"
+                +"<p id = 'titleEdit' class = 'editable' contentEditable = 'true'>" + stemInfo.title
                 +"</p>"
               +"</div>"
               +"<div class='modal-body'>"
@@ -45,26 +46,28 @@ function displayStemProj(){
                   +"<div class = 'img-container'>"
                     +"<div class = 'img-overlay'>"
                     +"</div>"
-                    +"<img class = 'img-display' src=" + stemInfo.userPic +"></img>"
+                    +"<img class = 'img-display' src=" + stemInfo.graphAbs +"></img>"
                   +"</div>"
-                  +"<p class='modal-attribute' >Category: <span id = 'sectionEdit' class = 'editable' contenteditable = 'true'>"+stemInfo.category+"</span></p>"
-                  +"<p class='modal-attribute' >Author: <span id = 'favClassEdit' class = 'editable'contenteditable = 'true'>"+ stemInfo.author+"</span></p>"
+                  +"<p class='modal-attribute' >Category: <span id = 'categoryEdit' class = 'editable' contenteditable = 'true'>"+stemInfo.category+"</span></p>"
+                  +"<p class='modal-attribute' >Author: "+ stemInfo.author+"</p>"
                 +"</div>"
                   +"<div class='col-sm-8'>"
-                    +"<p id = 'descEdit' class='modal-description editable' contenteditable = 'true'>"+ stemInfo.abstract+"</p>"
+                    +"<p id = 'abstractEdit' class='modal-description editable' contenteditable = 'true'>"+ stemInfo.abstract+"</p>"
                     +"<br>"
-                    +"<button id='btnUpdate' onclick = 'btnUpdate()'> Update Project </button>"
+                    +"<button id='btnUpdateProj' onclick = 'btnUpdateProj()'> Update Project </button>"
                     +"<button id = 'deleteProj' onclick = 'deleteProject()'>Delete Project</button>"
                   +"</div>"
                 +"</div>"
               +"</div>"
           +"</div>"
         +"</div>"
+        +"<br><br>"
         );
     });
 }
 
 function initializeStemProj(){
+    document.getElementById('upload-abs').classList.remove('none');
     $(stemProjCreate).show();
 }
 
@@ -97,12 +100,26 @@ function createProject(){
         author: userInfoArr[0]+ " " + userInfoArr[1],
         email: userInfoArr[4],
         userPic: userInfoArr[5],
+        poster: "",
+        graphAbs: "",
+        projPic: "",
+        contactOne: "",
         active: userInfoArr[6]
     });
     $(stemProjCreate).hide();
     $(txtProjTitle).val('');
     $(txtProjCategory).val('');
     $(txtProjAbstract).html('Abstract');
+}
+
+function btnUpdateProj(){
+  firebase.database().ref('stem/'+userInfoArr[2]+"/"+userInfoArr[3]).update({
+    title: document.getElementById("titleEdit").innerHTML,
+    category: document.getElementById("categoryEdit").innerHTML,
+    abstract: document.getElementById("abstractEdit").innerHTML
+  });
+  window.alert("Profile has been updated!");
+  location.reload();
 }
 
 function deleteProject(){
@@ -116,11 +133,42 @@ function deleteProject(){
       author: "null",
       email: "null",
       userPic: "",
+      poster: "",
+      graphAbs: "",
+      projPic: "",
+      contactOne: "",
       active: "hide"
   });
     window.alert('STEM Project Deleted Successfully.');
     location.reload();
 }
+
+absButton.addEventListener('change', function(e) {
+  //get file
+  var file = e.target.files[0];
+  console.log(file);
+  var blob = file.slice(0, file.size, 'image/png/jpg/jpeg');
+  newFile = new File([blob], userInfoArr[3]+".png", {type: 'image/png'});
+
+  //create storage refresh
+  var storageRef = firebase.storage().ref(userInfoArr[2]+'_stem_photos/'+newFile.name);
+
+  //upload file
+  var task = storageRef.put(newFile);
+
+  //update progress banner
+  task.on('state_changed',
+  
+  function complete(){
+    firebase.storage().ref(userInfoArr[2]+'_'+'stem_photos/'+userInfoArr[3]+".png").getDownloadURL()
+    .then((url) => {
+      firebase.database().ref('stem/'+userInfoArr[2]+"/"+userInfoArr[3]).update({
+        graphAbs : url
+      });
+    });
+  }
+);
+});
 
 
 function checkIfExists(UID){

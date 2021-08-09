@@ -857,6 +857,10 @@ font-weight: 900;
     margin-top: 20px;
 }
 
+#posterButtonLabel{
+  margin-top: 20px;
+}
+
 .space {
   margin-left: auto;
   margin-right: auto;

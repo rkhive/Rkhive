@@ -65,7 +65,7 @@ editClass.addEventListener('click', e =>{
 });
 
 createStem.addEventListener('click', e => {
-  if(confirm("Are you sure?") == true){
+  if(confirm("Are you sure? Doing so will wipe any existing data") == true){
   for(let i = 1; i <= 50; i++){
     firebase.database().ref('stem/'+globalYear+"/"+i).set({
         yog: globalYear,
@@ -76,6 +76,10 @@ createStem.addEventListener('click', e => {
         author: "null",
         email: "null",
         userPic: "",
+        poster: "",
+        graphAbs: "",
+        projPic: "",
+        contactOne: "",
         active: "hide"
     });
   }

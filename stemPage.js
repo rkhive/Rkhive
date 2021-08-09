@@ -18,52 +18,119 @@ var firebaseConfig = {
   const database = firebase.database();
   const rootRef = database.ref();
   var ref = rootRef.child('stem');
+  var year = "2022"; //defaults to 2022
 
   var MIN_YEAR = "";
   var MAX_YEAR = "";
+
+  var currentRef = ref.child(year);
 
   ref.child('meta').on('value', function(snapshot){
     MIN_YEAR = snapshot.val().min;
     MAX_YEAR = snapshot.val().max;
     update();
   });
+
+  maroonLeftArrow.addEventListener('click', e => {
+    downYear();
+  });
   
-  function update(){
-    for(let i = parseInt(MIN_YEAR); i <= parseInt(MAX_YEAR); i++){
-      ref.child(''+i).once('value', function(snapshot) {
-        displayUsers(snapshot.val());
-      });
+  maroonRightArrow.addEventListener('click', e => {
+    upYear();
+  });
+  
+  document.onkeydown = checkKey;
+  
+  function checkKey(e) {
+  
+      e = e || window.event;
+  
+      if (e.keyCode == '37') {
+          // left arrow
+          downYear();
+      }
+      else if (e.keyCode == '39') {
+         // right arrow
+         upYear();
+      }
+  
+  }
+  
+  function changeYear(el, d){
+    if(d == 'r' && parseInt(year) > parseInt(MIN_YEAR)){
+      year = "" + (parseInt(year) - 1);
+      update();
+    }
+    else if(d == 'l' && parseInt(year) < parseInt(MAX_YEAR)){
+      year = "" + (parseInt(year) + 1);
+      update();
     }
   }
   
+  function upYear(){
+    if(parseInt(year) < parseInt(MAX_YEAR)){
+      year = "" + (parseInt(year) + 1);
+      update();
+    }
+  }
   
-  searchBar.addEventListener('keyup', (e) => {
-      ref.on('value', (snapshot) => {
-        const data = snapshot.val();
-        const searchString = e.target.value.toLowerCase();
-        const filteredUsers = data.filter((user) => {
-            return (
-                user.title.toLowerCase().includes(searchString)
-            );
-        });
-        displayUsers(filteredUsers);
-      });
-  });
+  function downYear(){
+    if(parseInt(year) > parseInt(MIN_YEAR)){
+      year = "" + (parseInt(year) - 1);
+      update();
+    }
+  }
+  
+  function update(){
+    currentRef = ref.child(year);
+    currentRef.on('value', (snapshot) => {
+      displayUsers(snapshot.val());
+    });
+    $(yogDisplay).html("Projects of "+year);
+  }
+  
+  function setYear(year){
+    this.year = year;
+    update();
+  }
+  
+  // function updateAll(){
+  //   for(let i = parseInt(MIN_YEAR); i <= parseInt(MAX_YEAR); i++){
+  //     ref.child(''+i).once('value', function(snapshot) {
+  //       displayUsers(snapshot.val());
+  //     });
+  //   }
+  // }
+  
+  // searchBar.addEventListener('keyup', (e) => {
+  //     currentRef.on('value', (snapshot) => {
+  //       const data = snapshot.val();
+  //       const searchString = e.target.value.toLowerCase();
+  //       const filteredUsers = data.filter((user) => {
+  //           return (
+  //               user.title.toLowerCase().includes(searchString) ||
+  //               user.author.toLowerCase().includes(searchString) ||
+  //               user.category.toLowerCase().includes(searchString)
+  //           );
+  //       });
+  //       displayUsers(filteredUsers);
+  //     });
+  // });
   
 const displayUsers = (users) => {
     const htmlString = users
         .map((user) => {
             return `
             <li class="user hvr-grow ${user.active}">
-              <div data-toggle="modal" data-target="#myModal${user.id}">
-              <img class=user-grid-image src=${user.userPic}></img>
+              <div data-toggle="modal" data-target="#myModal${user.yog+""+user.id}">
+              <img class=user-grid-image src=${user.graphAbs}></img>
               <div class="usersList-name">
               <p class="sheen-name">${user.title}</p>
               </div>
               </div>
             </li>
 
-            <div id="myModal${user.id}" class="modal fade" role="dialog">
+            <div id="myModal${user.yog+""+user.id}" class="modal fade" role="dialog">
               <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header">
@@ -75,7 +142,7 @@ const displayUsers = (users) => {
                   </div>
                   <div class="modal-body">
                     <div class="col-sm-4">
-                      <img src=${user.userPic}></img>
+                      <img src=${user.graphAbs}></img>
                       <p class="modal-attribute">Category: ${user.category}</p>
                       <p class="modal-attribute">By: ${user.author}</p>
                       <p class="modal-attribute">YOG: ${user.yog}</p>
@@ -90,6 +157,6 @@ const displayUsers = (users) => {
         `;
         })
         .join('');
-    projectsList.innerHTML += htmlString;
+    projectsList.innerHTML = htmlString;
 };
   

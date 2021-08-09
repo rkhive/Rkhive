@@ -63,11 +63,16 @@
 
     <div id = "stemProjInfo"></div>
 
+    <div id = 'upload-abs' class="login-editing none">
+      <label id = 'absButtonLabel' for="absButton" class="choosefile"> <p><span class="glyphicon glyphicon-camera"></span>Upload Graphical Abstract</p> </label>
+      <input id = 'absButton' type = 'file' value = 'upload'></input>
+    </div>
+
     <div id ="stemProjCreate">
       <input id = 'txtProjTitle' placeholder = 'Project Title'>
       <input id = 'txtProjCategory' placeholder = 'Project Category'>
-      <br>
-      <div id = 'txtProjAbstract' contentEditable = 'true'>Abstract</div>
+      <br><br>
+      <div id = 'txtProjAbstract' contentEditable = 'true' class = 'editable'>Enter Written Abstract</div>
       <br>
       <button id = 'submitProj' onclick = createProject()>Create your STEM Project</button>
     </div>

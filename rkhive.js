@@ -25,12 +25,12 @@ var year = "2022"; //defaults to 2022
 var MIN_YEAR = "";
 var MAX_YEAR = "";
 
+var currentRef = ref.child(year);
+
 database.ref('yb/meta').on('value', function(snapshot){
   MIN_YEAR = snapshot.val().min;
   MAX_YEAR = snapshot.val().max;
 });
-
-var currentRef = ref.child(year);
 
 maroonLeftArrow.addEventListener('click', e => {
   downYear();
@@ -93,8 +93,7 @@ function downYear(){
 
 function update(){
   currentRef = ref.child(year);
-  currentRef.on('value', (snapshot) => {
-    console.log(snapshot.val());
+  currentRef.once('value', (snapshot) => {
     displayUsers(snapshot.val());
   });
   $(yogDisplay).html("Class of "+year);
@@ -103,34 +102,6 @@ function update(){
 function setYear(year){
   this.year = year;
   update();
-}
-
-// function setMode(mode){
-//   this.mode = mode;
-//   update();
-// }
-
-ref.orderByChild("section").equalTo("M").on("value", function(snapshot) {
-  console.log(snapshot.val());
-});
-
-//clicking m button function, generalize?
-// mButton.addEventListener('click', e =>{
-//   searchSection('M');
-// });
-
-function searchSection(section){
-  //cool but does not work
-  // var mRef = ref.orderByChild("section").equalTo("M");
-  currentRef.on('value', (snapshot) => {
-    const data = snapshot.val();
-    const filteredUsers = data.filter((user) => {
-        return (
-            user.section.toUpperCase().includes(section)
-        );
-    });
-    displayUsers(filteredUsers);
-  })
 }
 
 searchBar.addEventListener('keyup', (e) => {
