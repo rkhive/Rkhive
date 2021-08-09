@@ -107,7 +107,17 @@ function createProject(){
 
 function deleteProject(){
     firebase.database().ref('stem/master/'+globalUID).remove();
-    firebase.database().ref('stem/'+userInfoArr[2]+"/"+userInfoArr[3]).remove();
+    firebase.database().ref('stem/'+userInfoArr[2]+"/"+userInfoArr[3]).set({
+      yog: userInfoArr[2],
+      id: userInfoArr[3],
+      title: "null",
+      category: "null",
+      abstract: "If you are seeing this, delete this project and create a new one.",
+      author: "null",
+      email: "null",
+      userPic: "",
+      active: "hide"
+  });
     window.alert('STEM Project Deleted Successfully.');
     location.reload();
 }

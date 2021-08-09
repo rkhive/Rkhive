@@ -25,14 +25,15 @@ var firebaseConfig = {
   ref.child('meta').on('value', function(snapshot){
     MIN_YEAR = snapshot.val().min;
     MAX_YEAR = snapshot.val().max;
+    update();
   });
   
   function update(){
-    // for(let i = parseInt(MIN_YEAR); i <= parseInt(MAX_YEAR); i++){
-      ref.child('2022').once('value', function(snapshot) {
+    for(let i = parseInt(MIN_YEAR); i <= parseInt(MAX_YEAR); i++){
+      ref.child(''+i).once('value', function(snapshot) {
         displayUsers(snapshot.val());
       });
-    // }
+    }
   }
   
   
@@ -75,8 +76,9 @@ const displayUsers = (users) => {
                   <div class="modal-body">
                     <div class="col-sm-4">
                       <img src=${user.userPic}></img>
-                      <p class="modal-attribute">Section ${user.category}</p>
-                      <p class="modal-attribute">${user.author}</p>
+                      <p class="modal-attribute">Category: ${user.category}</p>
+                      <p class="modal-attribute">By: ${user.author}</p>
+                      <p class="modal-attribute">YOG: ${user.yog}</p>
                     </div>
                     <div class="col-sm-8">
                       <p class='modal-description'>${user.abstract}</p>
@@ -90,8 +92,4 @@ const displayUsers = (users) => {
         .join('');
     projectsList.innerHTML += htmlString;
 };
-
-update();
-  
-
   

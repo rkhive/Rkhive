@@ -25,6 +25,7 @@ var imageDataButton = document.getElementById('imageDataButton');
 var addToMaster = document.getElementById('addToMaster');
 var submit = document.getElementById("submit");
 var editClass = document.getElementById('editClass');
+var createStem = document.getElementById('createStem');
 var submitMinAndMax = document.getElementById('submitMinAndMax');
 var minYear = document.getElementById('minYear');
 var maxYear = document.getElementById('maxYear');
@@ -61,6 +62,25 @@ editClass.addEventListener('click', e =>{
       +" <button onclick = disable("+obj.id+")> Disable </button></li>";
     });
   });
+});
+
+createStem.addEventListener('click', e => {
+  if(confirm("Are you sure?") == true){
+  for(let i = 1; i <= 50; i++){
+    firebase.database().ref('stem/'+globalYear+"/"+i).set({
+        yog: globalYear,
+        id: i,
+        title: "null",
+        category: "null",
+        abstract: "If you are seeing this, delete this project and create a new one.",
+        author: "null",
+        email: "null",
+        userPic: "",
+        active: "hide"
+    });
+  }
+  document.getElementById('status').innerHTML = 'Initialized STEM Projects for '+globalYear;
+  };
 });
 
 function enable(id){
@@ -146,6 +166,7 @@ createData.addEventListener('click', e => {
 });
 
 createAccounts.addEventListener('click', e => {
+  if(confirm("Are you sure?") == true){
   const auth = firebase.auth();
   for(let i = 1; i <= emailsArray.length; i++){
     console.log(emailsArray[i-1][0]+ " " +emailsArray[i-1][1]);
@@ -155,6 +176,7 @@ createAccounts.addEventListener('click', e => {
     });
   }
   console.log("done");
+  };
 });
 
 addToMaster.addEventListener('click', e => {
