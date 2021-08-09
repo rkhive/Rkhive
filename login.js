@@ -211,6 +211,7 @@ var firebaseConfig = {
     if(firebaseUser) {
       globalUID = firebaseUser.uid;
       console.log(globalUID);
+      pushData();
       btnLogout.classList.remove('hide');
       btnGiveUserInfo.classList.remove('hide');
       btnStemProj.classList.remove('hide');

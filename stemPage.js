@@ -19,36 +19,35 @@ var firebaseConfig = {
   const rootRef = database.ref();
   var ref = rootRef.child('stem');
 
+  var MIN_YEAR = "";
+  var MAX_YEAR = "";
+
+  ref.child('meta').on('value', function(snapshot){
+    MIN_YEAR = snapshot.val().min;
+    MAX_YEAR = snapshot.val().max;
+  });
   
   function update(){
-    var projArray =[];
-    ref.on('value', (snapshot) => {
+    // for(let i = parseInt(MIN_YEAR); i <= parseInt(MAX_YEAR); i++){
+      ref.child('2022').once('value', function(snapshot) {
         displayUsers(snapshot.val());
-        const obj = JSON.parse(JSON.stringify(snapshot.val()));
-        console.log(Object.entries(obj));
-        // console.log(snapshot.val());
-      snapshot.forEach(function(childSnapshot){
-          var item = childSnapshot.val();
-          projArray.push(item);
       });
-    });
-    console.log(projArray);
-    // displayUsers(projArray);
+    // }
   }
   
   
-//   searchBar.addEventListener('keyup', (e) => {
-//       ref.on('value', (snapshot) => {
-//         const data = snapshot.val();
-//         const searchString = e.target.value.toLowerCase();
-//         const filteredUsers = data.filter((user) => {
-//             return (
-//                 user.title.toLowerCase().includes(searchString)
-//             );
-//         });
-//         displayUsers(filteredUsers);
-//       });
-//   });
+  searchBar.addEventListener('keyup', (e) => {
+      ref.on('value', (snapshot) => {
+        const data = snapshot.val();
+        const searchString = e.target.value.toLowerCase();
+        const filteredUsers = data.filter((user) => {
+            return (
+                user.title.toLowerCase().includes(searchString)
+            );
+        });
+        displayUsers(filteredUsers);
+      });
+  });
   
 const displayUsers = (users) => {
     const htmlString = users
@@ -89,7 +88,7 @@ const displayUsers = (users) => {
         `;
         })
         .join('');
-    projectsList.innerHTML = htmlString;
+    projectsList.innerHTML += htmlString;
 };
 
 update();

@@ -38,6 +38,10 @@ submitMinAndMax.addEventListener('click', e =>{
     min: minYear.value,
     max: maxYear.value
   });
+  firebase.database().ref('stem/meta').set({
+    min: minYear.value,
+    max: maxYear.value
+  });
   document.getElementById('status').innerHTML = 'Set Min to '+minYear.value+" and Max to "+maxYear.value;
 });
 

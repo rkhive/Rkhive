@@ -3,7 +3,7 @@ let userInfoArr = [];
 btnStemProj.addEventListener('click', e =>{
     pushData();
     $(userInfoExtras).hide();
-    firebase.database().ref('stem').on('value', function(snapshot){
+    firebase.database().ref('stem/master/').on('value', function(snapshot){
         if(snapshot.hasChild(globalUID)){
             console.log("Project Exists");
             $(userInfo).html('Edit your STEM Project Information');
@@ -17,13 +17,13 @@ btnStemProj.addEventListener('click', e =>{
 });
 
 function displayStemProj(){
-    firebase.database().ref('stem/'+globalUID).on('value', function(snapshot){
+    firebase.database().ref('stem/'+userInfoArr[2]+"/"+userInfoArr[3]).on('value', function(snapshot){
         const stemInfo = JSON.parse(JSON.stringify(snapshot.val()));
         $(stemProjInfo).show();
         $(stemProjInfo).html(
         "<div class='user hvr-grow'>"
         +"<div data-toggle='modal' data-target='#myModal'>"
-        // +"<img class = user-grid-image src="+obj.preferred_picture+"></img>"
+        +"<img class = user-grid-image src="+stemInfo.userPic+"></img>"
         +"<div class='usersList-name'>"
         +"<p class='sheen-name'>"+stemInfo.title+"</p>"
         +"</div>"
@@ -45,7 +45,7 @@ function displayStemProj(){
                   +"<div class = 'img-container'>"
                     +"<div class = 'img-overlay'>"
                     +"</div>"
-                    // +"<img class = 'img-display' src=" + obj.preferred_picture +"></img>"
+                    +"<img class = 'img-display' src=" + stemInfo.userPic +"></img>"
                   +"</div>"
                   +"<p class='modal-attribute' >Category: <span id = 'sectionEdit' class = 'editable' contenteditable = 'true'>"+stemInfo.category+"</span></p>"
                   +"<p class='modal-attribute' >Author: <span id = 'favClassEdit' class = 'editable'contenteditable = 'true'>"+ stemInfo.author+"</span></p>"
@@ -69,6 +69,7 @@ function initializeStemProj(){
 }
 
 function pushData(){
+  userInfoArr = [];
     firebase.database().ref('yb/masterUsers/'+globalUID).on('value', function(snapshot){
         const user = JSON.parse(JSON.stringify(snapshot.val()));
         var yog = user.yog;
@@ -83,29 +84,37 @@ function pushData(){
 }
 
 function createProject(){
-    firebase.database().ref('stem/'+globalUID).set({
+    firebase.database().ref('stem/master/'+globalUID).set({
+        yog: userInfoArr[2],
+        id: userInfoArr[3],
+    });
+    firebase.database().ref('stem/'+userInfoArr[2]+"/"+userInfoArr[3]).set({
+        yog: userInfoArr[2],
+        id: userInfoArr[3],
         title: $(txtProjTitle).val(),
         category: $(txtProjCategory).val(),
         abstract: $(txtProjAbstract).html(),
         author: userInfoArr[0]+ " " + userInfoArr[1],
-        yog: userInfoArr[2],
-        id: userInfoArr[3],
         email: userInfoArr[4],
         userPic: userInfoArr[5],
         active: userInfoArr[6]
     });
     $(stemProjCreate).hide();
+    $(txtProjTitle).val('');
+    $(txtProjCategory).val('');
+    $(txtProjAbstract).html('');
 }
 
 function deleteProject(){
-    firebase.database().ref('stem/'+globalUID).remove();
+    firebase.database().ref('stem/master/'+globalUID).remove();
+    firebase.database().ref('stem/'+userInfoArr[2]+"/"+userInfoArr[3]).remove();
     window.alert('STEM Project Deleted Successfully.');
     location.reload();
 }
 
 
 function checkIfExists(UID){
-    firebase.database().ref('stem').on('value', function(snapshot){
+    firebase.database().ref('stem/master/').on('value', function(snapshot){
         if(snapshot.hasChild(UID)){
             console.log("Project Exists");
         }
