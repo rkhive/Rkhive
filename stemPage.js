@@ -23,6 +23,7 @@ var firebaseConfig = {
   function update(){
     var projArray =[];
     ref.on('value', (snapshot) => {
+        displayUsers(snapshot.val());
         const obj = JSON.parse(JSON.stringify(snapshot.val()));
         console.log(Object.entries(obj));
         // console.log(snapshot.val());
@@ -32,7 +33,7 @@ var firebaseConfig = {
       });
     });
     console.log(projArray);
-    displayUsers(projArray);
+    // displayUsers(projArray);
   }
   
   
@@ -66,7 +67,7 @@ const displayUsers = (users) => {
               <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <p>${user.author}
+                    <p>${user.title}
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span class="modal-close" aria-hidden="true">&times;</span>
                     </button>
@@ -76,6 +77,7 @@ const displayUsers = (users) => {
                     <div class="col-sm-4">
                       <img src=${user.userPic}></img>
                       <p class="modal-attribute">Section ${user.category}</p>
+                      <p class="modal-attribute">${user.author}</p>
                     </div>
                     <div class="col-sm-8">
                       <p class='modal-description'>${user.abstract}</p>
