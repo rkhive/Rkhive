@@ -27,23 +27,31 @@ var submit = document.getElementById("submit");
 var editClass = document.getElementById('editClass');
 var createStem = document.getElementById('createStem');
 var submitMinAndMax = document.getElementById('submitMinAndMax');
-var minYear = document.getElementById('minYear');
-var maxYear = document.getElementById('maxYear');
+var minYearYb = document.getElementById('minYearYb');
+var maxYearYb = document.getElementById('maxYearYb');
+// var defaultYearYb = document.getElementById('defaultYearYb');
+var minYearStem = document.getElementById('minYearStem');
+var maxYearStem = document.getElementById('maxYearStem');
+// var defaultYearStem = document.getElementById('defaultYearStem');
 var txtYear = document.getElementById('txtYear');
 var submitStatus = document.getElementById("submitStatus");
 let globalYear = "";
 let uidArray = [];
 
-submitMinAndMax.addEventListener('click', e =>{
+submitMinAndMaxYb.addEventListener('click', e =>{
   firebase.database().ref('yb/meta').set({
-    min: minYear.value,
-    max: maxYear.value
+    min: minYearYb.value,
+    max: maxYearYb.value
   });
+  document.getElementById('status').innerHTML = 'Set Years for Yb'
+});
+
+submitMinAndMaxStem.addEventListener('click', e => {
   firebase.database().ref('stem/meta').set({
-    min: minYear.value,
-    max: maxYear.value
+    min: minYearStem.value,
+    max: maxYearStem.value
   });
-  document.getElementById('status').innerHTML = 'Set Min to '+minYear.value+" and Max to "+maxYear.value;
+  document.getElementById('status').innerHTML = 'Set Years for Stem'
 });
 
 submit.addEventListener('click', e => {

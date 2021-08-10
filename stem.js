@@ -24,7 +24,7 @@ function displayStemProj(){
         $(stemProjInfo).html(
         "<div class='user hvr-grow'>"
         +"<div data-toggle='modal' data-target='#myModal'>"
-        +"<img class = user-grid-image src="+stemInfo.graphAbs+"></img>"
+        // +"<img class = user-grid-image src="+stemInfo.userPic+"></img>"
         +"<div class='usersList-name'>"
         +"<p class='sheen-name'>"+stemInfo.title+"</p>"
         +"</div>"
@@ -67,7 +67,6 @@ function displayStemProj(){
 }
 
 function initializeStemProj(){
-    document.getElementById('upload-abs').classList.remove('none');
     $(stemProjCreate).show();
 }
 
@@ -165,6 +164,7 @@ absButton.addEventListener('change', function(e) {
       firebase.database().ref('stem/'+userInfoArr[2]+"/"+userInfoArr[3]).update({
         graphAbs : url
       });
+      $(userInfo).html('Abstract Uploaded!');
     });
   }
 );

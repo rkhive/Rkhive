@@ -102,20 +102,21 @@ var firebaseConfig = {
   //   }
   // }
   
-  // searchBar.addEventListener('keyup', (e) => {
-  //     currentRef.on('value', (snapshot) => {
-  //       const data = snapshot.val();
-  //       const searchString = e.target.value.toLowerCase();
-  //       const filteredUsers = data.filter((user) => {
-  //           return (
-  //               user.title.toLowerCase().includes(searchString) ||
-  //               user.author.toLowerCase().includes(searchString) ||
-  //               user.category.toLowerCase().includes(searchString)
-  //           );
-  //       });
-  //       displayUsers(filteredUsers);
-  //     });
-  // });
+  searchBar.addEventListener('keyup', (e) => {
+      currentRef.on('value', (snapshot) => {
+        const data = snapshot.val();
+        const searchString = e.target.value.toLowerCase();
+        const filteredUsers = data.filter((user) => {
+            return (
+                user.title.toLowerCase().includes(searchString) ||
+                user.author.toLowerCase().includes(searchString) ||
+                user.category.toLowerCase().includes(searchString) ||
+                user.abstract.toLowerCase().includes(searchString)
+            );
+        });
+        displayUsers(filteredUsers);
+      });
+  });
   
 const displayUsers = (users) => {
     const htmlString = users
@@ -123,7 +124,7 @@ const displayUsers = (users) => {
             return `
             <li class="user hvr-grow ${user.active}">
               <div data-toggle="modal" data-target="#myModal${user.yog+""+user.id}">
-              <img class=user-grid-image src=${user.graphAbs}></img>
+              <img class=user-grid-image src=${user.userPic}></img>
               <div class="usersList-name">
               <p class="sheen-name">${user.title}</p>
               </div>
@@ -145,7 +146,7 @@ const displayUsers = (users) => {
                       <img src=${user.graphAbs}></img>
                       <p class="modal-attribute">Category: ${user.category}</p>
                       <p class="modal-attribute">By: ${user.author}</p>
-                      <p class="modal-attribute">YOG: ${user.yog}</p>
+                      <p class="modal-attribute">Class of ${user.yog}</p>
                     </div>
                     <div class="col-sm-8">
                       <p class='modal-description'>${user.abstract}</p>
