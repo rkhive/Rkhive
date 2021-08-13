@@ -85,6 +85,7 @@ createStem.addEventListener('click', e => {
         email: "null",
         userPic: "",
         poster: "",
+        awards: "",
         graphAbs: "",
         projPic: "",
         contactOne: "",

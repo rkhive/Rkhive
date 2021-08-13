@@ -50,6 +50,7 @@ function displayStemProj(){
                   +"</div>"
                   +"<p class='modal-attribute' >Category: <span id = 'categoryEdit' class = 'editable' contenteditable = 'true'>"+stemInfo.category+"</span></p>"
                   +"<p class='modal-attribute' >Author: "+ stemInfo.author+"</p>"
+                  +"<p class='modal-attribute' >Awards: <span id = 'awardsEdit' class = 'editable' contenteditable = 'true'>"+stemInfo.awards+"</span></p>"
                 +"</div>"
                   +"<div class='col-sm-8'>"
                     +"<p id = 'abstractEdit' class='modal-description editable' contenteditable = 'true'>"+ stemInfo.abstract+"</p>"
@@ -100,6 +101,7 @@ function createProject(){
         email: userInfoArr[4],
         userPic: userInfoArr[5],
         poster: "",
+        awards: $(txtProjAwards).val(),
         graphAbs: "",
         projPic: "",
         contactOne: "",
@@ -108,6 +110,7 @@ function createProject(){
     $(stemProjCreate).hide();
     $(txtProjTitle).val('');
     $(txtProjCategory).val('');
+    $(txtProjAwards).val('');
     $(txtProjAbstract).html('Abstract');
 }
 
@@ -115,6 +118,7 @@ function btnUpdateProj(){
   firebase.database().ref('stem/'+userInfoArr[2]+"/"+userInfoArr[3]).update({
     title: document.getElementById("titleEdit").innerHTML,
     category: document.getElementById("categoryEdit").innerHTML,
+    awards: document.getElementById("awardsEdit").innerHTML,
     abstract: document.getElementById("abstractEdit").innerHTML
   });
   window.alert("Profile has been updated!");
@@ -133,6 +137,7 @@ function deleteProject(){
       email: "null",
       userPic: "",
       poster: "",
+      awards: "",
       graphAbs: "",
       projPic: "",
       contactOne: "",

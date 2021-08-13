@@ -147,6 +147,7 @@ const displayUsers = (users) => {
                       <p class="modal-attribute">Category: ${user.category}</p>
                       <p class="modal-attribute">By: ${user.author}</p>
                       <p class="modal-attribute">Class of ${user.yog}</p>
+                      <p class="modal-attribute">Awards: ${user.awards}</p>
                     </div>
                     <div class="col-sm-8">
                       <p class='modal-description'>${user.abstract}</p>
