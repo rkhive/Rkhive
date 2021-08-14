@@ -169,7 +169,7 @@ absButton.addEventListener('change', function(e) {
   },
 
   function error(err) {
-
+    $(userInfo).html(err);
   },
 
   function complete(){
