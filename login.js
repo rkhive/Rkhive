@@ -172,6 +172,7 @@ var firebaseConfig = {
                         +"</div>"
                         +"<p class='modal-attribute' >Section <span id = 'sectionEdit' class = 'editable' contenteditable = 'true'>"+obj.section+"</span></p>"
                         +"<p class='modal-attribute' >Favorite Class: <span id = 'favClassEdit' class = 'editable'contenteditable = 'true'>"+ obj.fav_class+"</span></p>"
+                        +"<input id = 'linkedInEdit' class = 'modal-attribute' placeholder = 'LinkedIn URL' value ="+obj.contactOne+">"
                       +"</div>"
                         +"<div class='col-sm-8'>"
                           +"<p id = 'descEdit' class='modal-description editable' contenteditable = 'true'>"+ obj.student_description+"</p>"
@@ -201,7 +202,8 @@ var firebaseConfig = {
       quote: document.getElementById("quoteEdit").innerHTML,
       quote_author: document.getElementById("quoteAuthorEdit").innerHTML,
       fav_class: document.getElementById("favClassEdit").innerHTML,
-      section: document.getElementById("sectionEdit").innerHTML
+      section: document.getElementById("sectionEdit").innerHTML,
+      contactOne: $(linkedInEdit).val()
     });
     window.alert("Profile has been updated!");
     location.reload();
