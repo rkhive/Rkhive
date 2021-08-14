@@ -20,7 +20,7 @@ function displayStemProj(){
     firebase.database().ref('stem/'+userInfoArr[2]+"/"+userInfoArr[3]).on('value', function(snapshot){
         const stemInfo = JSON.parse(JSON.stringify(snapshot.val()));
         $(stemProjInfo).show();
-        document.getElementById('upload-abs').classList.remove('none');
+        document.getElementById('upload-buttons').classList.remove('none');
         $(stemProjInfo).html(
         "<div class='user hvr-grow'>"
         +"<div data-toggle='modal' data-target='#myModal'>"
