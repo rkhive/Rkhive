@@ -143,7 +143,17 @@ const displayUsers = (users) => {
                   </div>
                   <div class="modal-body">
                     <div class="col-sm-4">
-                      <img src='${user.graphAbs}' onclick = openAbs('${user.graphAbs}')></img>
+                    <div id='wrapper'>
+                        <div class = 'img-container'>
+                        <div class = 'img-overlay'>
+                          <img src='${user.graphAbs}' onclick = openAbs('${user.graphAbs}')></img>
+                        </div>
+                      <div class='img-caption'>
+                      <p> click to view in full screen
+                      </p>
+                      </div>
+                      </div>
+                      </div>
                       <p class="modal-attribute">By: ${user.author}</p>
                       <p class="modal-attribute">Class of ${user.yog}</p>
                       <p class="modal-attribute">Category: ${user.category}</p>
