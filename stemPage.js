@@ -143,10 +143,10 @@ const displayUsers = (users) => {
                   </div>
                   <div class="modal-body">
                     <div class="col-sm-4">
-                    <div id='wrapper'>
+                    <div id='wrapper' onclick = openAbs('${user.graphAbs}')>
                         <div class = 'img-container'>
                         <div class = 'img-overlay'>
-                          <img src='${user.graphAbs}' onclick = openAbs('${user.graphAbs}')></img>
+                          <img src='${user.graphAbs}'></img>
                         </div>
                       <div class='img-caption'>
                       <p> click to view in full screen
