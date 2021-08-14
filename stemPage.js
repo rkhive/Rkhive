@@ -135,10 +135,10 @@ const displayUsers = (users) => {
               <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <p>${user.title}
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span class="modal-close" aria-hidden="true">&times;</span>
                     </button>
+                    <p>${user.title}
                     </p>
                   </div>
                   <div class="modal-body">
