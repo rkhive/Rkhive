@@ -57,7 +57,7 @@ var firebaseConfig = {
   $(stemProjCreate).hide();
 
   //hide upload new photo and graphical abstract
-  document.getElementById('upload-abs').classList.add('none');
+  document.getElementById('upload-buttons').classList.add('none');
   document.getElementById('upload-image').classList.add('none');
 
   //Sign in
@@ -95,7 +95,7 @@ var firebaseConfig = {
   btnLogout.addEventListener('click', e => {
     firebase.auth().signOut();
     document.getElementById('upload-image').classList.add('none');
-    document.getElementById('upload-abs').classList.add('none');
+    document.getElementById('upload-buttons').classList.add('none');
     $(stemProjInfo).hide();
     $(stemProjCreate).hide();
     $(txtEmail).val('');
@@ -120,7 +120,7 @@ var firebaseConfig = {
   });
 
   btnGiveUserInfo.addEventListener('click', e => {
-    document.getElementById('upload-abs').classList.add('none');
+    document.getElementById('upload-buttons').classList.add('none');
     $(userInfoExtras).show();
     $(stemProjInfo).hide();
     $(stemProjCreate).hide();
@@ -216,7 +216,7 @@ var firebaseConfig = {
       globalUID = firebaseUser.uid;
       console.log(globalUID);
       pushData();
-      document.getElementById('upload-abs').classList.add('none');
+      document.getElementById('upload-buttons').classList.add('none');
       btnLogout.classList.remove('hide');
       btnGiveUserInfo.classList.remove('hide');
       btnStemProj.classList.remove('hide');
@@ -261,7 +261,7 @@ var firebaseConfig = {
       },
 
       function error(err) {
-
+        window.alert(err);
       },
 
       function complete(){

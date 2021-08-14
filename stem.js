@@ -20,11 +20,11 @@ function displayStemProj(){
     firebase.database().ref('stem/'+userInfoArr[2]+"/"+userInfoArr[3]).on('value', function(snapshot){
         const stemInfo = JSON.parse(JSON.stringify(snapshot.val()));
         $(stemProjInfo).show();
-        document.getElementById('upload-abs').classList.remove('none');
+        document.getElementById('upload-buttons').classList.remove('none');
         $(stemProjInfo).html(
         "<div class='user hvr-grow'>"
         +"<div data-toggle='modal' data-target='#myModal'>"
-        +"<img class = user-grid-image src="+stemInfo.userPic+"></img>"
+        +"<img class = user-grid-image src="+stemInfo.projPic+"></img>"
         +"<div class='usersList-name'>"
         +"<p class='sheen-name'>"+stemInfo.title+"</p>"
         +"</div>"
@@ -43,16 +43,10 @@ function displayStemProj(){
               +"</div>"
               +"<div class='modal-body'>"
                 +"<div class='col-sm-4'>"
-                +"<div id='wrapper'>"
                   +"<div class = 'img-container'>"
                     +"<div class = 'img-overlay'>"
                     +"</div>"
                     +"<img class = 'img-display' src=" + stemInfo.graphAbs +"></img>"
-                  +"</div>"
-                  +"<div class='img-caption'>
-                  +"<p> click to view in full screen"
-                  +"</p>"
-                  +"</div>"
                   +"</div>"
                   +"<p class='modal-attribute' >Category: <span id = 'categoryEdit' class = 'editable' contenteditable = 'true'>"+stemInfo.category+"</span></p>"
                   +"<p class='modal-attribute' >Author: "+ stemInfo.author+"</p>"
@@ -190,6 +184,40 @@ absButton.addEventListener('change', function(e) {
 );
 });
 
+projPicButton.addEventListener('change', function(e) {
+  //get file
+  var file = e.target.files[0];
+  console.log(file);
+  var blob = file.slice(0, file.size, 'image/png/jpg/jpeg');
+  newFile = new File([blob], userInfoArr[3]+".png", {type: 'image/png'});
+
+  //create storage refresh
+  var storageRef = firebase.storage().ref(userInfoArr[2]+'_stem_photos/projPic/'+newFile.name);
+
+  //upload file
+  var task = storageRef.put(newFile);
+
+  task.on('state_changed',
+
+  function progress (snapshot){
+    var percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+  },
+
+  function error(err) {
+    $(userInfo).html(err);
+  },
+
+  function complete(){
+    firebase.storage().ref(userInfoArr[2]+'_'+'stem_photos/projPic/'+userInfoArr[3]+".png").getDownloadURL()
+    .then((url) => {
+      firebase.database().ref('stem/'+userInfoArr[2]+"/"+userInfoArr[3]).update({
+        projPic : url
+      });
+      $(userInfo).html('Project Pic Uploaded!');
+    });
+  }
+);
+});
 
 function checkIfExists(UID){
     firebase.database().ref('stem/master/').on('value', function(snapshot){
