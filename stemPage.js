@@ -143,10 +143,10 @@ const displayUsers = (users) => {
                   </div>
                   <div class="modal-body">
                     <div class="col-sm-4">
-                      <img src=${user.graphAbs}></img>
+                      <img src='${user.graphAbs}' onclick = openAbs('${user.graphAbs}')></img>
                       <p class="modal-attribute">By: ${user.author}</p>
-                      <p class="modal-attribute">Category: ${user.category}</p>
                       <p class="modal-attribute">Class of ${user.yog}</p>
+                      <p class="modal-attribute">Category: ${user.category}</p>
                       <p class="modal-attribute maroon">Awards: ${user.awards}</p>
                     </div>
                     <div class="col-sm-8">
@@ -161,3 +161,8 @@ const displayUsers = (users) => {
         .join('');
     projectsList.innerHTML = htmlString;
 };
+
+function openAbs(link){
+  console.log('what');
+  window.open(link, '_blank').focus();
+}
