@@ -144,7 +144,7 @@ const displayUsers = (users) => {
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span class="modal-close" aria-hidden="true">&times;</span>
                     </button>
-                    <img src="Images/linkedin.svg" onclick = openLink('${user.contactOne}') style="width: 40px; color: #0077b5">
+                    <img class = 'shakeImg' src="Images/linkedin.svg" onclick = openLink('${user.contactOne}') style="width: 40px; color: #0077b5">
                     </p>
                   </div>
                   <div class="modal-body">
@@ -217,7 +217,7 @@ const displayUsers = (users) => {
 
 update();
 
-function openLink(link){
+function openLink(link, id){
   if(link.length != 0){
     window.open(link, '_blank').focus();
   }
