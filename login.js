@@ -10,7 +10,7 @@ var firebaseConfig = {
     appId: "1:608713408633:web:fe413d775d51be77e2d4a8",
     measurementId: "G-PCS017396G"
   };
-  
+
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
   firebase.analytics();
@@ -25,26 +25,26 @@ var firebaseConfig = {
   const btnStemProj = document.getElementById('btnStemProj');
   let userYog; //GLOBAL YOG
   let userType; //GLOBAL TYPE
-  
+
   // Declare global variable for email
   var globalEmail = "";
-  
+
   // Get elements for progress bar and submit button
   var uploader = document.getElementById('uploader');
   uploader.value = 0;
   var fileButton = document.getElementById('fileButton');
-  
+
   //the specific reference of the user
   var userRef = "";
-  
+
   //the global uid
   var globalUID = "";
-  
+
   //the global id
   var globalID = "";
 
   $(stemProjCreate).hide();
-  
+
   //add login event
   btnLogin.addEventListener('click', e => {
   //Get email and pass
@@ -55,11 +55,11 @@ var firebaseConfig = {
   $(txtPassword).val('');
   $(stemProjInfo).hide();
   $(stemProjCreate).hide();
-  
+
   //hide upload new photo and graphical abstract
   document.getElementById('upload-abs').classList.add('none');
   document.getElementById('upload-image').classList.add('none');
-  
+
   //Sign in
   const promise = auth.signInWithEmailAndPassword(email, pass);
   if(email) {
@@ -73,7 +73,7 @@ var firebaseConfig = {
   $(userInfo).html(e.message);
   });
   });
-  
+
   //add signup event
   btnSignUp.addEventListener('click', e => {
     //Get email and pass
@@ -81,7 +81,7 @@ var firebaseConfig = {
     const email = txtEmail.value;
     const pass = txtPassword.value;
     const auth = firebase.auth();
-  
+
     //Sign in
     const promise = auth.createUserWithEmailAndPassword(email, pass);
     $(userInfo).html("Created account as "+email);
@@ -90,7 +90,7 @@ var firebaseConfig = {
       $(userInfo).html(e.message);
     });
   });
-  
+
   // TODO: hide all profile elements when logging out
   btnLogout.addEventListener('click', e => {
     firebase.auth().signOut();
@@ -102,7 +102,7 @@ var firebaseConfig = {
     $(txtPassword).val('');
     $(bannerText).html("Please login to edit your profile.")
   });
-  
+
   btnResetPassword.addEventListener('click', e => {
     console.log(globalEmail);
     var r = confirm("Are you sure? \nThis will send you a password reset email.");
@@ -118,7 +118,7 @@ var firebaseConfig = {
       console.log("Request cancelled");
     }
   });
-  
+
   btnGiveUserInfo.addEventListener('click', e => {
     document.getElementById('upload-abs').classList.add('none');
     $(userInfoExtras).show();
@@ -141,7 +141,7 @@ var firebaseConfig = {
             //setting GLOBAL variable email
             globalEmail = profile.email;
             globalID = obj.id;
-  
+
             $(userInfo).html(
               "<p>Click on your profile below to edit your information.</p>"
               +"<div class='user hvr-grow'>"
@@ -152,7 +152,7 @@ var firebaseConfig = {
               +"</div>"
               +"</div>"
               +"</div>"
-  
+
               +"<div id='myModal' class='modal fade' role='dialog'>"
                 +"<div class='modal-dialog'>"
                   +"<div class='modal-content'>"
@@ -185,15 +185,15 @@ var firebaseConfig = {
                 +"</div>"
               +"</div>"
             );
-  
-            // shows the upload photo button 
+
+            // shows the upload photo button
             document.getElementById('upload-image').classList.remove('none');
           });
         });
     });
   }
   });
-  
+
   function btnUpdate(){
     console.log(userRef);
     firebase.database().ref(userRef).update({
@@ -207,7 +207,7 @@ var firebaseConfig = {
     location.reload();
   }
 
-  
+
   //add a realtime addEventListener
   firebase.auth().onAuthStateChanged(firebaseUser => {
     if(firebaseUser) {
@@ -227,14 +227,14 @@ var firebaseConfig = {
       btnStemProj.classList.add('hide');
     }
   });
-  
+
   // TODO: make a better name for the function
   // TODO: make images and information disappear and such
   function showInputs(){
     $(progressPrint).html("Upload Complete!");
     location.reload();
   }
-  
+
   //listen for file selection
   fileButton.addEventListener('change', function(e) {
       //get file
@@ -242,26 +242,26 @@ var firebaseConfig = {
       console.log(file);
       var blob = file.slice(0, file.size, 'image/png/jpg/jpeg');
       newFile = new File([blob], globalID+".png", {type: 'image/png'});
-  
+
       //create storage refresh
       var storageRef = firebase.storage().ref(userYog+'_yb_photos/'+newFile.name);
-  
+
       //upload file
       //originally file
       var task = storageRef.put(newFile);
-  
+
       //update progress banner
       task.on('state_changed',
-  
+
       function progress (snapshot){
         var percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
         uploader.value = percentage;
       },
-  
+
       function error(err) {
-  
+
       },
-  
+
       function complete(){
         window.alert('Profile Picture Updated!');
         showInputs();

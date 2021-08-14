@@ -6,11 +6,11 @@ btnStemProj.addEventListener('click', e =>{
     firebase.database().ref('stem/master/').on('value', function(snapshot){
         if(snapshot.hasChild(globalUID)){
             console.log("Project Exists");
-            $(userInfo).html('Edit your STEM Project Information');
+            $(userInfo).html('Click on the modal below to edit your STEM I Project information.');
             displayStemProj();
         }
         else{
-            $(userInfo).html('Add your STEM Project Information');
+            $(userInfo).html('Add your STEM I Project information');
             initializeStemProj();
         }
     });
@@ -24,7 +24,7 @@ function displayStemProj(){
         $(stemProjInfo).html(
         "<div class='user hvr-grow'>"
         +"<div data-toggle='modal' data-target='#myModal'>"
-        // +"<img class = user-grid-image src="+stemInfo.userPic+"></img>"
+        +"<img class = user-grid-image src="+stemInfo.userPic+"></img>"
         +"<div class='usersList-name'>"
         +"<p class='sheen-name'>"+stemInfo.title+"</p>"
         +"</div>"
@@ -162,7 +162,7 @@ absButton.addEventListener('change', function(e) {
 
   //update progress banner
   task.on('state_changed',
-  
+
   function complete(){
     firebase.storage().ref(userInfoArr[2]+'_'+'stem_photos/'+userInfoArr[3]+".png").getDownloadURL()
     .then((url) => {

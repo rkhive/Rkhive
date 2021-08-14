@@ -152,7 +152,7 @@ li {
     }
 }
 
-/* RKHIVE RULES */
+/* STEM RULES */
 
 .show{
   display: block;
@@ -162,19 +162,19 @@ li {
   display:none;
 }
 
-.rkhive-heading h1 {
+.stem-heading h1 {
   padding-top: 15px;
   padding-bottom: 15px;
 }
 
-.rkhive {
+.stem {
   margin-left: 2vw;
   margin-right: 2vw;
   text-align: center;
   margin-bottom: 5vh;
 }
 
-.rkhive-instructions {
+.stem-instructions {
   color: #6d213cff;
   font-style: italic;
   font-size: 0.8em;
@@ -182,11 +182,11 @@ li {
   margin-bottom: 10px;
 }
 
-.rkhive span {
+.stem span {
   margin: 7px;
 }
 
-.rkhive-button-hide {
+.stem-button-hide {
   border-width: 0px;
   background-color: transparent;
 }
@@ -231,7 +231,7 @@ li {
   right: 8px;
 }
 
-.rkhive input {
+.stem input {
   padding: 8px 15px;
   margin-bottom: 30px;
   box-sizing: border-box;
@@ -245,7 +245,7 @@ li {
   width: 100%;
 }
 
-.rkhive input:focus {
+.stem input:focus {
   background-color: white;
 }
 
@@ -372,7 +372,7 @@ li {
 
 .modal-description {
   text-align: left;
-  font-size: 1.3em;
+  font-size: 1.2em;
   margin-bottom: 25px;
 }
 

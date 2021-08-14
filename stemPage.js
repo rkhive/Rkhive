@@ -34,17 +34,17 @@ var firebaseConfig = {
   maroonLeftArrow.addEventListener('click', e => {
     downYear();
   });
-  
+
   maroonRightArrow.addEventListener('click', e => {
     upYear();
   });
-  
+
   document.onkeydown = checkKey;
-  
+
   function checkKey(e) {
-  
+
       e = e || window.event;
-  
+
       if (e.keyCode == '37') {
           // left arrow
           downYear();
@@ -53,9 +53,9 @@ var firebaseConfig = {
          // right arrow
          upYear();
       }
-  
+
   }
-  
+
   function changeYear(el, d){
     if(d == 'r' && parseInt(year) > parseInt(MIN_YEAR)){
       year = "" + (parseInt(year) - 1);
@@ -66,34 +66,34 @@ var firebaseConfig = {
       update();
     }
   }
-  
+
   function upYear(){
     if(parseInt(year) < parseInt(MAX_YEAR)){
       year = "" + (parseInt(year) + 1);
       update();
     }
   }
-  
+
   function downYear(){
     if(parseInt(year) > parseInt(MIN_YEAR)){
       year = "" + (parseInt(year) - 1);
       update();
     }
   }
-  
+
   function update(){
     currentRef = ref.child(year);
     currentRef.on('value', (snapshot) => {
       displayUsers(snapshot.val());
     });
-    $(yogDisplay).html("Projects of "+year);
+    $(yogDisplay).html("Projects of "+(year-2)+"-"+(year-1));
   }
-  
+
   function setYear(year){
     this.year = year;
     update();
   }
-  
+
   // function updateAll(){
   //   for(let i = parseInt(MIN_YEAR); i <= parseInt(MAX_YEAR); i++){
   //     ref.child(''+i).once('value', function(snapshot) {
@@ -101,7 +101,7 @@ var firebaseConfig = {
   //     });
   //   }
   // }
-  
+
   searchBar.addEventListener('keyup', (e) => {
       currentRef.on('value', (snapshot) => {
         const data = snapshot.val();
@@ -117,7 +117,7 @@ var firebaseConfig = {
         displayUsers(filteredUsers);
       });
   });
-  
+
 const displayUsers = (users) => {
     const htmlString = users
         .map((user) => {
@@ -147,10 +147,10 @@ const displayUsers = (users) => {
                       <p class="modal-attribute">Category: ${user.category}</p>
                       <p class="modal-attribute">By: ${user.author}</p>
                       <p class="modal-attribute">Class of ${user.yog}</p>
-                      <p class="modal-attribute">Awards: ${user.awards}</p>
+                      <p class="modal-attribute maroon">Awards: ${user.awards}</p>
                     </div>
                     <div class="col-sm-8">
-                      <p class='modal-description'>${user.abstract}</p>
+                      <p class="modal-description">${user.abstract}</p>
                     </div>
                   </div>
                 </div>
@@ -161,4 +161,3 @@ const displayUsers = (users) => {
         .join('');
     projectsList.innerHTML = htmlString;
 };
-  

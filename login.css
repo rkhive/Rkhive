@@ -210,8 +210,8 @@ button {
   font-size: 1.75em;
   padding: 8px 16px;
   border-radius: 0px;
-  border-width: 2px;
-  border-color: #6d213cff;
+  border-width: 0px;
+  border-color: #6d213cff !important;
   margin-left: 10px;
   margin-right: 10px;
   transition: 1s;
@@ -372,7 +372,7 @@ button {
   padding: 20px 20px;
   display: grid;
   cursor: pointer;
-  margin-top: 20px;
+  margin-top: 15px;
 }
 
 .user-grid-image{
@@ -502,9 +502,11 @@ button {
   font-size: 1.4em;
   padding: 8px 16px;
   border-radius: 0px;
-  border-width: 2px;
+  border-width: 0px;
   border-color: #6d213cff;
   transition: 1s;
+  margin-left: 20px;
+  margin-right: 20px;
 }
 
 .modal-body button:hover{

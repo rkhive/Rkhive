@@ -155,7 +155,7 @@ const displayUsers = (users) => {
                     <div class="col-sm-8">
                       <p class='modal-description'>${user.student_description}</p>
                       <p class='modal-quote'>${user.quote}</p>
-                      <p class='modal-quote'>- ${user.quote_author}</p>
+                      <p class='modal-quote right'>- ${user.quote_author}</p>
                     </div>
                   </div>
                 </div>
