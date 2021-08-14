@@ -157,16 +157,23 @@ absButton.addEventListener('change', function(e) {
   newFile = new File([blob], userInfoArr[3]+".png", {type: 'image/png'});
 
   //create storage refresh
-  var storageRef = firebase.storage().ref(userInfoArr[2]+'_stem_photos/'+newFile.name);
+  var storageRef = firebase.storage().ref(userInfoArr[2]+'_stem_photos/graphAbs/'+newFile.name);
 
   //upload file
   var task = storageRef.put(newFile);
 
-  //update progress banner
   task.on('state_changed',
 
+  function progress (snapshot){
+    var percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+  },
+
+  function error(err) {
+
+  },
+
   function complete(){
-    firebase.storage().ref(userInfoArr[2]+'_'+'stem_photos/'+userInfoArr[3]+".png").getDownloadURL()
+    firebase.storage().ref(userInfoArr[2]+'_'+'stem_photos/graphAbs/'+userInfoArr[3]+".png").getDownloadURL()
     .then((url) => {
       firebase.database().ref('stem/'+userInfoArr[2]+"/"+userInfoArr[3]).update({
         graphAbs : url
