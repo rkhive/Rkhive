@@ -126,6 +126,7 @@ function btnUpdateProj(){
 }
 
 function deleteProject(){
+  if(confirm("Are you sure you want to delete your project profile?")){
     firebase.database().ref('stem/master/'+globalUID).remove();
     firebase.database().ref('stem/'+userInfoArr[2]+"/"+userInfoArr[3]).set({
       yog: userInfoArr[2],
@@ -145,6 +146,7 @@ function deleteProject(){
   });
     window.alert('STEM Project Deleted Successfully.');
     location.reload();
+};
 }
 
 absButton.addEventListener('change', function(e) {
