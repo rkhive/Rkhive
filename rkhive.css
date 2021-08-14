@@ -174,16 +174,40 @@ li {
   margin-bottom: 5vh;
 }
 
-.rkhive-instructions {
-  color: #6d213cff;
-  font-style: italic;
-  font-size: 0.8em;
-  display: inline;
-  margin-bottom: 10px;
+@media (min-width: 859px) {
+  .rkhive-instructions {
+    color: #6d213cff;
+    font-style: italic;
+    font-size: 0.8em;
+    display: inline;
+    margin-bottom: 10px;
+    display: inline;
+  }
+
+  .rkhive-display {
+      display: inline;
+  }
+}
+
+@media (max-width: 859px) {
+  .rkhive-instructions {
+    color: #6d213cff;
+    font-style: italic;
+    font-size: 0.8em;
+    display: inline;
+    margin-bottom: 10px;
+    display: block;
+  }
+  .rkhive-block {
+      display: block;
+  }
 }
 
 .rkhive span {
-  margin: 7px;
+  margin-top: 7px;
+  margin-bottom: 7px;
+  margin-left: 7px;
+  margin-right: 7px;
 }
 
 .rkhive-button-hide {
@@ -195,7 +219,7 @@ li {
   margin-top: 10px;
   margin-bottom: 20px;
   height: 35px;
-  width: 65px;
+  width: 18px;
   transition: 1s;
   cursor: pointer;
 }
@@ -203,7 +227,7 @@ li {
 .arrow:hover {
   opacity: 0.5;
   height: 30px;
-  width: 75px;
+  width: 21px;
 }
 
 .yogDisplay {

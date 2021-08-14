@@ -174,12 +174,32 @@ li {
   margin-bottom: 5vh;
 }
 
-.stem-instructions {
-  color: #6d213cff;
-  font-style: italic;
-  font-size: 0.8em;
-  display: inline;
-  margin-bottom: 10px;
+@media (min-width: 960px) {
+  .stem-instructions {
+    color: #6d213cff;
+    font-style: italic;
+    font-size: 0.8em;
+    display: inline;
+    margin-bottom: 10px;
+    display: inline;
+  }
+  .stem-display {
+      display: inline;
+  }
+}
+
+@media (max-width: 960px) {
+  .stem-instructions {
+    color: #6d213cff;
+    font-style: italic;
+    font-size: 0.8em;
+    display: inline;
+    margin-bottom: 10px;
+    display: block;
+  }
+  .stem-display {
+      display: block;
+  }
 }
 
 .stem span {
@@ -195,7 +215,7 @@ li {
   margin-top: 10px;
   margin-bottom: 20px;
   height: 35px;
-  width: 65px;
+  width: 18px;
   transition: 1s;
   cursor: pointer;
 }
@@ -203,7 +223,7 @@ li {
 .arrow:hover {
   opacity: 0.5;
   height: 30px;
-  width: 75px;
+  width: 21px;
 }
 
 .yogDisplay {
