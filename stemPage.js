@@ -144,8 +144,8 @@ const displayUsers = (users) => {
                   <div class="modal-body">
                     <div class="col-sm-4">
                       <img src=${user.graphAbs}></img>
-                      <p class="modal-attribute">Category: ${user.category}</p>
                       <p class="modal-attribute">By: ${user.author}</p>
+                      <p class="modal-attribute">Category: ${user.category}</p>
                       <p class="modal-attribute">Class of ${user.yog}</p>
                       <p class="modal-attribute maroon">Awards: ${user.awards}</p>
                     </div>
