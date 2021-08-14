@@ -89,19 +89,6 @@ var firebaseConfig = {
     $(yogDisplay).html("Projects of "+(year-2)+"-"+(year-1));
   }
 
-  function setYear(year){
-    this.year = year;
-    update();
-  }
-
-  // function updateAll(){
-  //   for(let i = parseInt(MIN_YEAR); i <= parseInt(MAX_YEAR); i++){
-  //     ref.child(''+i).once('value', function(snapshot) {
-  //       displayUsers(snapshot.val());
-  //     });
-  //   }
-  // }
-
   searchBar.addEventListener('keyup', (e) => {
       currentRef.on('value', (snapshot) => {
         const data = snapshot.val();
