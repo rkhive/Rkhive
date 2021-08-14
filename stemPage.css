@@ -99,7 +99,7 @@ li {
   background-color: #6d213cff;
   border-width: 0px;
   margin-top: 18px;
-  margin-right: 15px;
+  margin-right: 10px;
   margin-bottom: 20px;
 }
 
@@ -116,8 +116,8 @@ li {
 
     .navbar-nav li a {
       padding-top: 17px;
-      padding-left: 15px;
-      padding-right: 15px;
+      padding-left: 12px;
+      padding-right: 12px;
       padding-bottom: 18px;
       transition: 1s;
     }
@@ -382,6 +382,52 @@ li {
   text-align: left;
   width: 100%;
   margin-bottom: 25px;
+}
+
+#wrapper{
+  padding:0px;
+  width:820px;
+  height:auto;
+  margin:auto;
+  overflow:hidden;
+}
+
+.img-container{
+  float:left;
+  width:250px;
+  height:200px;
+  position:relative;
+  margin:10px;
+  cursor:pointer;
+}
+
+.img-container img{
+  width:250px;
+  height:200px;
+  position:absolute;
+}
+
+.img-caption {
+  width:100%;
+  height:100%;
+  background:rgba(0, 0, 0, 0.7);
+  position:absolute;
+  opacity:0;
+  transition:all 300ms ease-in-out;
+ -webkit-transition:all 300ms ease-in-out;
+ -moz-transition:all 300ms ease-in-out;
+ -o-transition:all 300ms ease-in-out;
+ -ms-transition:all 300ms ease-in-out;
+}
+
+.img-caption p{
+  text-align:center;
+  font-family: 'Overpass Mono', monospace;
+  color:#fff;
+}
+
+.img-container:hover .img-caption{
+  opacity:1;
 }
 
 .modal-attribute {

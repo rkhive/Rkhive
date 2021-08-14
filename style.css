@@ -128,7 +128,7 @@ input:focus {
 .navbar-home:hover {
   font-size: 1.15em;
   font-weight: 900;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
 }
 
 .navbar a {
@@ -162,7 +162,7 @@ input:focus {
   background-color: #6d213cff;
   border-width: 0px;
   margin-top: 18px;
-  margin-right: 15px;
+  margin-right: 10px;
   margin-bottom: 20px;
 }
 
@@ -179,8 +179,8 @@ input:focus {
 
     .navbar-nav li a {
       padding-top: 17px;
-      padding-left: 15px;
-      padding-right: 15px;
+      padding-left: 12px;
+      padding-right: 12px;
       padding-bottom: 18px;
       transition: 1s;
     }
