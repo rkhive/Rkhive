@@ -217,9 +217,8 @@ const displayUsers = (users) => {
 
 update();
 
-// detectswipe('usersList', changeYear);
-
 function openLink(link){
-  console.log('what');
-  window.open(link, '_blank').focus();
+  if(link.length != 0){
+    window.open(link, '_blank').focus();
+  }
 }
