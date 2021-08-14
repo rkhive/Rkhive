@@ -144,7 +144,7 @@ const displayUsers = (users) => {
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span class="modal-close" aria-hidden="true">&times;</span>
                     </button>
-                    <img src="Images/linkedin.svg" style="width: 40px; color: #0077b5">
+                    <img src="Images/linkedin.svg" onclick = openLink('${user.contactOne}') style="width: 40px; color: #0077b5">
                     </p>
                   </div>
                   <div class="modal-body">
@@ -218,3 +218,8 @@ const displayUsers = (users) => {
 update();
 
 // detectswipe('usersList', changeYear);
+
+function openLink(link){
+  console.log('what');
+  window.open(link, '_blank').focus();
+}
