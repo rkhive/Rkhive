@@ -124,7 +124,7 @@ const displayUsers = (users) => {
             return `
             <li class="user hvr-grow ${user.active}">
               <div data-toggle="modal" data-target="#myModal${user.yog+""+user.id}">
-              <img class=user-grid-image src=${user.userPic}></img>
+              <img class=user-grid-image src=${user.projPic}></img>
               <div class="usersList-name">
               <p class="sheen-name">${user.title}</p>
               </div>
