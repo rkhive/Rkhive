@@ -261,7 +261,7 @@ var firebaseConfig = {
       },
 
       function error(err) {
-
+        window.alert(err);
       },
 
       function complete(){
