@@ -141,10 +141,10 @@ const displayUsers = (users) => {
                 <div class="modal-content">
                   <div class="modal-header">
                     <p>${user.first_name +" "+user.last_name}
+                    <img class = 'shakeImg' src="Images/LI-In-Bug.png" onclick = openLink('${user.contactOne}') style="width: 40px;">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span class="modal-close" aria-hidden="true">&times;</span>
                     </button>
-                    <img class = 'shakeImg' src="Images/linkedin.svg" onclick = openLink('${user.contactOne}') style="width: 40px; color: #0077b5">
                     </p>
                   </div>
                   <div class="modal-body">
