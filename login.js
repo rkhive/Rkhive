@@ -119,6 +119,21 @@ var firebaseConfig = {
     }
   });
 
+  btnChangeEmail.addEventListener('click', e=>{
+    var newEmail = prompt("Please enter your new email", globalEmail);
+    const user = firebase.auth().currentUser;
+    console.log(newEmail);
+    user.updateEmail(newEmail).then(() => {
+      window.alert("Updated email to "+newEmail);
+      firebase.database().ref(userRef).update({
+        email: newEmail
+      });
+      location.reload();
+    }).catch((error) => {
+      window.alert(error.message);
+    });
+  })
+
   btnGiveUserInfo.addEventListener('click', e => {
     document.getElementById('upload-buttons').classList.add('none');
     $(userInfoExtras).show();
@@ -172,6 +187,7 @@ var firebaseConfig = {
                         +"</div>"
                         +"<p class='modal-attribute' >Section <span id = 'sectionEdit' class = 'editable' contenteditable = 'true'>"+obj.section+"</span></p>"
                         +"<p class='modal-attribute' >Favorite Class: <span id = 'favClassEdit' class = 'editable' contenteditable = 'true'>"+ obj.fav_class+"</span></p>"
+                        +"<p class='modal-attribute' >Email: <span id = 'emailEdit' >"+ obj.email+"</span></p>"
                         +"<input id = 'linkedInEdit' class = 'modal-attribute' placeholder = 'LinkedIn URL' value ="+obj.contactOne+">"
                       +"</div>"
                         +"<div class='col-sm-8'>"

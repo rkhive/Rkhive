@@ -150,6 +150,7 @@ const displayUsers = (users) => {
                   <div class="modal-body">
                     <div class="col-sm-4">
                       <img src=${user.preferred_picture}></img>
+                      <p class="modal-attribute">Email: ${user.email}</p>
                       <p class="modal-attribute">Section ${user.section}</p>
                       <p class="modal-attribute">Favorite Class: ${user.fav_class}</p>
                     </div>
